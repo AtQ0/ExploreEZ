@@ -115,12 +115,14 @@ main {
 }
 
 .top-or-left-intro-wrapper {
-    background-color: orange;
-    height: 60vh;
+    background-color: green;
+    height: fit-content;
     margin: 5vw;
     margin-top: 10vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
+    align-items: center;
 }
 
 .bottom-or-right-container {
@@ -147,6 +149,47 @@ main {
     top: 2vw;
 }
 
+.intro-image-container {
+    background-color: indigo;
+    height: 95vw;
+    width: 75vw;
+    max-width: 300px;
+    max-height: 450px;
+    margin-bottom: 8vw;
+}
+
+.description {
+    margin-bottom: 3vw;
+}
+
+.magic-button {
+    background-color: orange;
+    margin-bottom: 8vw;
+    height: 5vw;
+    width: 5vw;
+    min-height: 30px;
+    min-width: 30px;
+    padding: 1vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 6vw;
+    border-top-right-radius: 6vw;
+    border-bottom-right-radius: 6vw;
+    border-bottom-left-radius: 6vw;
+    cursor: pointer;
+}
+
+.magic-button p {
+    font-size: 4vw;
+    font-weight: bold;
+    transform: rotate(180deg);
+}
+
+
+
+/*==== BOTTOM OR RIGHT DETAILED ====*/
 .punchline-container {
     background-color: red;
 }
@@ -173,15 +216,22 @@ main {
 }
 
 
-@media screen and (min-width: 769px) {
 
+
+/*=====================*/
+/*=== RESPONSIVNESS ===*/
+/*=====================*/
+
+
+
+
+@media screen and (min-width: 769px) {
 
     main {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
     }
-
 
     .top-or-left-intro-container {
         grid-column: 1/2;
@@ -193,9 +243,35 @@ main {
     }
 
     .top-or-left-intro-wrapper {
-        height: 80%;
+        height: 85%;
         margin-top: 7vw;
     }
+
+    .intro-image-container {
+        max-width: 310px;
+        max-height: 650px;
+        margin-bottom: 60px;
+    }
+
+    .description {
+        margin-bottom: 10px;
+    }
+
+    .magic-button {
+
+        height: 8vw;
+        max-height: 40px;
+        width: 40px;
+        margin-bottom: 60px;
+    }
+
+    .magic-button p {
+        font-size: 32px;
+    }
+
+
+
+    /*==== BOTTOM RIGHT ====*/
 
     .bottom-or-right-container {
         grid-column: 2/3;
@@ -206,12 +282,9 @@ main {
     }
 
     .punchline-container h1 {
-        font-size: 4.75vw;
+        font-size: 4.7vw;
         line-height: 3.5vw;
     }
-
-
-
 
 
 }
