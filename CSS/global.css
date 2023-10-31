@@ -75,14 +75,9 @@ h6 {
 @font-face {
     font-family: "TwCen-SemiBold";
     src: url("../Media/Fonts/Tw\ Cen\ W01\ Semi\ Bold.ttf") format("opentype");
-    font-weight: ;
+    font-weight: bold;
     font-style: normal;
 }
-
-
-/*====================================*/
-/*============== GENERAL =============*/
-/*====================================*/
 
 
 /*====================================*/
@@ -94,92 +89,129 @@ body {
     background-color: #E7B39C;
 }
 
-header {
-    background-color: #ABAFC7;
+main {
+    height: 100vh;
+    width: 100%;
+    background-color: #E7B39C;
 }
 
-nav {
-    background-color: transparent;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: fixed;
-    top: 0;
 
-}
 
-.hamburger-container {
-    width: 30px;
-    height: fit-content;
-    margin-left: 4vw;
-}
+/*===================================*/
+/*============= GENERAL =============*/
+/*===================================*/
 
-.svg-burger rect {
-    fill: white;
-}
 
 main {
-    height: fit-content;
-}
-
-.left-or-top-image-intro-container {
-    background-color: #ABAFC7;
-    height: 70vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 15px;
-
+    justify-items: center;
 }
 
-.top-logo-container {
+.top-or-left-intro-container {
+    background-color: #ABAFC7;
+    width: 100%;
     height: fit-content;
 }
 
-.top-logo-container h1 {
-    color: white;
-}
-
-
-.intro-image-container {
-    height: 100%;
-    width: 100%;
+.top-or-left-intro-wrapper {
+    background-color: orange;
+    height: 60vh;
+    margin: 5vw;
+    margin-top: 10vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 12vw;
-
 }
 
-.intro-image-wrapper {
-    background-color: blueviolet;
+.bottom-or-right-container {
+    background-color: pink;
+    height: fit-content;
     width: 100%;
-    height: 80vw;
-    margin-left: 20vw;
-    margin-right: 20vw;
+}
+
+.bottom-or-right-wrapper {
+    background-color: yellow;
+    height: 100vh;
+    margin: 5vw;
+
 }
 
 
-.main-content-container {
-    color: #3A3320;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+/*===== TOP OR LEFT INTRO DETAILED =====*/
+
+.page-header {
+    background-color: yellowgreen;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    top: 2vw;
 }
 
-
-.main-content-container h1 {
-    font-size: 11vw;
-    line-height: 8vw;
+.punchline-container {
+    background-color: red;
 }
 
+.top-line-of-punchline {
+    text-align: left;
+}
 
+.second-line-of-punchline {
+    text-align: left;
+}
 
-.third-punch-word {
+.third-line-of-punchline {
     text-align: right;
 }
 
-.bottom-punch-word {
+.bottom-line-of-punchline {
     text-align: right;
+}
+
+.punchline-container h1 {
+    font-size: 10.5vw;
+    line-height: 7.5vw;
+}
+
+
+@media screen and (min-width: 769px) {
+
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+
+    .top-or-left-intro-container {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        height: 100vh;
+        width: 50%;
+        position: fixed;
+        left: 0;
+    }
+
+    .top-or-left-intro-wrapper {
+        height: 80%;
+        margin-top: 7vw;
+    }
+
+    .bottom-or-right-container {
+        grid-column: 2/3;
+    }
+
+    .bottom-or-right-wrapper {
+        margin-top: 7vw;
+    }
+
+    .punchline-container h1 {
+        font-size: 4.75vw;
+        line-height: 3.5vw;
+    }
+
+
+
+
+
 }
