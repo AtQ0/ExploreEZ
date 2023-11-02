@@ -135,7 +135,7 @@ main {
 }
 
 .bottom-or-right-wrapper {
-    background-color: lightseagreen;
+    background-color: orange;
     height: 100vh;
     margin: 5vw;
 
@@ -215,6 +215,7 @@ main {
 
 .third-line-of-punchline {
     text-align: right;
+    background-color: pink;
 }
 
 .bottom-line-of-punchline {
@@ -222,7 +223,7 @@ main {
 }
 
 .punchline-container h1 {
-    font-size: 10.57vw;
+    font-size: 10.55vw;
     color: #3A3320;
     line-height: 7.5vw;
 }
