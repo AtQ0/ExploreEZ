@@ -185,12 +185,15 @@ main {
 }
 
 
-
-
 /*=== IMAGE & MENU CONTAINER DETAILED ===*/
 
 .top-or-left-intro-container {
     background-image: url(../Media/Images/background-bushes2.jpg);
+    background-size: cover;
+}
+
+.top-or-left-intro-wrapper {
+    background-image: url(../Media/Images/foreground_amalfi2.jpg);
     background-size: cover;
 }
 
