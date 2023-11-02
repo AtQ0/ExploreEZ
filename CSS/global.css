@@ -231,24 +231,8 @@ main {
 
 
 
-/* EDGE & CHROME and SAFARI(?)
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .punchline-container h1 {
-        font-size: 10.55vw;
-        /* Adjust size for Safari and Chrome */
-}
-}
 
 
-/* Firefox
-@-moz-document url-prefix() {
-    .punchline-container h1 {
-        font-size: 10.6vw;
-        /* Adjust size for Firefox */
-}
-}
-
-*/
 /*=====================*/
 /*=== RESPONSIVNESS ===*/
 /*=====================*/
