@@ -112,21 +112,24 @@ main {
     background-color: #ABAFC7;
     width: 100%;
     height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .top-or-left-intro-wrapper {
     background-color: green;
-    height: fit-content;
-    margin: 5vw;
-    margin-top: 10vw;
+    height: 85vw;
+    margin: 15vw;
+    margin-top: 15vw;
+    margin-bottom: 15vw;
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 
 .bottom-or-right-container {
-    background-color: pink;
+    background-color: #E7B39C;
     height: fit-content;
     width: 100%;
 }
@@ -142,20 +145,14 @@ main {
 /*===== TOP OR LEFT INTRO DETAILED =====*/
 
 .page-header {
-    background-color: yellowgreen;
     height: fit-content;
     width: fit-content;
     position: absolute;
     top: 2vw;
 }
 
-.intro-image-container {
-    background-color: indigo;
-    height: 95vw;
-    width: 75vw;
-    max-width: 300px;
-    max-height: 450px;
-    margin-bottom: 8vw;
+.page-header h1 {
+    color: white;
 }
 
 .description {
@@ -163,7 +160,7 @@ main {
 }
 
 .magic-button {
-    background-color: orange;
+    background-color: rgba(255, 255, 255, 0.404);
     margin-bottom: 8vw;
     height: 5vw;
     width: 5vw;
@@ -189,10 +186,18 @@ main {
 
 
 
-/*==== BOTTOM OR RIGHT DETAILED ====*/
-.punchline-container {
-    background-color: red;
+
+/*=== IMAGE & MENU CONTAINER DETAILED ===*/
+
+.top-or-left-intro-container {
+    background-image: url(../Media/Images/background-bushes2.jpg);
+    background-size: cover;
 }
+
+
+
+/*==== BOTTOM OR RIGHT DETAILED ====*/
+
 
 .top-line-of-punchline {
     text-align: left;
@@ -212,6 +217,7 @@ main {
 
 .punchline-container h1 {
     font-size: 10.5vw;
+    color: #3A3320;
     line-height: 7.5vw;
 }
 
@@ -221,8 +227,6 @@ main {
 /*=====================*/
 /*=== RESPONSIVNESS ===*/
 /*=====================*/
-
-
 
 
 @media screen and (min-width: 769px) {
@@ -243,22 +247,18 @@ main {
     }
 
     .top-or-left-intro-wrapper {
-        height: 85%;
+        flex-grow: 1;
+        margin: 5vw;
         margin-top: 7vw;
+        margin-bottom: 7vw;
     }
 
-    .intro-image-container {
-        max-width: 310px;
-        max-height: 650px;
-        margin-bottom: 60px;
-    }
 
     .description {
         margin-bottom: 10px;
     }
 
     .magic-button {
-
         height: 8vw;
         max-height: 40px;
         width: 40px;
@@ -285,6 +285,4 @@ main {
         font-size: 4.7vw;
         line-height: 3.5vw;
     }
-
-
 }
