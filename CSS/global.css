@@ -203,7 +203,7 @@ main {
 
 
 .top-line-of-punchline {
-    background-color: lightsalmon;
+    background-color: blue;
     text-align: left;
 }
 
@@ -223,7 +223,7 @@ main {
 }
 
 .punchline-container h1 {
-    font-size: 5vw;
+    font-size: 10.55vw;
     color: #3A3320;
     line-height: 7.5vw;
     user-select: none;
@@ -293,26 +293,11 @@ main {
     .punchline-container h1 {
         font-size: 4.7vw;
         line-height: 3.5vw;
-        background-color: burlywood;
+
     }
 
 
-    /* EDGE & CHROME and SAFARI(?) */
-    @media screen and (-webkit-min-device-pixel-ratio: 0) {
-        .punchline-container h1 {
-            font-size: 40.7vw;
-            /* Adjust size for Safari and Chrome */
-        }
-    }
 
-
-    /* Firefox */
-    @-moz-document url-prefix() {
-        .punchline-container h1 {
-            font-size: 4.7vw;
-            /* Adjust size for Firefox */
-        }
-    }
 
 
 }
