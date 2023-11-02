@@ -188,7 +188,7 @@ main {
 /*=== IMAGE & MENU CONTAINER DETAILED ===*/
 
 .top-or-left-intro-container {
-    background-image: url(../Media/Images/background-bushes2.jpg);
+    background-image: url(../Media/Images//background-bushes2.jpg);
     background-size: cover;
 }
 
@@ -226,6 +226,7 @@ main {
     font-size: 10.55vw;
     color: #3A3320;
     line-height: 7.5vw;
+    user-select: none;
 }
 
 
