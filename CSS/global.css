@@ -137,7 +137,6 @@ main {
 .bottom-or-right-wrapper {
     background-color: lightseagreen;
     height: 100vh;
-    width: fit-content;
     margin: 5vw;
 
 }
@@ -224,7 +223,7 @@ main {
 }
 
 .punchline-container h1 {
-    font-size: 10.5vw;
+    font-size: 10.4vw;
     color: #3A3320;
     line-height: 7.5vw;
 }
