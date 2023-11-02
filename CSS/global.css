@@ -135,7 +135,9 @@ main {
 }
 
 .bottom-or-right-wrapper {
+    background-color: yellow;
     height: 100vh;
+    width: fit-content;
     margin: 5vw;
 
 }
@@ -202,11 +204,15 @@ main {
 
 
 .top-line-of-punchline {
+    background-color: lightsalmon;
     text-align: left;
 }
 
 .second-line-of-punchline {
+    background-color: lightblue;
+    width: fit-content;
     text-align: left;
+
 }
 
 .third-line-of-punchline {
