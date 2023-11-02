@@ -291,5 +291,6 @@ main {
     .punchline-container h1 {
         font-size: 4.7vw;
         line-height: 3.5vw;
+        background-color: burlywood;
     }
 }
