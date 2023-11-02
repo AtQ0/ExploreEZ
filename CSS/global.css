@@ -138,6 +138,12 @@ main {
     background-color: orange;
     height: 100vh;
     margin: 5vw;
+    display: flex;
+    /* Add flex display */
+    justify-content: space-between;
+    /* Push text to left and right */
+    justify-content: center;
+    /* Vertically center the text */
 
 }
 
