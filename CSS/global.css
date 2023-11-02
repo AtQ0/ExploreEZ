@@ -207,6 +207,7 @@ main {
 
 .second-line-of-punchline {
     text-align: left;
+    white-space: nowrap;
 }
 
 .third-line-of-punchline {
