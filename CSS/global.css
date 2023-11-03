@@ -135,7 +135,6 @@ main {
 }
 
 .bottom-or-right-wrapper {
-    background-color: orange;
     height: 100vh;
     margin: 5vw;
     overflow: hidden;
@@ -203,19 +202,16 @@ main {
 
 
 .top-line-of-punchline {
-    background-color: blue;
     text-align: left;
 }
 
 .second-line-of-punchline {
-    background-color: lightblue;
     text-align: left;
     white-space: nowrap;
 }
 
 .third-line-of-punchline {
     text-align: right;
-    background-color: pink;
 }
 
 .bottom-line-of-punchline {
@@ -277,8 +273,6 @@ main {
     .magic-button p {
         font-size: 32px;
     }
-
-
 
     /*==== BOTTOM RIGHT ====*/
 
