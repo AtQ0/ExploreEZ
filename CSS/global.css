@@ -122,10 +122,10 @@ main {
 .top-or-left-intro-wrapper {
     background-color: green;
     height: 85vw;
-    width: 70%;
+    width: 75%;
     margin: 15vw;
     margin-top: 20vw;
-    margin-bottom: 20vw;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,15 +164,20 @@ main {
 }
 
 .magic-btn-container {
+    width: 100%;
+    height: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.magic-btn-wrapper {
+    background-color: orange;
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
     height: fit-content;
-    padding: 5px;
-    position: absolute;
-    top: 87.5%;
 }
 
 .magic-button {
@@ -271,7 +276,7 @@ main {
         flex-grow: 1;
         margin: 5vw;
         margin-top: 7vw;
-        margin-bottom: 7vw;
+        margin-bottom: 0;
     }
 
 
