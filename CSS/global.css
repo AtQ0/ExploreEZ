@@ -115,6 +115,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 
 .top-or-left-intro-wrapper {
@@ -135,7 +136,7 @@ main {
 }
 
 .bottom-or-right-wrapper {
-    height: 100vh;
+    height: fit-content;
     margin: 5vw;
     overflow: hidden;
 }
@@ -159,13 +160,15 @@ main {
 }
 
 .magic-button {
-    background-color: rgba(255, 255, 255, 0.404);
+    background-color: rgba(255, 255, 255, 0.150);
+    color: white;
+    border: white 1px solid;
     margin-bottom: 8vw;
     height: 5vw;
     width: 5vw;
     min-height: 30px;
     min-width: 30px;
-    padding: 1vw;
+    padding: 0.5vw;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -175,12 +178,12 @@ main {
     border-bottom-right-radius: 6vw;
     border-bottom-left-radius: 6vw;
     cursor: pointer;
+    position: absolute;
+    top: 90%;
 }
 
-.magic-button p {
-    font-size: 4vw;
-    font-weight: bold;
-    transform: rotate(180deg);
+.magic-button svg {
+    transform: rotate(270deg);
 }
 
 
