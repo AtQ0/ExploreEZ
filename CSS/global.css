@@ -80,9 +80,9 @@ h6 {
 }
 
 
-/*====================================*/
-/*================ NAV ===============*/
-/*====================================*/
+/*===================================*/
+/*============== OTHER ==============*/
+/*===================================*/
 
 
 body {
@@ -157,6 +157,7 @@ main {
 
 .page-header h1 {
     color: white;
+    user-select: none;
 }
 
 .description {
@@ -172,7 +173,7 @@ main {
 }
 
 .magic-btn-wrapper {
-    background-color: orange;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,7 +189,6 @@ main {
     width: 5vw;
     min-height: 30px;
     min-width: 30px;
-    padding: 0.5vw;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -205,8 +205,21 @@ main {
 }
 
 
-/*=== IMAGE & MENU CONTAINER DETAILED ===*/
+/*=== MAGIC BUTTON ANIMATION ON HOVER ===*/
 
+.magic-button {
+    transition: transform 0.25s, background-color 0.25s;
+}
+
+.magic-button:hover {
+    transform: scale(1.15);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+/*=======================================*/
+/*=== IMAGE & MENU CONTAINER DETAILED ===*/
+/*=======================================*/
 .top-or-left-intro-container {
     background-image: url(../Media/Images//background-bushes2.jpg);
     background-size: cover;
@@ -218,9 +231,9 @@ main {
 }
 
 
-
+/*==================================*/
 /*==== BOTTOM OR RIGHT DETAILED ====*/
-
+/*==================================*/
 
 .top-line-of-punchline {
     text-align: left;
@@ -279,15 +292,13 @@ main {
         margin-bottom: 0;
     }
 
-
     .description {
         margin-bottom: 10px;
     }
 
     .magic-button {
-        height: 8vw;
         max-height: 40px;
-        width: 40px;
+        max-width: 40px;
     }
 
 
@@ -306,10 +317,5 @@ main {
         line-height: 3.5vw;
 
     }
-
-    .magic-button {
-        top: 90%;
-    }
-
 
 }
