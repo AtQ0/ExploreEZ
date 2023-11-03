@@ -138,6 +138,7 @@ main {
 .bottom-or-right-wrapper {
     height: fit-content;
     margin: 5vw;
+    margin-top: 8vw;
     overflow: hidden;
 }
 
@@ -179,7 +180,7 @@ main {
     border-bottom-left-radius: 6vw;
     cursor: pointer;
     position: absolute;
-    top: 90%;
+    top: 88.5%;
 }
 
 .magic-button svg {
@@ -293,8 +294,9 @@ main {
 
     }
 
-
-
+    .magic-button {
+        top: 90%;
+    }
 
 
 }
