@@ -292,8 +292,8 @@ main {
         margin-bottom: 0;
     }
 
-    .description {
-        margin-bottom: 10px;
+    .magic-btn-container {
+        height: 15vw;
     }
 
     .magic-button {
