@@ -117,6 +117,8 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 1;
+    /*z-index set to 1, so that forms-menu-container (z-index = 2) can hover above*/
 }
 
 .top-or-left-intro-wrapper {
@@ -129,7 +131,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    z-index: 1;
+    /*z-index set to 1, so that forms-menu-container (z-index = 2) can hover above*/
 }
 
 .bottom-or-right-container {
@@ -142,7 +145,6 @@ main {
     height: fit-content;
     margin: 5vw;
     margin-top: 8vw;
-    overflow: hidden;
 }
 
 
@@ -153,6 +155,7 @@ main {
     width: fit-content;
     position: absolute;
     top: 2vw;
+    z-index: 3;
 }
 
 .page-header h1 {
@@ -173,12 +176,13 @@ main {
 }
 
 .magic-btn-wrapper {
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
     height: fit-content;
+    z-index: 3;
+    /*z-index set to 3, so that btn will hover above forms-menu-container (z-index = 2)*/
 }
 
 .magic-button {
@@ -228,6 +232,32 @@ main {
 .top-or-left-intro-wrapper {
     background-image: url(../Media/Images/foreground_amalfi2.jpg);
     background-size: cover;
+}
+
+/*==================================*/
+/*=========== FORMS MENU ===========*/
+/*==================================*/
+
+.forms-menu-container {
+    background-color: #ABAFC7;
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    transition: height 0.75s;
+    /*Transition used for slide effect of forms menu*/
+}
+
+/*=== ANIMATION OF FORMS MENU ===*/
+
+.class-for-sliding-forms-menu-container-up {
+    height: 100%;
+}
+
+.class-for-sliding-forms-menu-container-down {
+    height: 0%;
 }
 
 
