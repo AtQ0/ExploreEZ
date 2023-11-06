@@ -139,12 +139,14 @@ main {
     background-color: #E7B39C;
     height: fit-content;
     width: 100%;
+    z-index: 3;
 }
 
 .bottom-or-right-wrapper {
     height: fit-content;
     margin: 5vw;
     margin-top: 8vw;
+    z-index: 3;
 }
 
 
@@ -261,6 +263,23 @@ main {
 }
 
 
+/*============================*/
+/*==== FORMS MEN DETAILED ====*/
+/*============================*/
+.app-description {
+    background-color: orange;
+    position: absolute;
+    margin: 15vw;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.app-description p {
+    background-color: red;
+}
+
+
 /*==================================*/
 /*==== BOTTOM OR RIGHT DETAILED ====*/
 /*==================================*/
@@ -288,8 +307,6 @@ main {
     line-height: 7.5vw;
     user-select: none;
 }
-
-
 
 
 
