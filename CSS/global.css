@@ -242,6 +242,10 @@ main {
 
 .forms-menu-container {
     background-color: #ABAFC7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 0%;
     position: absolute;
@@ -266,17 +270,32 @@ main {
 /*============================*/
 /*==== FORMS MEN DETAILED ====*/
 /*============================*/
+
+.forms-wrapper {
+    padding: 10px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6vw;
+    height: 60%;
+    position: absolute;
+    top: 50px;
+}
+
 .app-description {
     background-color: orange;
-    position: absolute;
-    margin: 15vw;
-    padding: 10px;
     text-align: center;
 
 }
 
 .app-description p {
     background-color: red;
+}
+
+label::after {
+    content: "\a";
+    white-space: pre;
 }
 
 
