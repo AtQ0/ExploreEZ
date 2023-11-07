@@ -143,7 +143,7 @@ main {
 }
 
 .bottom-or-right-wrapper {
-    height: fit-content;
+    height: 100vh;
     margin: 5vw;
     margin-top: 8vw;
     z-index: 3;
@@ -272,24 +272,25 @@ main {
 /*============================*/
 
 .forms-wrapper {
-    padding: 10px;
     background-color: pink;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 6vw;
-    height: 75%;
+    justify-content: center;
+    height: 80%;
     position: absolute;
-    top: 5vw;
+    top: 7vw;
+
 }
 
 .app-description {
-    background-color: orange;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 3vw;
+    margin: 10vw;
+    margin-top: 10vw;
+    margin-bottom: 5vw;
 }
 
 
@@ -297,21 +298,68 @@ main {
     width: 50%;
     padding: 5px;
     margin-bottom: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
 #dropdown-menu-search {
     width: 100%;
-    margin-bottom: 1vw;
+    margin-bottom: 4vw;
 }
 
 .filter-container-for-search {
-    height: 40px;
+    height: fit-content;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 1vw;
+    text-align: center;
+    padding: 10px;
 }
+
+.filter-container-for-search label {
+    margin-bottom: 2vw;
+}
+
+.filter-container-for-search label::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.filter-container label {
+    text-align: right;
+}
+
+
+.filter-below {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-above {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .btn-container-for-search {
     display: flex;
@@ -320,7 +368,8 @@ main {
 }
 
 .btn-container-for-search button {
-    width: 80%;
+    width: 40vw;
+    max-width: 50vw;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
@@ -330,7 +379,7 @@ main {
 .add-city-container {
     background-color: orange;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
@@ -338,13 +387,13 @@ main {
 
 .input_container {
     background-color: lightgreen;
-    width: fit-content;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-container-for-adding {
     background-color: lightsteelblue;
-    width: 90%;
+    width: fit-content;
     height: 100%;
     display: flex;
     align-items: end;
@@ -422,6 +471,12 @@ main {
     .magic-button {
         max-height: 40px;
         max-width: 40px;
+    }
+
+    /*=== FORMS MENU ====*/
+
+    .app-description {
+        margin-top: 0;
     }
 
 
