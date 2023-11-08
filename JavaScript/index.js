@@ -57,13 +57,13 @@ let callCitiesOnPageLoad = () => {
             for (let i = 0; i < result.length; i++) {
 
                 stringForPopulatingDropdownWithCityNames += `
-<option value="${result[i].id}">${result[i].name}</option>
+                    <option value="${result[i].id}">${result[i].name}</option>
                 `;
 
             }
 
             dropDownMenuForSearching.innerHTML = stringForPopulatingDropdownWithCityNames;
-            console.log(stringForPopulatingDropdownWithCityNames);
+            // console.log(stringForPopulatingDropdownWithCityNames);
 
         });
 
@@ -78,8 +78,12 @@ let callCitiesOnPageLoad = () => {
 const viewResultsBtn = document.getElementById("view-results-btn");
 const apiContentDiv = document.getElementById("api-content");
 
+//Variable used for retrieving geo coordinates
+let geoCoordinates;
+
 //CREATE VARIABLE FOR USE
 let stringForCreatingDynamicDivsInApiContentDiv = "";
+let chosenCityByName;
 
 viewResultsBtn.addEventListener("click", function () {
 
@@ -90,36 +94,37 @@ viewResultsBtn.addEventListener("click", function () {
 
 let writeCitiesAndElements = (chosenCityIdInput) => {
 
+    // console.log(chosenCityIdInput)
 
 
-
-
-
-
-
-    console.log(chosenCityIdInput)
-
-
-    //FETCH FOR CITITES API
-
+    //FETCH FROM CITITES API
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
         .then((response) => response.json())
         .then((result) => {
 
-            console.log(result)
+
+            // console.log(result)
 
             if (chosenCityIdInput === "") {
                 for (let i = 0; i < result.length; i++) {
+
+
+                    //Call method for fetching API to get geo-coorindates
+                    geoCoordinates = getGeoCoordinatesFromCity(result[i].name);
+
+
                     stringForCreatingDynamicDivsInApiContentDiv += `
                     <div>
                         <h2>${result[i].name}</h2>
                         <p>Population: ${result[i].population}</p>
                         <div>
-                            <p>Longintude:</p>
-                            <p>Lattitude:</p>
+
+                            ${geoCoordinates}
+
                         </div>
                     </div>
                     `;
+
                 }
             }
             else {
@@ -138,6 +143,38 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
             apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
 
+
         });
+
+}
+
+
+let geoReply = "EMPTY";
+
+//FETCH FROM WEB QUEST API
+function getGeoCoordinatesFromCity(selectedCityNameInput) {
+
+    console.log(selectedCityNameInput + "heeeej");
+
+
+
+    fetch('https://www.mapquestapi.com/geocoding/v1/address?key=eKH0ZMAEGWKaibhVOrRQftMpmBMpFcLT&location=' + selectedCityNameInput)
+        .then((response) => response.json())
+        .then((resultWebQuest) => {
+
+            console.log("You are IN")
+
+            geoReply = `
+
+        JERRY BELLY
+
+           `;
+
+
+
+        });
+
+
+    return geoReply;
 
 }
