@@ -107,6 +107,9 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
             if (chosenCityIdInput === "") {
 
+                // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
+                stringForCreatingDynamicDivsInApiContentDiv = '';
+
                 // Initialize an array to store promises from getGeoCoordinatesFromCity
                 const promises = [];
 
@@ -144,6 +147,9 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                 // Handle the case when a single city is selected
                 const city = result; // Single city object
 
+                // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
+                stringForCreatingDynamicDivsInApiContentDiv = '';
+
                 // Fetch geo-coordinates for the selected city
                 getGeoCoordinatesFromCity(city.name)
                     .then((coordinates) => {
@@ -177,7 +183,7 @@ function getGeoCoordinatesFromCity(selectedCityNameInput) {
         .then((response) => response.json())
         .then((resultWebQuest) => {
 
-            //If request is successful (statuscode === 0)
+            //If request is successful (statuscode === 0), store lat and lng and return an object
             if (resultWebQuest.info.statuscode === 0) {
                 const lat = resultWebQuest.results[0].locations[0].latLng.lat;
                 const lng = resultWebQuest.results[0].locations[0].latLng.lng;
