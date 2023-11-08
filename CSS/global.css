@@ -227,7 +227,7 @@ main {
 /*=== IMAGE & MENU CONTAINER DETAILED ===*/
 /*=======================================*/
 .top-or-left-intro-container {
-    background-image: url(../Media/Images//background-bushes2.jpg);
+    background-image: url(../Media/Images/background-bushes2.jpg);
     background-size: cover;
 }
 
@@ -286,7 +286,7 @@ main {
     align-items: center;
     text-align: center;
     margin: 10vw;
-    margin-top: 5vw;
+    margin-top: 8vw;
     margin-bottom: 5vw;
 }
 
@@ -351,7 +351,6 @@ main {
 }
 
 .filter-above {
-    background-color: azure;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -372,26 +371,23 @@ main {
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
-    background-color: orange;
 }
 
 .add-city-container {
-    background-color: orange;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
+    text-align: center;
 }
 
 .input_container {
-    background-color: lightgreen;
     display: flex;
     flex-direction: column;
 }
 
 .btn-container-for-adding {
-    background-color: lightsteelblue;
     width: fit-content;
     height: 100%;
     display: flex;
