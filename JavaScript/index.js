@@ -106,42 +106,64 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
             // console.log(result)
 
             if (chosenCityIdInput === "") {
+
+                // Initialize an array to store promises from getGeoCoordinatesFromCity
+                const promises = [];
+
+
                 for (let i = 0; i < result.length; i++) {
+                    // Call method for fetching API to get geo-coordinates
+                    const promise = getGeoCoordinatesFromCity(result[i].name)
+                        .then((coordinates) => {
+                            // Access the latitude and longitude values here
+                            const lat = coordinates.lat;
+                            const lng = coordinates.lng;
 
+                            stringForCreatingDynamicDivsInApiContentDiv += `
+                                <div>
+                                    <h2>${result[i].name}</h2>
+                                    <p>Population: ${result[i].population}</p>
+                                    <div>
+                                        <p>Latitude: ${lat}</p>
+                                        <p>Longitude: ${lng}</p>
+                                    </div>
+                                </div>
+                            `;
+                        });
 
-                    //Call method for fetching API to get geo-coorindates
-                    geoCoordinates = getGeoCoordinatesFromCity(result[i].name);
-
-
-                    stringForCreatingDynamicDivsInApiContentDiv += `
-                    <div>
-                        <h2>${result[i].name}</h2>
-                        <p>Population: ${result[i].population}</p>
-                        <div>
-
-                            ${geoCoordinates}
-
-                        </div>
-                    </div>
-                    `;
-
+                    promises.push(promise);
                 }
+
+                // Wait for all promises to resolve before updating the DOM
+                Promise.all(promises).then(() => {
+                    apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
+                });
+
             }
             else {
+                // Handle the case when a single city is selected
+                const city = result; // Single city object
 
-                stringForCreatingDynamicDivsInApiContentDiv = `
-                <div>
-                    <h2>${result.name}</h2>
-                    <p>Population: ${result.population}</p>
-                    <div>
-                        <p>Longintude:</p>
-                        <p>Lattitude:</p>
-                    </div>
-                </div>
-                `;
+                // Fetch geo-coordinates for the selected city
+                getGeoCoordinatesFromCity(city.name)
+                    .then((coordinates) => {
+                        const lat = coordinates.lat;
+                        const lng = coordinates.lng;
+
+                        stringForCreatingDynamicDivsInApiContentDiv = `
+                            <div>
+                                <h2>${city.name}</h2>
+                                <p>Population: ${city.population}</p>
+                                <div>
+                                    <p>Latitude: ${lat}</p>
+                                    <p>Longitude: ${lng}</p>
+                                </div>
+                            </div>
+                        `;
+
+                        apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
+                    });
             }
-
-            apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
 
 
         });
@@ -149,32 +171,28 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 }
 
 
-let geoReply = "EMPTY";
-
-//FETCH FROM WEB QUEST API
+// Fetch from the Web Quest API and return a promise
 function getGeoCoordinatesFromCity(selectedCityNameInput) {
-
-    console.log(selectedCityNameInput + "heeeej");
-
-
-
-    fetch('https://www.mapquestapi.com/geocoding/v1/address?key=eKH0ZMAEGWKaibhVOrRQftMpmBMpFcLT&location=' + selectedCityNameInput)
+    return fetch('https://www.mapquestapi.com/geocoding/v1/address?key=eKH0ZMAEGWKaibhVOrRQftMpmBMpFcLT&location=' + selectedCityNameInput)
         .then((response) => response.json())
         .then((resultWebQuest) => {
 
-            console.log("You are IN")
+            //If request is successful (statuscode === 0)
+            if (resultWebQuest.info.statuscode === 0) {
+                const lat = resultWebQuest.results[0].locations[0].latLng.lat;
+                const lng = resultWebQuest.results[0].locations[0].latLng.lng;
 
-            geoReply = `
-
-        JERRY BELLY
-
-           `;
-
-
-
+                // Return an object with lat and lng
+                return { lat, lng };
+            } else {
+                console.log("API request failed with status code: " + resultWebQuest.info.statuscode);
+                // Return an object with lat and lng as undefined
+                return { lat: undefined, lng: undefined };
+            }
+        })
+        .catch((error) => {
+            console.error("Error occurred while fetching data:", error);
+            // Return an object with lat and lng as undefined
+            return { lat: undefined, lng: undefined };
         });
-
-
-    return geoReply;
-
 }
