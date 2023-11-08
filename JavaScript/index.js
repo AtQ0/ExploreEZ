@@ -37,57 +37,34 @@ magicBtn.addEventListener("click", function () {
 const dropDownMenuForSearching = document.getElementById("dropdown-menu-search");
 
 //CREAT VARIABLES TO BE USED
-let chosenCity;//Used by DOMContentLOADED
-let cityNamesOnServerFromStartArray = [];
-let cityIdsOnServerFromStartArray = [];
-let stringForPopulatingDropdownWithCityNames = "";
+let chosenCityID = "";
+let stringForPopulatingDropdownWithCityNames = '<option value="">All cities</option>';
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    //Set chosen city to nothing so all cities are called
-    chosenCity = "";
-
     //Call funtions that calls all citites
-    callCitiesOnPageLoad(chosenCity);
+    callCitiesOnPageLoad();
 });
 
 
-let callCitiesOnPageLoad = (cityInput) => {
+let callCitiesOnPageLoad = () => {
 
-    fetch("https://avancera.app/cities/" + cityInput)
+    fetch("https://avancera.app/cities/")
         .then((response) => response.json())
         .then((result) => {
 
-            //Populate array with cities on web-server
-            for (let i = -1; i < result.length; i++) {
 
-                //First value of this array should always be All Cities
-                if (i === -1) {
-                    cityNamesOnServerFromStartArray[0] = "All cities";
-                    cityIdsOnServerFromStartArray[0] = "idUnique"
+            for (let i = 0; i < result.length; i++) {
 
-                }
-                //Else populate nextcoming indexes with real values from server
-                else {
-                    cityNamesOnServerFromStartArray[i + 1] = result[i].name;
-                    cityIdsOnServerFromStartArray[i + 1] = result[i].id;
-
-                }
-
-
-            }
-
-            //Create child (option) html-elements to parent (select) element
-            for (let j = 0; j < cityNamesOnServerFromStartArray.length; j++) {
-
-                //write all html-code elements in one long string
                 stringForPopulatingDropdownWithCityNames += `
-                <option value="`+ cityIdsOnServerFromStartArray[j] + `">` + cityNamesOnServerFromStartArray[j] + `</option>
+<option value="${result[i].id}">${result[i].name}</option>
                 `;
+
             }
 
-            //Populate parent (select) html-element with option elements from string
             dropDownMenuForSearching.innerHTML = stringForPopulatingDropdownWithCityNames;
+            console.log(stringForPopulatingDropdownWithCityNames);
+
         });
 
 }
@@ -99,64 +76,68 @@ let callCitiesOnPageLoad = (cityInput) => {
 
 //SELECT ELEMENTS FROM DOM
 const viewResultsBtn = document.getElementById("view-results-btn");
-const dropDownMenu = document.getElementById("dropdown-menu-search");
 const apiContentDiv = document.getElementById("api-content");
-let stringForCreatingDivElementsForApiContent = "";
 
-//CREATE VARIABLES FOR USE
-let idSentFromDropDownSelection;
+//CREATE VARIABLE FOR USE
+let stringForCreatingDynamicDivsInApiContentDiv = "";
 
-
-//Click-Event method that calls callCitiesServerOnBtnClick
 viewResultsBtn.addEventListener("click", function () {
-    callCitiesServerOnBtnClick(dropDownMenu.value);
+
+    chosenCityID = document.getElementById("dropdown-menu-search").value;
+    writeCitiesAndElements(chosenCityID);
 })
 
 
-//Method used for calling cities server on Btn-click
-let callCitiesServerOnBtnClick = (dropdownMenuValueInput) => {
+let writeCitiesAndElements = (chosenCityIdInput) => {
 
-    //If value in dropdown menu is idUnique (i.e. All cities) show all cities
-    if (dropdownMenuValueInput === "idUnique") {
-        idSentFromDropDownSelection = "";
-    }
-    //Show value for a specific ID
-    else {
-        idSentFromDropDownSelection = dropdownMenuValueInput;
-    }
 
-    const webServerLinkForAllCities = "https://avancera.app/cities/" + idSentFromDropDownSelection;
 
-    fetch(webServerLinkForAllCities)
-        .then((respons) => respons.json())
+
+
+
+
+
+    console.log(chosenCityIdInput)
+
+
+    //FETCH FOR CITITES API
+
+    fetch('https://avancera.app/cities/' + chosenCityIdInput)
+        .then((response) => response.json())
         .then((result) => {
 
-            for (let i = 0; i < result.length; i++) {
+            console.log(result)
 
-
-                //Write nodes here based from the server
-
-                stringForCreatingDivElementsForApiContent += `
+            if (chosenCityIdInput === "") {
+                for (let i = 0; i < result.length; i++) {
+                    stringForCreatingDynamicDivsInApiContentDiv += `
                     <div>
-                    <h2>${result[i].name}</h2>
+                        <h2>${result[i].name}</h2>
                         <p>Population: ${result[i].population}</p>
-                        <div id="geoLocation">
-
+                        <div>
+                            <p>Longintude:</p>
+                            <p>Lattitude:</p>
                         </div>
                     </div>
-                `;
+                    `;
+                }
+            }
+            else {
 
+                stringForCreatingDynamicDivsInApiContentDiv = `
+                <div>
+                    <h2>${result.name}</h2>
+                    <p>Population: ${result.population}</p>
+                    <div>
+                        <p>Longintude:</p>
+                        <p>Lattitude:</p>
+                    </div>
+                </div>
+                `;
             }
 
-            console.log(stringForCreatingDivElementsForApiContent);
-            apiContentDiv.innerHTML = stringForCreatingDivElementsForApiContent;
-
-
+            apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
 
         });
-
-
-
-
 
 }
