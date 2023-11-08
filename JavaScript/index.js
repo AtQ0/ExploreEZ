@@ -37,10 +37,11 @@ magicBtn.addEventListener("click", function () {
 const dropDownMenuForSearching = document.getElementById("dropdown-menu-search");
 
 //CREAT VARIABLES TO BE USED
-let chosenCity;//chosen city should refer to dropdown
-let cititesIDArray = [];
+let chosenCity;//Used by DOMContentLOADED
 let cityNamesOnServerFromStartArray = [];
 let stringForPopulatingDropdownWithCityNames = "";
+
+let cititesIDArray = [];
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -50,11 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
     chosenCity = "";
 
     //Call funtions that calls all citites
-    callCities(chosenCity);
+    callCitiesOnPageLoad(chosenCity);
 });
 
 
-let callCities = (cityInput) => {
+let callCitiesOnPageLoad = (cityInput) => {
 
     console.log("funktionen körs");
 
