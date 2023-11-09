@@ -94,16 +94,10 @@ viewResultsBtn.addEventListener("click", function () {
 
 let writeCitiesAndElements = (chosenCityIdInput) => {
 
-    // console.log(chosenCityIdInput)
-
-
     //FETCH FROM CITITES API
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
         .then((response) => response.json())
         .then((result) => {
-
-
-            // console.log(result)
 
             if (chosenCityIdInput === "") {
 
@@ -170,7 +164,6 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                         apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
                     });
             }
-
 
         });
 
