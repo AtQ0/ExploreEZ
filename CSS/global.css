@@ -119,10 +119,10 @@ main {
     position: relative;
     z-index: 1;
     /*z-index set to 1, so that forms-menu-container (z-index = 2) can hover above*/
+    font-size: 3.5vw;
 }
 
 .top-or-left-intro-wrapper {
-    background-color: green;
     height: 85vw;
     width: 75%;
     margin: 15vw;
@@ -199,10 +199,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 6vw;
-    border-top-right-radius: 6vw;
-    border-bottom-right-radius: 6vw;
-    border-bottom-left-radius: 6vw;
+    border-top-left-radius: 4vw;
+    border-top-right-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    border-bottom-left-radius: 4vw;
     cursor: pointer;
 }
 
@@ -241,19 +241,20 @@ main {
 /*==================================*/
 
 .forms-menu-container {
-    background-color: #ABAFC7;
+    background-color: #385778;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 0%;
+    height: 0;
     position: absolute;
     left: 0;
     bottom: 0;
     z-index: 2;
     transition: height 0.75s;
     /*Transition used for slide effect of forms menu*/
+    color: white;
 }
 
 /*=== ANIMATION OF FORMS MENU ===*/
@@ -268,7 +269,7 @@ main {
 
 
 /*============================*/
-/*==== FORMS MEN DETAILED ====*/
+/*==== FORMS BUT DETAILED ====*/
 /*============================*/
 
 .forms-wrapper {
@@ -292,25 +293,32 @@ main {
 
 
 .search-city-container {
-    width: 50%;
+    width: fit-content;
     padding: 5px;
-    margin-bottom: 10vw;
+    margin-bottom: 8vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 #dropdown-menu-search {
     width: 100%;
+    margin-top: 0.5vw;
     margin-bottom: 4vw;
+    font-family: TwCen-Medium;
+    font-size: 3vw;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
 }
 
 .filter-container-for-search {
     height: fit-content;
     width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -339,11 +347,11 @@ main {
 
 .filter-container label {
     text-align: right;
+
 }
 
 
 .filter-below {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -366,11 +374,14 @@ main {
 
 .btn-container-for-search button {
     width: 40vw;
-    max-width: 50vw;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border-bottom-left-radius: 100px;
+    max-width: 250px;
+    height: 6vw;
+    max-height: 40px;
+    border-top-left-radius: 4vw;
+    border-top-right-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    border-bottom-left-radius: 4vw;
+    color: white;
 }
 
 .add-city-container {
@@ -385,6 +396,15 @@ main {
 .input_container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1vw;
+}
+
+.input_container input {
+    margin-bottom: 1vw;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
 }
 
 .btn-container-for-adding {
@@ -393,6 +413,22 @@ main {
     display: flex;
     align-items: end;
     justify-content: start;
+}
+
+.btn-container-for-adding button {
+    width: 12vw;
+    max-width: 80px;
+    height: 5vw;
+    max-height: 30px;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    color: white;
+}
+
+.input_container label {
+    margin-bottom: 0.5vw;
 }
 
 .input_container label::after {
@@ -435,6 +471,8 @@ main {
 /*=====================*/
 
 
+
+
 @media screen and (min-width: 769px) {
 
     main {
@@ -450,6 +488,7 @@ main {
         width: 50%;
         position: fixed;
         left: 0;
+        font-size: 20px;
     }
 
     .top-or-left-intro-wrapper {
@@ -459,7 +498,28 @@ main {
         margin-bottom: 0;
     }
 
+    .app-description {
+        margin-bottom: 40px;
+    }
+
+    .search-city-container {
+        margin-bottom: 3vw;
+    }
+
     .description {
+        margin-bottom: 10px;
+    }
+
+    #dropdown-menu-search {
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+
+    .filter-container-for-search {
+        margin-bottom: 10px;
+    }
+
+    .filter-container-for-search label {
         margin-bottom: 10px;
     }
 
