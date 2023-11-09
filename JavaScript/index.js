@@ -37,6 +37,7 @@ magicBtn.addEventListener("click", function () {
 const dropDownMenuForSearching = document.getElementById("dropdown-menu-search");
 
 //CREAT VARIABLES TO BE USED
+let chosenCityID = "";
 let stringForPopulatingDropdownWithCityNames = '<option value="">All cities</option>';
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -62,6 +63,8 @@ let callCitiesOnPageLoad = () => {
             }
 
             dropDownMenuForSearching.innerHTML = stringForPopulatingDropdownWithCityNames;
+            // console.log(stringForPopulatingDropdownWithCityNames);
+
         });
 
 }
@@ -76,7 +79,6 @@ const viewResultsBtn = document.getElementById("view-results-btn");
 const apiContentDiv = document.getElementById("api-content");
 
 //Variable used for retrieving geo coordinates
-let chosenCityID;
 let geoCoordinates;
 
 //CREATE VARIABLE FOR USE
