@@ -3,7 +3,7 @@
 /*====================================*/
 
 body {
-    color: black;
+    color: #3A3320;
 }
 
 body,
@@ -469,9 +469,25 @@ main {
 
 
 
-/*=====================*/
-/*=== RESPONSIVNESS ===*/
-/*=====================*/
+/*==============*/
+/*=== FOOTER ===*/
+/*==============*/
+
+.about-me-container {
+    position: fixed;
+    bottom: 0;
+    right: 5px;
+    width: fit-content;
+    height: fit-content;
+    z-index: 3;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/*=========================*/
+/*===== RESPONSIVNESS =====*/
+/*=========================*/
 
 
 

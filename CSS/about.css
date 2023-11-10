@@ -1,0 +1,48 @@
+/*=======================================*/
+/*=== IMAGE & MENU CONTAINER DETAILED ===*/
+/*=======================================*/
+.top-or-left-intro-container {
+    background-image: none;
+}
+
+.top-or-left-intro-wrapper {
+    background-image: none;
+    display: flex;
+    justify-content: center;
+}
+
+.page-header h1 {
+    color: #3A3320;
+    user-select: none;
+}
+
+
+.top-or-left-intro-wrapper svg {
+    width: 58vw;
+    height: 56vw;
+}
+
+
+.magic-button {
+    color: #3A3320;
+    border: #3A3320 1px solid;
+}
+
+.magic-button svg {
+    transform: none;
+    stroke: #3A3320;
+    width: 70%;
+    height: 70%;
+}
+
+
+
+
+@media screen and (min-width: 769px) {
+
+    .top-or-left-intro-wrapper svg {
+        width: 28vw;
+        height: 26vw;
+    }
+
+}
