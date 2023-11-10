@@ -145,7 +145,7 @@ main {
 .bottom-or-right-wrapper {
     height: 100vh;
     margin: 5vw;
-    margin-top: 8vw;
+    margin-top: 0vw;
     z-index: 3;
 }
 
@@ -460,6 +460,13 @@ main {
     text-align: right;
 }
 
+.punchline-container {
+    background-color: #E7B39C;
+    padding-top: 8vw;
+    position: sticky;
+    top: 0;
+}
+
 .punchline-container h1 {
     font-size: 10.55vw;
     color: #3A3320;
@@ -467,6 +474,19 @@ main {
     user-select: none;
 }
 
+
+/*========================*/
+/*==== DYNAMIC JS DIV ====*/
+/*========================*/
+
+
+.dynamic-div-wrapper {
+    margin-bottom: 20px;
+}
+
+#dynamic-btn-container {
+    width: fit-content;
+}
 
 
 /*==============*/
@@ -484,6 +504,8 @@ main {
     font-size: 10px;
     cursor: pointer;
 }
+
+
 
 /*=========================*/
 /*===== RESPONSIVNESS =====*/
@@ -561,8 +583,16 @@ main {
     }
 
     .bottom-or-right-wrapper {
-        margin-top: 7vw;
+        margin-top: 0;
+
     }
+
+    .punchline-container {
+        background-color: #E7B39C;
+        position: fixed;
+        padding-top: 7vw;
+    }
+
 
     .punchline-container h1 {
         font-size: 4.7vw;

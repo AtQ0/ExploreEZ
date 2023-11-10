@@ -117,12 +117,18 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                             const lng = coordinates.lng;
 
                             stringForCreatingDynamicDivsInApiContentDiv += `
-                                <div>
-                                    <h2>${result[i].name}</h2>
-                                    <p>Population: ${result[i].population}</p>
-                                    <div>
-                                        <p>Latitude: ${lat}</p>
-                                        <p>Longitude: ${lng}</p>
+                                <div class="dynamic-div-container">
+                                    <div class="dynamic-div-wrapper">
+                                        <h2>${result[i].name}</h2>
+                                        <p>Population: ${result[i].population}</p>
+                                        <div class="geo-coordinates-container">
+                                            <p>Latitude: ${lat}</p>
+                                            <p>Longitude: ${lng}</p>
+                                        </div>
+                                        <div class="dynamic-btn-container">
+                                                <div id="change-btn"></div>
+                                                <div id="delete-btn"></div>
+                                        </div>
                                     </div>
                                 </div>
                             `;
