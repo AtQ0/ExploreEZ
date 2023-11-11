@@ -278,7 +278,7 @@ main {
     align-items: center;
     height: 80%;
     position: absolute;
-    top: 7vw;
+    top: 6vw;
 }
 
 .app-description {
@@ -295,7 +295,7 @@ main {
 .search-city-container {
     width: fit-content;
     padding: 5px;
-    margin-bottom: 8vw;
+    margin-bottom: 6vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -305,7 +305,7 @@ main {
 
 #dropdown-menu-search {
     width: 100%;
-    margin-top: 0.5vw;
+    margin-top: 1vw;
     margin-bottom: 2vw;
     font-family: TwCen-Medium;
     font-size: 3vw;
@@ -326,12 +326,10 @@ main {
     margin-bottom: 1vw;
     text-align: center;
     padding: 10px;
-    background-color: orange;
 }
 
 .filter-container-for-search label {
     margin-bottom: 1vw;
-    background-color: yellow;
 }
 
 .filter-container-for-search label::after {
@@ -346,8 +344,6 @@ main {
     align-items: center;
     padding: 5px;
     padding-bottom: 0;
-    background-color: red;
-
 }
 
 .filter-container label {
@@ -389,7 +385,6 @@ main {
     border-bottom-left-radius: 4vw;
     color: white;
     cursor: pointer;
-    background-color: green;
 }
 
 .add-city-container {
@@ -400,7 +395,6 @@ main {
     padding: 10px;
     padding-top: 0;
     text-align: center;
-    background-color: purple;
 }
 
 .input_container {
@@ -411,7 +405,7 @@ main {
 
 .input_container input {
     font-family: TwCen-Medium;
-    margin-bottom: 1vw;
+    margin-bottom: 2vw;
     border-top-left-radius: 2vw;
     border-top-right-radius: 2vw;
     border-bottom-right-radius: 2vw;
@@ -441,7 +435,7 @@ main {
 }
 
 .input_container label {
-    margin-bottom: 0.5vw;
+    margin-bottom: 1vw;
 }
 
 .input_container label::after {
