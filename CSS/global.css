@@ -301,7 +301,6 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: orange;
 }
 
 #dropdown-menu-search {
@@ -371,7 +370,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: orange;
 }
 
 .btn-container-for-search button {
@@ -396,7 +394,6 @@ main {
     padding: 10px;
     padding-top: 0;
     text-align: center;
-    background-color: orange;
 }
 
 .input_container {
