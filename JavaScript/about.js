@@ -8,8 +8,5 @@ let homeBtn = document.getElementById("magic-button");
 
 //Add click event to homeBtn
 homeBtn.addEventListener("click", () => {
-
-    window.location.replace("../index.html")
-    alert("yellow")
-
+    window.location.replace("../index.html");
 })
