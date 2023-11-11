@@ -403,6 +403,9 @@ main {
 }
 
 .input_container input {
+    height: 3.5vw;
+    max-height: 18px;
+    max-width: 150px;
     font-family: TwCen-Medium;
     margin-bottom: 2vw;
     border-top-left-radius: 2vw;
@@ -508,6 +511,15 @@ main {
 /*=========================*/
 
 
+
+@media screen and (min-width: 450px) {
+
+    .input_container input {
+        margin-bottom: 10px;
+    }
+
+
+}
 
 
 @media screen and (min-width: 769px) {
