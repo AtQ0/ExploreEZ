@@ -295,7 +295,7 @@ main {
 .search-city-container {
     width: fit-content;
     padding: 5px;
-    margin-bottom: 5vw;
+    margin-bottom: 3vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
