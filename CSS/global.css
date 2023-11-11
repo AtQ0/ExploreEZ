@@ -306,7 +306,7 @@ main {
 #dropdown-menu-search {
     width: 100%;
     margin-top: 0.5vw;
-    margin-bottom: 4vw;
+    margin-bottom: 2vw;
     font-family: TwCen-Medium;
     font-size: 3vw;
     border-top-left-radius: 2vw;
@@ -326,10 +326,12 @@ main {
     margin-bottom: 1vw;
     text-align: center;
     padding: 10px;
+    background-color: orange;
 }
 
 .filter-container-for-search label {
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
+    background-color: yellow;
 }
 
 .filter-container-for-search label::after {
@@ -343,6 +345,8 @@ main {
     justify-content: space-around;
     align-items: center;
     padding: 5px;
+    padding-bottom: 0;
+    background-color: red;
 
 }
 
@@ -374,9 +378,10 @@ main {
 }
 
 .btn-container-for-search button {
+    font-family: TwCen-Medium;
     width: 40vw;
     max-width: 250px;
-    height: 6vw;
+    height: 7vw;
     max-height: 40px;
     border-top-left-radius: 4vw;
     border-top-right-radius: 4vw;
@@ -384,6 +389,7 @@ main {
     border-bottom-left-radius: 4vw;
     color: white;
     cursor: pointer;
+    background-color: green;
 }
 
 .add-city-container {
@@ -392,7 +398,9 @@ main {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    padding-top: 0;
     text-align: center;
+    background-color: purple;
 }
 
 .input_container {
@@ -402,6 +410,7 @@ main {
 }
 
 .input_container input {
+    font-family: TwCen-Medium;
     margin-bottom: 1vw;
     border-top-left-radius: 2vw;
     border-top-right-radius: 2vw;
@@ -410,6 +419,7 @@ main {
 }
 
 .btn-container-for-adding {
+
     width: fit-content;
     height: 100%;
     display: flex;
@@ -418,14 +428,15 @@ main {
 }
 
 .btn-container-for-adding button {
+    font-family: TwCen-Medium;
     width: 12vw;
     max-width: 80px;
-    height: 5vw;
+    height: 6vw;
     max-height: 30px;
-    border-top-left-radius: 2vw;
-    border-top-right-radius: 2vw;
-    border-bottom-right-radius: 2vw;
-    border-bottom-left-radius: 2vw;
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
     color: white;
     cursor: pointer;
 }
@@ -465,13 +476,6 @@ main {
     padding-top: 8vw;
     position: sticky;
     top: 0;
-}
-
-.punchline-container h1 {
-    font-size: 10.55vw;
-    color: #3A3320;
-    line-height: 7.5vw;
-    user-select: none;
 }
 
 
@@ -584,20 +588,14 @@ main {
 
     .bottom-or-right-wrapper {
         margin-top: 0;
-
     }
 
     .punchline-container {
         background-color: #E7B39C;
         position: fixed;
+        width: 41%;
         padding-top: 7vw;
     }
 
-
-    .punchline-container h1 {
-        font-size: 4.7vw;
-        line-height: 3.5vw;
-
-    }
 
 }
