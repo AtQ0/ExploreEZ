@@ -81,13 +81,10 @@ let callCitiesOnPageLoad = () => {
         .then((response) => response.json())
         .then((result) => {
 
-
             for (let i = 0; i < result.length; i++) {
-
                 stringForPopulatingDropdownWithCityNames += `
                     <option value="${result[i].id}">${result[i].name}</option>
                 `;
-
             }
 
             dropDownMenuForSearching.innerHTML = stringForPopulatingDropdownWithCityNames;
@@ -113,6 +110,7 @@ let geoCoordinates;
 let stringForCreatingDynamicDivsInApiContentDiv = "";
 let chosenCityByName;
 
+//Call method that writes citites and creates dynamic divs, on click of view btn
 viewResultsBtn.addEventListener("click", function () {
 
     //Ensure api-content has accurate posY by calling updateTopOfDIv
@@ -120,18 +118,22 @@ viewResultsBtn.addEventListener("click", function () {
         updateTopOfDiv();
     }
 
+    //Store chosen value/city from dropdown, in a variable
     chosenCityID = document.getElementById("dropdown-menu-search").value;
+
+    //Send chosen city to method that fetches data for that city
     writeCitiesAndElements(chosenCityID);
 })
 
-
+//Fetch info from API´s and write it in dynamics html-elements
 let writeCitiesAndElements = (chosenCityIdInput) => {
 
-    //FETCH FROM CITITES API
+    //FETCH FROM CITITES API (avancera.app)
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
         .then((response) => response.json())
         .then((result) => {
 
+            //If "All Cities" input is chosen generate all data/info
             if (chosenCityIdInput === "") {
 
                 // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
@@ -140,15 +142,19 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                 // Initialize an array to store promises from getGeoCoordinatesFromCity
                 const promises = [];
 
-
+                //For every city (i) in the Cities API
                 for (let i = 0; i < result.length; i++) {
-                    // Call method for fetching API to get geo-coordinates
-                    const promise = getGeoCoordinatesFromCity(result[i].name)
+
+
+
+                    //Call method for fetching geo-coordinates from MapQuest API
+                    const promiseForGeo = getGeoCoordinatesFromCity(result[i].name)
                         .then((coordinates) => {
-                            // Access the latitude and longitude values here
+                            //Store lat and lang in temp variables
                             const lat = coordinates.lat;
                             const lng = coordinates.lng;
 
+                            //Append data in string used for creating dynamic divs
                             stringForCreatingDynamicDivsInApiContentDiv += `
                                 <div class="dynamic-div-container">
                                     <div class="dynamic-div-wrapper">
@@ -167,7 +173,8 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                             `;
                         });
 
-                    promises.push(promise);
+                    //Store every promise inside of all promises array
+                    promises.push(promiseForGeo);
                 }
 
                 // Wait for all promises to resolve before updating the DOM
@@ -176,9 +183,14 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                 });
 
             }
+            //If a specific city is chosen in the dropdown menu
             else {
                 // Handle the case when a single city is selected
                 const city = result; // Single city object
+
+                //Call method for fetching city description from WikiMedia API
+                const promiseForCityDescription = getCityDescription(city.name)
+
 
                 // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
                 stringForCreatingDynamicDivsInApiContentDiv = '';
@@ -189,6 +201,7 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                         const lat = coordinates.lat;
                         const lng = coordinates.lng;
 
+                        //Put data in string used for creating a dynamic div
                         stringForCreatingDynamicDivsInApiContentDiv = `
                             <div>
                                 <h2>${city.name}</h2>
@@ -200,6 +213,7 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                             </div>
                         `;
 
+                        //Add a dynamic div based on data in string variable
                         apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
                     });
             }
@@ -209,7 +223,7 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 }
 
 
-// Fetch from the Web Quest API and return a promise
+//Fetch data from WebQuest API and return a promise
 function getGeoCoordinatesFromCity(selectedCityNameInput) {
     return fetch('https://www.mapquestapi.com/geocoding/v1/address?key=eKH0ZMAEGWKaibhVOrRQftMpmBMpFcLT&location=' + selectedCityNameInput)
         .then((response) => response.json())
@@ -224,13 +238,20 @@ function getGeoCoordinatesFromCity(selectedCityNameInput) {
                 return { lat, lng };
             } else {
                 console.log("API request failed with status code: " + resultWebQuest.info.statuscode);
-                // Return an object with lat and lng as undefined
+                //Return an object with lat and lng as undefined
                 return { lat: undefined, lng: undefined };
             }
         })
         .catch((error) => {
             console.error("Error occurred while fetching data:", error);
-            // Return an object with lat and lng as undefined
+            //Return an object with lat and lng as undefined
             return { lat: undefined, lng: undefined };
         });
+}
+
+
+//Fetch data from WikiMedia API and return a promise
+function getCityDescription(cityNameInput) {
+
+    console.log(cityNameInput + "yaaay");
 }
