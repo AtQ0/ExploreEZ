@@ -449,22 +449,7 @@ main {
 /*==== BOTTOM OR RIGHT DETAILED ====*/
 /*==================================*/
 
-.top-line-of-punchline {
-    text-align: left;
-}
 
-.second-line-of-punchline {
-    text-align: left;
-    white-space: nowrap;
-}
-
-.third-line-of-punchline {
-    text-align: right;
-}
-
-.bottom-line-of-punchline {
-    text-align: right;
-}
 
 .punchline-container {
     background-color: #E7B39C;
@@ -472,7 +457,6 @@ main {
     position: sticky;
     top: 0;
 }
-
 
 /*========================*/
 /*==== DYNAMIC JS DIV ====*/

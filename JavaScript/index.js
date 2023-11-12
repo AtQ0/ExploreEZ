@@ -32,9 +32,28 @@ magicBtn.addEventListener("click", function () {
 /*===== API CONTENT TOP POSITION =====*/
 /*====================================*/
 
+//RESIZE EVENT CALLS A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
+window.onresize = function () {
+    updateTopOfDiv();
+}
 
+function updateTopOfDiv() {
+    const container = document.getElementById("punchline-container");
+    const rect = container.getBoundingClientRect();
+    let topPosY = rect.bottom;
 
+    console.log(topPosY);
 
+    if (document.documentElement.clientWidth >= 769) {
+        // apiContentDiv.style.marginTop = `${topPosY}px`;
+        apiContentDiv.style.paddingTop = `${topPosY}px`;
+    }
+    else {
+        // apiContentDiv.style.marginTop = `0px`;
+        apiContentDiv.style.paddingTop = `0px`;
+    }
+
+}
 
 
 /*====================================*/
@@ -48,6 +67,7 @@ const dropDownMenuForSearching = document.getElementById("dropdown-menu-search")
 let chosenCityID = "";
 let stringForPopulatingDropdownWithCityNames = '<option value="">All cities</option>';
 
+//ON PAGE RELOAD CALL METHOD WHICH UPDATES DROPDOWN MENU
 document.addEventListener("DOMContentLoaded", function () {
 
     //Call funtions that calls all citites
@@ -94,6 +114,11 @@ let stringForCreatingDynamicDivsInApiContentDiv = "";
 let chosenCityByName;
 
 viewResultsBtn.addEventListener("click", function () {
+
+    //Ensure api-content has accurate posY by calling updateTopOfDIv
+    if (document.documentElement.clientWidth >= 769) {
+        updateTopOfDiv();
+    }
 
     chosenCityID = document.getElementById("dropdown-menu-search").value;
     writeCitiesAndElements(chosenCityID);
