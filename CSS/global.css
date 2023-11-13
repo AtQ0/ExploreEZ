@@ -480,6 +480,9 @@ main {
     align-items: center;
 }
 
+/*THIS ONE NEEDS TO BE DELETED*/
+/*Rotation makes so that the svg is visible above the punchline===!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*SHOULD INSTEAD GET TWO SWGs and put then in div with js*/
 #expand-btn-container svg {
     transform: rotate(90deg);
 }
@@ -488,6 +491,10 @@ main {
     text-align: justify;
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+.change-delete-btn-container {
+    margin-bottom: 40px;
 }
 
 #change-btn {
