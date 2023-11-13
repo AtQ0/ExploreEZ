@@ -144,6 +144,7 @@ main {
 
 .bottom-or-right-wrapper {
     height: 100vh;
+    /*should be Fit-content but then the menu starts showing beneath it if the forms menu is not toggled to appear================================================================*/
     margin: 5vw;
     margin-top: 0vw;
     z-index: 3;
@@ -187,7 +188,7 @@ main {
     /*z-index set to 3, so that btn will hover above forms-menu-container (z-index = 2)*/
 }
 
-.magic-button {
+.magic-btn {
     background-color: rgba(255, 255, 255, 0.150);
     color: white;
     border: white 1px solid;
@@ -206,18 +207,18 @@ main {
     cursor: pointer;
 }
 
-.magic-button svg {
+.magic-btn svg {
     transform: rotate(270deg);
 }
 
 
 /*=== MAGIC BUTTON ANIMATION ON HOVER ===*/
 
-.magic-button {
+.magic-btn {
     transition: transform 0.25s, background-color 0.25s;
 }
 
-.magic-button:hover {
+.magic-btn:hover {
     transform: scale(1.15);
     background-color: rgba(255, 255, 255, 0);
 }
@@ -463,14 +464,53 @@ main {
 /*========================*/
 
 
-.dynamic-div-wrapper {
-    margin-bottom: 20px;
+#learn-more-container {
+    height: fit-content;
 }
 
-#dynamic-btn-container {
+#learn-more-wrapper {
+    display: flex;
     width: fit-content;
+    cursor: pointer;
 }
 
+#expand-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#expand-btn-container svg {
+    transform: rotate(90deg);
+}
+
+.city-description {
+    text-align: justify;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#change-btn {
+    border-top-left-radius: 4vw;
+    border-top-right-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    border-bottom-left-radius: 4vw;
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+#delete-btn {
+    border-top-left-radius: 4vw;
+    border-top-right-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    border-bottom-left-radius: 4vw;
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
 
 /*==============*/
 /*=== FOOTER ===*/
@@ -478,8 +518,8 @@ main {
 
 .about-me-container {
     position: fixed;
-    bottom: 0;
-    right: 5px;
+    bottom: 5px;
+    right: 10px;
     width: fit-content;
     height: fit-content;
     z-index: 3;
@@ -497,12 +537,9 @@ main {
 
 
 @media screen and (min-width: 450px) {
-
     .input_container input {
         margin-bottom: 10px;
     }
-
-
 }
 
 
@@ -556,7 +593,7 @@ main {
         margin-bottom: 10px;
     }
 
-    .magic-button {
+    .magic-btn {
         max-height: 40px;
         max-width: 40px;
     }

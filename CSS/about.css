@@ -23,12 +23,12 @@
 }
 
 
-.magic-button {
+.magic-btn {
     color: #3A3320;
     border: #3A3320 1px solid;
 }
 
-.magic-button svg {
+.magic-btn svg {
     transform: none;
     stroke: #3A3320;
     width: 70%;

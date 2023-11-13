@@ -3,7 +3,7 @@
 /*====================================*/
 
 //SELECT ELEMENTS FROM DOM
-let homeBtn = document.getElementById("magic-button");
+let homeBtn = document.getElementById("magic-btn");
 
 
 //Add click event to homeBtn

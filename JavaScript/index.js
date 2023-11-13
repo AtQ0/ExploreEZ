@@ -42,8 +42,6 @@ function updateTopOfDiv() {
     const rect = container.getBoundingClientRect();
     let topPosY = rect.bottom;
 
-    console.log(topPosY);
-
     if (document.documentElement.clientWidth >= 769) {
         // apiContentDiv.style.marginTop = `${topPosY}px`;
         apiContentDiv.style.paddingTop = `${topPosY}px`;
@@ -145,7 +143,26 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                 //For every city (i) in the Cities API
                 for (let i = 0; i < result.length; i++) {
 
+                    const promiseForCityDescription = getCityDescription(result[i].name)
+                        .then((citySummaryObject) => {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        });
 
                     //Call method for fetching geo-coordinates from MapQuest API
                     const promiseForGeo = getGeoCoordinatesFromCity(result[i].name)
@@ -214,19 +231,19 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
                                 //Put data in string used for creating a dynamic div
                                 stringForCreatingDynamicDivsInApiContentDiv = `
-                                    <div>
-                                        <h2><a href="${cityPage}">${city.name}</a></h2>
+                                    <div class="every-city-container">
+                                        <h2><a href="${cityPage}"  target="_blank">${city.name}</a></h2>
                                         <p>Population: ${city.population}</p>
                                         <div>
                                             <p>Latitude: ${lat}</p>
                                             <p>Longitude: ${lng}</p>
                                             <div id="learn-more-container">
-                                                <p>Learn more</p>
-                                                <div id="expand-btn-container">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3A3320">
-                                                    <path
-                                                        d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
-                                                    </svg>
+                                                <div id="learn-more-wrapper">
+                                                    <p>Learn more</p>
+                                                    <div id="expand-btn-container">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <p class="city-description">${cityDescription}</p>
