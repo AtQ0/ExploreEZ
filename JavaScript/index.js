@@ -143,27 +143,6 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                 //For every city (i) in the Cities API
                 for (let i = 0; i < result.length; i++) {
 
-                    const promiseForCityDescription = getCityDescription(result[i].name)
-                        .then((citySummaryObject) => {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        });
-
                     //Call method for fetching geo-coordinates from MapQuest API
                     const promiseForGeo = getGeoCoordinatesFromCity(result[i].name)
                         .then((coordinates) => {
