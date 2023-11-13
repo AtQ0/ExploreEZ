@@ -190,32 +190,64 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
                 //Call method for fetching city description from WikiMedia API
                 const promiseForCityDescription = getCityDescription(city.name)
+                    .then((citySummaryObject) => {
+                        const cityDescription = citySummaryObject.description;
+                        const cityPage = citySummaryObject.page;
+
+                        //NOT USED YET
+                        const thumbnail = citySummaryObject.thumbnail;
+                        const originalImage = citySummaryObject.originalImage;
 
 
-                // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
-                stringForCreatingDynamicDivsInApiContentDiv = '';
+                        /*========================================*/
+                        /*=== ACCTUAL CREATION OF DYNAMIC DIVS ===*/
+                        /*========================================*/
 
-                // Fetch geo-coordinates for the selected city
-                getGeoCoordinatesFromCity(city.name)
-                    .then((coordinates) => {
-                        const lat = coordinates.lat;
-                        const lng = coordinates.lng;
+                        // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
+                        stringForCreatingDynamicDivsInApiContentDiv = '';
 
-                        //Put data in string used for creating a dynamic div
-                        stringForCreatingDynamicDivsInApiContentDiv = `
-                            <div>
-                                <h2>${city.name}</h2>
-                                <p>Population: ${city.population}</p>
-                                <div>
-                                    <p>Latitude: ${lat}</p>
-                                    <p>Longitude: ${lng}</p>
-                                </div>
-                            </div>
-                        `;
+                        // Fetch geo-coordinates for the selected city
+                        getGeoCoordinatesFromCity(city.name)
+                            .then((coordinates) => {
+                                const lat = coordinates.lat;
+                                const lng = coordinates.lng;
 
-                        //Add a dynamic div based on data in string variable
-                        apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
-                    });
+                                //Put data in string used for creating a dynamic div
+                                stringForCreatingDynamicDivsInApiContentDiv = `
+                                    <div>
+                                        <h2><a href="${cityPage}">${city.name}</a></h2>
+                                        <p>Population: ${city.population}</p>
+                                        <div>
+                                            <p>Latitude: ${lat}</p>
+                                            <p>Longitude: ${lng}</p>
+                                            <div id="learn-more-container">
+                                                <p>Learn more</p>
+                                                <div id="expand-btn-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3A3320">
+                                                    <path
+                                                        d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <p class="city-description">${cityDescription}</p>
+                                                </div>
+                                            </div>
+                                            <div class="change-delete-btn-container">
+                                                <button id="change-btn">Change</button>
+                                                <button id="delete-btn">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+
+                                //Add a dynamic div based on data in string variable
+                                apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
+                            });
+
+                    })
+
+
+
             }
 
         });
@@ -223,21 +255,21 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 }
 
 
-//Fetch data from WebQuest API and return a promise
+//Fetch data from MapQuest API and return a promise
 function getGeoCoordinatesFromCity(selectedCityNameInput) {
     return fetch('https://www.mapquestapi.com/geocoding/v1/address?key=eKH0ZMAEGWKaibhVOrRQftMpmBMpFcLT&location=' + selectedCityNameInput)
         .then((response) => response.json())
-        .then((resultWebQuest) => {
+        .then((resultMapQuest) => {
 
             //If request is successful (statuscode === 0), store lat and lng and return an object
-            if (resultWebQuest.info.statuscode === 0) {
-                const lat = resultWebQuest.results[0].locations[0].latLng.lat;
-                const lng = resultWebQuest.results[0].locations[0].latLng.lng;
+            if (resultMapQuest.info.statuscode === 0) {
+                const lat = resultMapQuest.results[0].locations[0].latLng.lat;
+                const lng = resultMapQuest.results[0].locations[0].latLng.lng;
 
                 // Return an object with lat and lng
                 return { lat, lng };
             } else {
-                console.log("API request failed with status code: " + resultWebQuest.info.statuscode);
+                console.log("API request failed with status code: " + resultMapQuest.info.statuscode);
                 //Return an object with lat and lng as undefined
                 return { lat: undefined, lng: undefined };
             }
@@ -253,5 +285,24 @@ function getGeoCoordinatesFromCity(selectedCityNameInput) {
 //Fetch data from WikiMedia API and return a promise
 function getCityDescription(cityNameInput) {
 
-    console.log(cityNameInput + "yaaay");
+    //Set fetch adress (en or sv) depending on language you want to generate
+    return fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + cityNameInput)
+        .then((responseFromWikiMedia) => responseFromWikiMedia.json())
+        .then((resultWikiMedia) => {
+
+            //Find documentation to set up if status code successful or not
+            console.log(resultWikiMedia);
+            console.log(resultWikiMedia.extract + "woowowowo");
+
+            //Store objects keys/property-values in variables
+            const description = resultWikiMedia.extract;
+            const page = resultWikiMedia.content_urls.desktop.page;
+            const thumbnail = resultWikiMedia.thumbnail.source;
+            const originalImage = resultWikiMedia.originalimage.source;
+
+            //Return variables from fetch
+            return { description, page, thumbnail, originalImage };
+        });
+
+
 }
