@@ -169,7 +169,7 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
                             `;
                         });
 
-                    //Store every promise inside of all promises array
+                    //Store every promise inside of all promises arrayp
                     promises.push(promiseForGeo);
                 }
 
