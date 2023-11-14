@@ -143,8 +143,8 @@ main {
 }
 
 .bottom-or-right-wrapper {
-    height: 100vh;
-    /*should be Fit-content but then the menu starts showing beneath it if the forms menu is not toggled to appear================================================================*/
+    height: fit-content;
+    min-height: 55vh;
     margin: 5vw;
     margin-top: 0vw;
     z-index: 3;
@@ -480,16 +480,12 @@ main {
     align-items: center;
 }
 
-/*THIS ONE NEEDS TO BE DELETED*/
-/*Rotation makes so that the svg is visible above the punchline===!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-/*SHOULD INSTEAD GET TWO SWGs and put then in div with js*/
 #expand-btn-container svg {
-    transform: rotate(90deg);
+    padding-top: 2.6px;
 }
 
 .city-description {
     text-align: justify;
-    margin-top: 5px;
     margin-bottom: 10px;
 }
 
@@ -506,6 +502,7 @@ main {
     padding-top: 2px;
     padding-bottom: 2px;
     cursor: pointer;
+    color: #3A3320;
 }
 
 #delete-btn {
@@ -517,6 +514,7 @@ main {
     padding-top: 2px;
     padding-bottom: 2px;
     cursor: pointer;
+    color: #3A3320;
 }
 
 /*==============*/
