@@ -95,8 +95,47 @@ let callCitiesOnPageLoad = () => {
 }
 
 
+/*============================*/
+/*======== CHECKBOXES ========*/
+/*============================*/
+
+/*WORKS; HOWEVER THIS LOGIC HAS NOT BEEN APPLIED ON THE FETCH YET*/
+
+//Select elements from DOM
+let below500Cbx = document.getElementById("below500-cbx");
+let above500Cbx = document.getElementById("above500-cbx");
+let areNoCbxChecked = true;
+
+below500Cbx.addEventListener("click", function () {
+    //If below500 if checked
+    if (below500Cbx.checked) {
+        console.log("below500 is checked");
+        //Uncheck above500
+        above500Cbx.checked = false;
+        areNoCbxChecked.checked = false;
+    }
+    else if (!above500Cbx.checked && !below500Cbx.checked) {
+        console.log("both checkboxes are unchecked")
+        areNoCbxChecked.checked = true;
+    }
+});
+
+above500Cbx.addEventListener("click", function () {
+
+    if (above500Cbx.checked) {
+        console.log("above500 is checked")
+        below500Cbx.checked = false;
+        areNoCbxChecked = false;
+    }
+    else if (!above500Cbx.checked && !below500Cbx.checked) {
+        console.log("both checkboxes are unchecked")
+        areNoCbxChecked.checked = true;
+    }
+});
+
+
 /*=======================================*/
-/*== VIEW CITIES ON CLICK OF VIEW BTN ===*/
+/*== VIEW CITIES ON CLICK OF VIEW-BTN ===*/
 /*=======================================*/
 
 //SELECT ELEMENTS FROM DOM
@@ -299,3 +338,8 @@ function getCitySummary(cityNameInput) {
 
 
 }
+
+
+/*======================================*/
+/*==== ADD, CHANGE AND DELETE CITY =====*/
+/*======================================*/
