@@ -377,5 +377,4 @@ addNewCityBtn.addEventListener('click', function () {
 
     }
 
-}
-)
+});
