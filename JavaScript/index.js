@@ -63,7 +63,7 @@ const dropDownMenuForSearching = document.getElementById("dropdown-menu-search")
 
 //CREAT VARIABLES TO BE USED
 let chosenCityID = "";
-let stringForPopulatingDropdownWithCityNames = '<option value="">All cities</option>';
+let stringForPopulatingDropdownWithCityNames;
 
 //ON PAGE RELOAD CALL METHOD WHICH UPDATES DROPDOWN MENU
 document.addEventListener("DOMContentLoaded", function () {
@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 let callCitiesOnPageLoad = () => {
+
+    //Reset string (with default value) for creating slect elements on every call
+    stringForPopulatingDropdownWithCityNames = '<option value="">All cities</option>';
 
     fetch("https://avancera.app/cities/")
         .then((response) => response.json())
@@ -114,6 +117,9 @@ viewResultsBtn.addEventListener("click", function () {
     if (document.documentElement.clientWidth >= 769) {
         updateTopOfDiv();
     }
+
+    //Scroll page to top on every btn click
+    apiContentDiv.scrollTop = 0;
 
     //Store chosen value/city from dropdown, in a variable
     chosenCityID = document.getElementById("dropdown-menu-search").value;
@@ -260,6 +266,9 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
 
             }
+
+            //Update menu after every view of results
+            callCitiesOnPageLoad();
 
         });
 
