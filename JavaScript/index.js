@@ -343,3 +343,39 @@ function getCitySummary(cityNameInput) {
 /*======================================*/
 /*==== ADD, CHANGE AND DELETE CITY =====*/
 /*======================================*/
+
+//SELECT ELEMENTS FROM DOM
+const addNewCityBtn = document.getElementById('add-new-city-btn');
+const inputForCityTbx = document.getElementById('input-for-city-tbx');
+const inputForPopTbx = document.getElementById('input-for-pop-tbx');
+
+addNewCityBtn.addEventListener('click', function () {
+
+    //if city input tbx is empty
+    if (inputForCityTbx.value === "" && inputForPopTbx.value !== "") {
+
+
+        console.log('city input is empty')
+    }
+    //if population input tbx is empty
+    else if (inputForPopTbx.value === "" && inputForCityTbx.value !== "") {
+        console.log('population input is empty')
+
+    }
+    //If none of the input tbx have values in them
+    else if (inputForCityTbx.value === "" || inputForPopTbx.value === "") {
+        console.log('both city and population inputs are empty')
+    }
+    //If both input tbx have values in them
+    else {
+
+        //Now that both fields are filled in, check so that each of the are correct
+        //e.g. is the name made of only letters
+        //e.g. is the population input only made of numbers
+
+        console.log("all fields are filled in")
+
+    }
+
+}
+)
