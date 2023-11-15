@@ -306,7 +306,7 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
             }
 
-            //Update menu after every view of results
+            //Update dropdown menu after every view/btn-click of results
             callCitiesOnPageLoad();
 
         });
@@ -378,8 +378,7 @@ addNewCityBtn.addEventListener('click', function () {
         inputForCityNameTbx.classList.remove('error-border');
         inputForCityPopTbx.classList.remove('error-border');
 
-        console.log("all fields are filled in")
-
+        //Variable containing regex for checking if letters (swe & eng)
         const regexForSWEandENGLetters = /^[a-zA-ZåäöÅÄÖ]+$/u;
 
         let valueFromCityTbx = inputForCityNameTbx.value;
@@ -404,17 +403,60 @@ addNewCityBtn.addEventListener('click', function () {
         }
         //If both inputs are correct, e.g. city name consist of letters, and population consists of numbers
         else {
-            console.log('yaaay, both inputs are correct');
-            //Send to method that adds new city with a post
-            addNewCityToServer(inputForCityNameTbx.value, inputForCityPopTbx.value);
+            //Clear everything as all is good
+            inputForCityNameTbx.classList.remove('error-border');
+            inputForCityPopTbx.classList.remove('error-border');
+            inputErrorMessageDiv.innerHTML = '';
+
+            //Call addNewCityToServer function and send it city and population
+            addNewCityToCitiesServer(inputForCityNameTbx.value, inputForCityPopTbx.value);
+
+
         }
     }
 });
 
 
-//METHOD USED TO ADD A NEW CITY
-function addNewCityToServer(cityName, cityPopulation) {
+//METHOD USED TO ADD A NEW CITY TO CITIES SERVER/API
+function addNewCityToCitiesServer(cityName, cityPopulation) {
 
     console.log('Yes, you are inside of function')
+    console.log(cityName);
+    console.log(cityPopulation);
+    console.log(typeof cityName);
+    console.log(typeof cityPopulation)
 
-}
+    //Convert cityPopulation to number, as Cities requires that for input
+    let cityPopulationConvertedToNum = cityPopulation * 1;
+
+    console.log(cityPopulationConvertedToNum);
+    console.log(typeof cityPopulationConvertedToNum);
+
+    //Creat object to be sent to server
+    let newObject = {
+        "name": cityName,
+        "population": cityPopulationConvertedToNum
+    };
+
+    // Convert the object to a JSON string
+    let inputForBody = JSON.stringify(newObject);
+
+    //Add city and population to server by using POST-request with fetch
+    fetch('https://avancera.app/cities/', {
+        body: inputForBody,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST'
+    })
+        .then(response => response.json())
+        .then(result => {
+
+            console.log(result)
+
+            //Refresh dropdown menu
+            callCitiesOnPageLoad();
+
+        })
+
+};
