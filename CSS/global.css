@@ -290,6 +290,7 @@ main {
     margin: 10vw;
     margin-top: 8vw;
     margin-bottom: 3vw;
+    background-color: pink;
 }
 
 
@@ -348,8 +349,6 @@ main {
     padding-top: 0;
     padding-bottom: 0;
     padding-top: 0;
-    background-color: orange;
-
 }
 
 .filter-container label {
@@ -418,6 +417,10 @@ main {
     border-top-right-radius: 2vw;
     border-bottom-right-radius: 2vw;
     border-bottom-left-radius: 2vw;
+}
+
+.input-error-container {
+    margin-bottom: 4vw;
 }
 
 .btn-container-for-adding {
