@@ -380,30 +380,27 @@ addNewCityBtn.addEventListener('click', function () {
 
         console.log("all fields are filled in")
 
-        const regexForLetters = /^[a-zA-Z]+$/;
+        const regexForSWEandENGLetters = /^[a-zA-ZåäöÅÄÖ]+$/u;
 
         let valueFromCityTbx = inputForCityNameTbx.value;
 
         //If city name input contains anything else but letters, and population is numbers
-        if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === false) {
+        if (!valueFromCityTbx.match(regexForSWEandENGLetters) && isNaN(inputForCityPopTbx.value) === false) {
             inputErrorMessageDiv.innerText = "*City name can only contain letters";
             inputForCityNameTbx.classList.add("error-border");
             inputForCityPopTbx.classList.remove('error-border');
         }
         //If population input contains anything else but numbers, and city name is letters
-        else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForLetters)) {
+        else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForSWEandENGLetters)) {
             inputErrorMessageDiv.innerText = "*Population can only contain numbers";
             inputForCityNameTbx.classList.remove('error-border');
             inputForCityPopTbx.classList.add('error-border')
         }
         //If both city name, and population, inputs are wrong, e.g. city name contains numbers, and population contains letters
-        else if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === true) {
-
-            //Write error message to user, somehow, perhaps inside of a div
-
-            console.log('Both city name and population contains characters that are not correct')
-            inputErrorMessageDiv.innerHTML = "*City name can only contain Letters<br>*Population can only contain numbers.";
-
+        else if (!valueFromCityTbx.match(regexForSWEandENGLetters) && isNaN(inputForCityPopTbx.value) === true) {
+            inputErrorMessageDiv.innerHTML = "*City name can only contain letters.<br>*Population can only contain numbers.";
+            inputForCityNameTbx.classList.add('error-border');
+            inputForCityPopTbx.classList.add('error-border');
         }
         //If both inputs are correct, e.g. city name consist of letters, and population consists of numbers
         else {
