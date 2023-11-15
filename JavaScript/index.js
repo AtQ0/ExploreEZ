@@ -348,34 +348,39 @@ function getCitySummary(cityNameInput) {
 const addNewCityBtn = document.getElementById('add-new-city-btn');
 const inputForCityNameTbx = document.getElementById('input-for-city-tbx');
 const inputForCityPopTbx = document.getElementById('input-for-pop-tbx');
+const inputErrorMessageDiv = document.getElementById('error-message');
 
 addNewCityBtn.addEventListener('click', function () {
 
     //if city input tbx is empty
     if (inputForCityNameTbx.value === "" && inputForCityPopTbx.value !== "") {
-
-
-        console.log('city input is empty')
+        inputErrorMessageDiv.innerText = "*Please write a city name.";
+        inputForCityNameTbx.classList.add("error-border");
+        inputForCityPopTbx.classList.remove('error-border');
     }
     //if population input tbx is empty
     else if (inputForCityPopTbx.value === "" && inputForCityNameTbx.value !== "") {
-        console.log('population input is empty')
+        inputErrorMessageDiv.innerText = "*Please write a city population.";
+        inputForCityPopTbx.classList.add('error-border');
+        inputForCityNameTbx.classList.remove('error-border')
 
     }
     //If none of the input tbx have values in them
     else if (inputForCityNameTbx.value === "" || inputForCityPopTbx.value === "") {
-        console.log('both city and population inputs are empty')
+        inputForCityNameTbx.classList.add("error-border");
+        inputForCityPopTbx.classList.add('error-border');
+        inputErrorMessageDiv.innerText = "*Please write a city and it's population.";
     }
     //If both input tbx have values in them
     else {
 
+        //Remove error-borders at first
+        inputForCityNameTbx.classList.remove('error-border');
+        inputForCityPopTbx.classList.remove('error-border');
+
         console.log("all fields are filled in")
 
-        //Now that both fields are filled in, check so that each of the are correct
-        //e.g. is the name made of only letters
-        //e.g. is the population input only made of numbers
-
-        const regexForLetters = /^[a-zA-Z]+$/
+        const regexForLetters = /^[a-zA-Z]+$/;
 
         let valueFromCityTbx = inputForCityNameTbx.value;
 
@@ -385,6 +390,7 @@ addNewCityBtn.addEventListener('click', function () {
             //Write error message to user, somehow, perhaps inside of a div
 
             console.log('city name must only contain letters')
+
         }
         //If population input contains anything else but numbers, and city name is letters
         else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForLetters)) {
