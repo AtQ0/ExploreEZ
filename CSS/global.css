@@ -124,6 +124,7 @@ main {
 
 .top-or-left-intro-wrapper {
     height: 85vw;
+    max-height: 65vh;
     width: 75%;
     margin: 15vw;
     margin-top: 20vw;
@@ -618,6 +619,7 @@ main {
         margin: 5vw;
         margin-top: 7vw;
         margin-bottom: 0;
+        max-height: none;
     }
 
     .forms-wrapper {
