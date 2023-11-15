@@ -123,7 +123,7 @@ main {
 }
 
 .top-or-left-intro-wrapper {
-    height: 88vw;
+    height: 85vw;
     width: 75%;
     margin: 15vw;
     margin-top: 20vw;
@@ -290,7 +290,6 @@ main {
     margin: 10vw;
     margin-top: 8vw;
     margin-bottom: 3vw;
-    background-color: pink;
 }
 
 
@@ -316,7 +315,6 @@ main {
     border-bottom-right-radius: 2vw;
     border-bottom-left-radius: 2vw;
     cursor: pointer;
-    background-color: orange;
 }
 
 .filter-container-for-search {
@@ -348,7 +346,6 @@ main {
     padding: 5px;
     padding-top: 0;
     padding-bottom: 0;
-    padding-top: 0;
 }
 
 .filter-container label {
