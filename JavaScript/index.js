@@ -386,18 +386,15 @@ addNewCityBtn.addEventListener('click', function () {
 
         //If city name input contains anything else but letters, and population is numbers
         if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === false) {
-
-            //Write error message to user, somehow, perhaps inside of a div
-
-            console.log('city name must only contain letters')
-
+            inputErrorMessageDiv.innerText = "*City name can only contain letters";
+            inputForCityNameTbx.classList.add("error-border");
+            inputForCityPopTbx.classList.remove('error-border');
         }
         //If population input contains anything else but numbers, and city name is letters
         else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForLetters)) {
-
-            //Write error message to user, somehow, perhaps inside of a div
-
-            console.log('population must only contain numbers');
+            inputErrorMessageDiv.innerText = "*Population can only contain numbers";
+            inputForCityNameTbx.classList.remove('error-border');
+            inputForCityPopTbx.classList.add('error-border')
         }
         //If both city name, and population, inputs are wrong, e.g. city name contains numbers, and population contains letters
         else if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === true) {
@@ -405,6 +402,7 @@ addNewCityBtn.addEventListener('click', function () {
             //Write error message to user, somehow, perhaps inside of a div
 
             console.log('Both city name and population contains characters that are not correct')
+            inputErrorMessageDiv.innerHTML = "*City name can only contain Letters<br>*Population can only contain numbers.";
 
         }
         //If both inputs are correct, e.g. city name consist of letters, and population consists of numbers

@@ -444,10 +444,13 @@ main {
 
 .input-error-container {
     margin-top: 0.5vw;
-    margin-bottom: 1.5vw;
+    margin-bottom: 1vw;
     width: 100%;
-    min-height: 13px;
+    min-height: 26px;
     line-height: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #error-message {
@@ -625,15 +628,11 @@ main {
     }
 
     .app-description {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .search-city-container {
         margin-bottom: 3vw;
-    }
-
-    .description {
-        margin-bottom: 10px;
     }
 
     #dropdown-menu-search {
@@ -649,14 +648,11 @@ main {
         margin-bottom: 10px;
     }
 
-    .input_container {
-        margin-bottom: 0.5vw;
-    }
-
 
     .input-error-container {
-        margin-top: 0px;
-        margin-bottom: 10px;
+        margin-top: 0.25vw;
+        margin-bottom: 0.75vw;
+
     }
 
     #error-message {
