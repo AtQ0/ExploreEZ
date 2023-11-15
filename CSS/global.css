@@ -565,7 +565,6 @@ main {
 
     #error-message {
         font-size: 11px;
-        background-color: coral;
     }
 
 }
@@ -596,6 +595,10 @@ main {
         margin-bottom: 0;
     }
 
+    .forms-wrapper {
+        top: 7vw;
+    }
+
     .app-description {
         margin-bottom: 40px;
     }
@@ -621,9 +624,8 @@ main {
         margin-bottom: 10px;
     }
 
-    #error-message {
-        font-size: 11px;
-        background-color: coral;
+    .input-error-container {
+        margin-bottom: 15px;
     }
 
     .magic-btn {
