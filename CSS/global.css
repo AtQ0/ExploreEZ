@@ -577,11 +577,9 @@ main {
 }
 
 
-
 /*=========================*/
 /*===== RESPONSIVNESS =====*/
 /*=========================*/
-
 
 
 @media screen and (min-width: 450px) {
@@ -589,6 +587,9 @@ main {
         font-size: 12px;
     }
 
+    .bottom-or-right-wrapper {
+        min-height: 85vh;
+    }
 }
 
 
