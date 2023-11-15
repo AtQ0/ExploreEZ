@@ -423,7 +423,6 @@ main {
 
 .input-error-container {
     margin-bottom: 2vw;
-    background-color: orange;
     width: 100%;
     min-height: 10px;
     line-height: 5px;
@@ -431,7 +430,6 @@ main {
 
 #error-message {
     font-size: 10px;
-    background-color: coral;
 }
 
 .btn-container-for-adding {
