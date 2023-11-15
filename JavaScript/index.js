@@ -158,7 +158,7 @@ viewResultsBtn.addEventListener("click", function () {
     }
 
     //Scroll page to top on every btn click
-    apiContentDiv.scrollTop = 0;
+    window.scrollTo(0, 0);
 
     //Store chosen value/city from dropdown, in a variable
     chosenCityID = document.getElementById("dropdown-menu-search").value;
