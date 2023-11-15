@@ -443,7 +443,8 @@ main {
 }
 
 .input-error-container {
-    margin-bottom: 2vw;
+    margin-top: 0.5vw;
+    margin-bottom: 1.5vw;
     width: 100%;
     min-height: 13px;
     line-height: 13px;
@@ -654,7 +655,8 @@ main {
 
 
     .input-error-container {
-        margin-bottom: 15px;
+        margin-top: 0px;
+        margin-bottom: 10px;
     }
 
     #error-message {
