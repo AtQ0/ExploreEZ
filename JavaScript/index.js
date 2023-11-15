@@ -346,35 +346,74 @@ function getCitySummary(cityNameInput) {
 
 //SELECT ELEMENTS FROM DOM
 const addNewCityBtn = document.getElementById('add-new-city-btn');
-const inputForCityTbx = document.getElementById('input-for-city-tbx');
-const inputForPopTbx = document.getElementById('input-for-pop-tbx');
+const inputForCityNameTbx = document.getElementById('input-for-city-tbx');
+const inputForCityPopTbx = document.getElementById('input-for-pop-tbx');
 
 addNewCityBtn.addEventListener('click', function () {
 
     //if city input tbx is empty
-    if (inputForCityTbx.value === "" && inputForPopTbx.value !== "") {
+    if (inputForCityNameTbx.value === "" && inputForCityPopTbx.value !== "") {
 
 
         console.log('city input is empty')
     }
     //if population input tbx is empty
-    else if (inputForPopTbx.value === "" && inputForCityTbx.value !== "") {
+    else if (inputForCityPopTbx.value === "" && inputForCityNameTbx.value !== "") {
         console.log('population input is empty')
 
     }
     //If none of the input tbx have values in them
-    else if (inputForCityTbx.value === "" || inputForPopTbx.value === "") {
+    else if (inputForCityNameTbx.value === "" || inputForCityPopTbx.value === "") {
         console.log('both city and population inputs are empty')
     }
     //If both input tbx have values in them
     else {
 
+        console.log("all fields are filled in")
+
         //Now that both fields are filled in, check so that each of the are correct
         //e.g. is the name made of only letters
         //e.g. is the population input only made of numbers
 
-        console.log("all fields are filled in")
+        const regexForLetters = /^[a-zA-Z]+$/
 
+        let valueFromCityTbx = inputForCityNameTbx.value;
+
+        //If city name input contains anything else but letters, and population is numbers
+        if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === false) {
+
+            //Write error message to user, somehow, perhaps inside of a div
+
+            console.log('city name must only contain letters')
+        }
+        //If population input contains anything else but numbers, and city name is letters
+        else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForLetters)) {
+
+            //Write error message to user, somehow, perhaps inside of a div
+
+            console.log('population must only contain numbers');
+        }
+        //If both city name, and population, inputs are wrong, e.g. city name contains numbers, and population contains letters
+        else if (!valueFromCityTbx.match(regexForLetters) && isNaN(inputForCityPopTbx.value) === true) {
+
+            //Write error message to user, somehow, perhaps inside of a div
+
+            console.log('Both city name and population contains characters that are not correct')
+
+        }
+        //If both inputs are correct, e.g. city name consist of letters, and population consists of numbers
+        else {
+            console.log('yaaay, both inputs are correct');
+            //Send to method that adds new city with a post
+            addNewCityToServer(inputForCityNameTbx.value, inputForCityPopTbx.value);
+        }
     }
-
 });
+
+
+//METHOD USED TO ADD A NEW CITY
+function addNewCityToServer(cityName, cityPopulation) {
+
+    console.log('Yes, you are inside of function')
+
+}
