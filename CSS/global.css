@@ -303,6 +303,7 @@ main {
 
 #dropdown-menu-search {
     width: 100%;
+    max-width: 150px;
     margin-top: 1vw;
     margin-bottom: 1vw;
     font-family: TwCen-Medium;
@@ -312,6 +313,11 @@ main {
     border-bottom-right-radius: 2vw;
     border-bottom-left-radius: 2vw;
     cursor: pointer;
+}
+
+.dropdown-container-for-search label::after {
+    content: "\a";
+    white-space: pre;
 }
 
 .filter-container-for-search {

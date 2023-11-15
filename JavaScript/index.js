@@ -164,11 +164,11 @@ viewResultsBtn.addEventListener("click", function () {
     chosenCityID = document.getElementById("dropdown-menu-search").value;
 
     //Send chosen city to method that fetches data for that city
-    writeCitiesAndElements(chosenCityID);
+    showCitiesAndElements(chosenCityID);
 })
 
 //Fetch info from API´s and write it in dynamics html-elements
-let writeCitiesAndElements = (chosenCityIdInput) => {
+let showCitiesAndElements = (chosenCityIdInput) => {
 
     //FETCH FROM CITITES API (avancera.app)
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
@@ -230,6 +230,8 @@ let writeCitiesAndElements = (chosenCityIdInput) => {
 
 
                             `;
+
+                            console.log(promises);
                         });
 
                     //Store every promise inside of all promises arrayp
@@ -455,8 +457,17 @@ function addNewCityToCitiesServer(cityName, cityPopulation) {
             console.log(result)
 
             //Refresh dropdown menu
-            callCitiesOnPageLoad();
+            callCitiesOnPageLoad()
+
+            //Identify ID from last value in dropdown menu, which is the last added city
+            let idOfLastAddedCity = dropDownMenuForSearching.options[dropDownMenuForSearching.length - 1].value;
+
+            console.log(idOfLastAddedCity);
+
+            //Refresh the reults shown on page by sending
+
 
         })
+
 
 };
