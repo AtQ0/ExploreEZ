@@ -170,6 +170,11 @@ viewResultsBtn.addEventListener("click", function () {
 //Fetch info from API´s and write it in dynamics html-elements
 let showCitiesAndElements = (chosenCityIdInput) => {
 
+    console.log("YOU ARE IN!!!!")
+    console.log(chosenCityIdInput);
+    console.log(chosenCityIdInput);
+    console.log(chosenCityIdInput);
+
     //FETCH FROM CITITES API (avancera.app)
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
         .then((response) => response.json())
@@ -458,14 +463,6 @@ function addNewCityToCitiesServer(cityName, cityPopulation) {
 
             //Refresh dropdown menu
             callCitiesOnPageLoad()
-
-            //Identify ID from last value in dropdown menu, which is the last added city
-            let idOfLastAddedCity = dropDownMenuForSearching.options[dropDownMenuForSearching.length - 1].value;
-
-            console.log(idOfLastAddedCity);
-
-            //Refresh the reults shown on page by sending
-
 
         })
 
