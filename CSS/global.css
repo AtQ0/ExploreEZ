@@ -124,11 +124,12 @@ main {
 
 .top-or-left-intro-wrapper {
     height: 85vw;
-    max-height: 65vh;
+    /*Or set max-height to 65vh and see what happens*/
+    max-height: 460px;
     width: 75%;
     margin: 15vw;
     margin-top: 20vw;
-    margin-bottom: 20vw;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,8 +174,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
 }
 
 .magic-btn-wrapper {
@@ -247,7 +248,6 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 0;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -548,7 +548,7 @@ main {
     margin-bottom: 40px;
 }
 
-#change-btn {
+.change-btn {
     border-top-left-radius: 4vw;
     border-top-right-radius: 4vw;
     border-bottom-right-radius: 4vw;
@@ -560,7 +560,7 @@ main {
     color: #3A3320;
 }
 
-#delete-btn {
+.delete-btn {
     border-top-left-radius: 4vw;
     border-top-right-radius: 4vw;
     border-bottom-right-radius: 4vw;
@@ -627,7 +627,8 @@ main {
         flex-grow: 1;
         margin: 5vw;
         margin-top: 7vw;
-        margin-bottom: 7vw;
+        margin-bottom: 0;
+        /* margin-bottom: 7vw; */
         max-height: none;
     }
 
@@ -669,12 +670,12 @@ main {
 
     .magic-btn-container {
         width: 100%;
-        height: 7vw;
+        height: 20vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        bottom: 0;
+        /* position: absolute;
+        bottom: 0; */
     }
 
     .magic-btn {

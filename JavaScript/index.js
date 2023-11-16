@@ -39,13 +39,19 @@ window.onresize = function () {
 
 function updateTopOfDiv() {
     const container = document.getElementById("punchline-container");
+
+    //Call BoundingClientRect function for container and store it in variable rect
     const rect = container.getBoundingClientRect();
+
+    //Get distance from top of viewport to bottom of rect
     let topPosY = rect.bottom;
 
+    //If above 769vw, ensure apiContentDiv has a top which is punchlines bottom
     if (document.documentElement.clientWidth >= 769) {
         // apiContentDiv.style.marginTop = `${topPosY}px`;
         apiContentDiv.style.paddingTop = `${topPosY}px`;
     }
+    //If beneath 769vw let apiContentDiv have its top as 0
     else {
         // apiContentDiv.style.marginTop = `0px`;
         apiContentDiv.style.paddingTop = `0px`;
@@ -68,11 +74,17 @@ let stringForPopulatingDropdownWithCityNames;
 //ON PAGE RELOAD CALL METHOD WHICH UPDATES DROPDOWN MENU
 document.addEventListener("DOMContentLoaded", function () {
 
+    //Clear all input fields
+    document.getElementById("input-for-city-tbx").value = "";
+    document.getElementById("input-for-pop-tbx").value = "";
+    document.getElementById("below500-cbx").checked = false;
+    document.getElementById("above500-cbx").checked = false;
+
     //Call funtions that calls all citites
     callCitiesOnPageLoad();
 });
 
-
+//Update drop-down menu with all values on Cities server
 let callCitiesOnPageLoad = () => {
 
     //Reset string (with default value) for creating slect elements on every call
@@ -87,11 +99,8 @@ let callCitiesOnPageLoad = () => {
                     <option value="${result[i].id}">${result[i].name}</option>
                 `;
             }
-
             dropDownMenuForSearching.innerHTML = stringForPopulatingDropdownWithCityNames;
-
         });
-
 }
 
 
@@ -170,11 +179,6 @@ viewResultsBtn.addEventListener("click", function () {
 //Fetch info from API´s and write it in dynamics html-elements
 let showCitiesAndElements = (chosenCityIdInput) => {
 
-    console.log("YOU ARE IN!!!!")
-    console.log(chosenCityIdInput);
-    console.log(chosenCityIdInput);
-    console.log(chosenCityIdInput);
-
     //FETCH FROM CITITES API (avancera.app)
     fetch('https://avancera.app/cities/' + chosenCityIdInput)
         .then((response) => response.json())
@@ -195,6 +199,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                     //Call method for fetching geo-coordinates from MapQuest API
                     const promiseForCitySummary = getCitySummary(result[i].name)
                         .then((citySummaryObject) => {
+
                             //Store lat and lang in temp variables
                             const cityPage = citySummaryObject.page;
                             const lat = citySummaryObject.lat;
@@ -208,7 +213,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                             //Append data in string used for creating dynamic divs
                             stringForCreatingDynamicDivsInApiContentDiv += `
 
-                                <div class="every-city-container">
+                                <div class="every-city-container every-city-container${i}">
                                     <h2><a href="${cityPage}"  target="_blank">${result[i].name}</a></h2>
                                     <p>Population: ${result[i].population}</p>
                                     <div>
@@ -227,16 +232,13 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                             </div>
                                         </div>
                                         <div class="change-delete-btn-container">
-                                            <button id="change-btn">Change</button>
-                                            <button id="delete-btn">Delete</button>
+                                            <button class="change-btn" id="change-btn">Change</button>
+                                            <button class="delete-btn" id="delete-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="removeCity(this)">Delete</button>
                                         </div>
                                     </div>
                                 </div>
-
-
                             `;
 
-                            console.log(promises);
                         });
 
                     //Store every promise inside of all promises arrayp
@@ -266,7 +268,6 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                         const thumbnail = citySummaryObject.thumbnail;
                         const originalImage = citySummaryObject.originalImage;
 
-
                         /*========================================*/
                         /*=== ACCTUAL CREATION OF DYNAMIC DIVS ===*/
                         /*========================================*/
@@ -274,10 +275,11 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                         // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
                         stringForCreatingDynamicDivsInApiContentDiv = '';
 
+                        //Variable used for keeping track of chosen city
 
                         //Put data in string used for creating a dynamic div
                         stringForCreatingDynamicDivsInApiContentDiv = `
-                            <div class="every-city-container">
+                            <div class="every-city-container every-city-container-singleCity">
                                 <h2><a href="${cityPage}"  target="_blank">${city.name}</a></h2>
                                 <p>Population: ${city.population}</p>
                                 <div>
@@ -296,8 +298,8 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                         </div>
                                     </div>
                                     <div class="change-delete-btn-container">
-                                        <button id="change-btn">Change</button>
-                                        <button id="delete-btn">Delete</button>
+                                        <button class="change-btn" id="change-btn">Change</button>
+                                        <button class="delete-btn" id="delete-btn" data-city-index="singleCity" data-city-id="${result.id}" data-city-name="${result.name}" onclick="removeCity(this)">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -305,11 +307,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
 
                         //Add a dynamic div based on data in string variable
                         apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
-
-
                     })
-
-
 
             }
 
@@ -329,27 +327,43 @@ function getCitySummary(cityNameInput) {
         .then((responseFromWikiMedia) => responseFromWikiMedia.json())
         .then((resultWikiMedia) => {
 
-            //Find documentation to set up if status code successful or not
+            //If fetch is successful, return fetched values
+            if (resultWikiMedia && resultWikiMedia.coordinates && resultWikiMedia.extract && resultWikiMedia.content_urls) {
 
-            //Store objects keys/property-values in variables
-            const lat = resultWikiMedia.coordinates.lat;
-            const lon = resultWikiMedia.coordinates.lon;
-            const description = resultWikiMedia.extract;
-            const page = resultWikiMedia.content_urls.desktop.page;
-            const thumbnail = resultWikiMedia.thumbnail.source;
-            const originalImage = resultWikiMedia.originalimage.source;
+                //Store objects keys/property-values in variables
+                const lat = resultWikiMedia.coordinates.lat;
+                const lon = resultWikiMedia.coordinates.lon;
+                const description = resultWikiMedia.extract;
+                const page = resultWikiMedia.content_urls.desktop.page;
+                const thumbnail = resultWikiMedia.thumbnail.source;
+                const originalImage = resultWikiMedia.originalimage.source;
 
-            //Return variables from fetch
-            return { page, lat, lon, description, thumbnail, originalImage };
+                //Return variables from fetch
+                return { page, lat, lon, description, thumbnail, originalImage };
+
+            }
+            //If any prorerty from the fetch is not successful, return object with undefined values
+            else {
+                return {
+                    page: undefined,
+                    lat: undefined,
+                    lon: undefined,
+                    description: undefined,
+                    thumbnail: undefined,
+                    originalImage: undefined
+                };
+
+            }
+
         });
 
 
 }
 
 
-/*======================================*/
-/*==== ADD, CHANGE AND DELETE CITY =====*/
-/*======================================*/
+/*===============================*/
+/*=========== ADD CITY ==========*/
+/*===============================*/
 
 //SELECT ELEMENTS FROM DOM
 const addNewCityBtn = document.getElementById('add-new-city-btn');
@@ -427,17 +441,8 @@ addNewCityBtn.addEventListener('click', function () {
 //METHOD USED TO ADD A NEW CITY TO CITIES SERVER/API
 function addNewCityToCitiesServer(cityName, cityPopulation) {
 
-    console.log('Yes, you are inside of function')
-    console.log(cityName);
-    console.log(cityPopulation);
-    console.log(typeof cityName);
-    console.log(typeof cityPopulation)
-
     //Convert cityPopulation to number, as Cities requires that for input
     let cityPopulationConvertedToNum = cityPopulation * 1;
-
-    console.log(cityPopulationConvertedToNum);
-    console.log(typeof cityPopulationConvertedToNum);
 
     //Creat object to be sent to server
     let newObject = {
@@ -459,12 +464,105 @@ function addNewCityToCitiesServer(cityName, cityPopulation) {
         .then(response => response.json())
         .then(result => {
 
-            console.log(result)
-
             //Refresh dropdown menu
             callCitiesOnPageLoad()
 
         })
+
+
+};
+
+
+
+/*==================================*/
+/*=========== REMOVE CITY ==========*/
+/*==================================*/
+
+
+function removeCity(objectInput) {
+
+    //Store values from them data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+    const cityId = objectInput.dataset.cityId;
+    const cityName = objectInput.dataset.cityName;
+
+
+    console.log(cityIndex);
+
+    //If user wants to remove a single city from viewing a single city
+    if (cityIndex === "singleCity") {
+
+        //Select the dynamic element from DOM
+        const dynamicDiv = document.querySelector(".every-city-container-singleCity");
+
+
+        console.log("this is your city id: " + cityId);
+
+        //Remove city from CITIES server
+        fetch('https://avancera.app/cities/' + cityId, {
+            method: 'DELETE'
+        }).then(response => {
+
+            //Remove all children and parent Div
+            dynamicDiv.innerHTML = "";
+            dynamicDiv.remove();
+
+            //Refresh dropdown menu
+            callCitiesOnPageLoad();
+        })
+
+
+
+    }
+    //If user wants to remove a single city from viewing all citites
+    else {
+
+        //Select the dynamic element from DOM
+        const dynamicDiv = document.querySelector(".every-city-container" + cityIndex);
+
+        //Remove all children and parent Div
+        dynamicDiv.innerHTML = "";
+        dynamicDiv.remove();
+
+        //Remove city from server
+        fetch('https://avancera.app/cities/' + cityId, {
+            method: 'DELETE'
+        }).then(response => {
+
+            //Remove all children and parent Div
+            dynamicDiv.innerHTML = "";
+            dynamicDiv.remove();
+
+            //Refresh dropdown menu
+            callCitiesOnPageLoad();
+
+        })
+    }
+}
+
+
+/*==================================*/
+/*=========== CHANGE CITY ==========*/
+/*==================================*/
+
+
+function changeCity(objectInput) {
+
+    //Store values from them data-attribute, inside of incoming object
+    const cityId = objectInput.dataset.cityId;
+    const cityName = objectInput.dataset.cityName;
+    const cityIndex = objectInput.dataset.cityIndex;
+
+    console.log(objectInput + "THIS IS IT AGAIN");
+    console.log(objectInput.dataset);
+    console.log(cityId);
+    console.log(cityName);
+    console.log(cityIndex);
+
+
+    //Create someting else than POP and POST
+
+    //Refresh dropdown menu
 
 
 };
