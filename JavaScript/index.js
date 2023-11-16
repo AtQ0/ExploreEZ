@@ -441,6 +441,10 @@ addNewCityBtn.addEventListener('click', function () {
 //METHOD USED TO ADD A NEW CITY TO CITIES SERVER/API
 function addNewCityToCitiesServer(cityName, cityPopulation) {
 
+    //Clear all input fields
+    document.getElementById("input-for-city-tbx").value = "";
+    document.getElementById("input-for-pop-tbx").value = "";
+
     //Convert cityPopulation to number, as Cities requires that for input
     let cityPopulationConvertedToNum = cityPopulation * 1;
 
