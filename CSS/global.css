@@ -519,13 +519,69 @@ main {
 /*========================*/
 
 
-.city-name-tbx {
+.city-header-and-expand-edit-controls-for-name-btn-container {
+    display: flex;
+    width: fit-content;
+}
+
+.expand-edit-controls-for-name-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.expand-edit-controls-for-city-name-btn {
+    cursor: pointer;
+}
+
+.edit-name-controls-container {
+    width: fit-content;
     display: none;
 }
 
-.city-pop-tbx {
-    display: none;
+.city-name-tbx {
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    margin-top: 2px;
+    padding: 3px;
 }
+
+.city-name-edit-btns-container {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    width: fit-content;
+
+}
+
+.save-city-name-btn {
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    cursor: pointer;
+}
+
+.cancle-city-name-btn {
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+
+
 
 #learn-more-container {
     height: fit-content;
@@ -578,6 +634,7 @@ main {
     padding-bottom: 2px;
     cursor: pointer;
     color: #3A3320;
+    width: 100px;
 }
 
 /*==============*/

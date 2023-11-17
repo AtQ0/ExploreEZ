@@ -196,7 +196,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                 //For every city (i) in the Cities API
                 for (let i = 0; i < result.length; i++) {
 
-                    //Call method for fetching geo-coordinates from MapQuest API
+                    //Call method for fetching data from wikieMedia API
                     const promiseForCitySummary = getCitySummary(result[i].name)
                         .then((citySummaryObject) => {
 
@@ -213,10 +213,24 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                             //Append data in string used for creating dynamic divs
                             stringForCreatingDynamicDivsInApiContentDiv += `
                                 <div class="every-city-container every-city-container${i}">
-                                    <h2 class="cityNameH2${i}"><a href="${cityPage}"  target="_blank">${result[i].name}</a></h2>
-                                    <input class="city-name-tbx city-name-tbx${i}" type="text" placeholder="Write new city name">
+                                    <div class="city-header-and-expand-edit-controls-for-name-btn-container">
+                                        <h2 class="cityNameH2${i}"><a href="${cityPage}" target="_blank">${result[i].name}</a></h2>
+                                        <div class="expand-edit-controls-for-name-btn-container">
+                                            <svg class="expand-edit-controls-for-city-name-btn" data-city-index="${i}" onclick="expandEditControlsForCityName(this)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="#3A3320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                                                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="edit-name-controls-container edit-name-controls-container${i}">
+                                        <input class="city-name-tbx city-name-tbx${i}" type="text" placeholder="Write new city name">
+                                        <div class="city-name-edit-btns-container city-name-edit-btns-container${i}">
+                                            <button class="save-city-name-btn save-city-name-btn${i}" data-city-index="${i}" data-city-name="${result[i].name}" data-city-id="${result[i].id}" data-city-population="${result[i].population}" onclick="saveNewCityName(this)">Save</button>
+                                            <button class="cancle-city-name-btn cancle-city-name-btn${i}" data-city-index="${i}" onclick="cancleAddingNewCityName(this)">Cancle</button>
+                                        </div>
+                                    </div>
                                     <p>Population: ${result[i].population}</p>
-                                    <input class="city-pop-tbx city-pop-tbx${i}" type="text" placeholder="Write new population">
                                     <div>
                                         <p>Latitude: ${lat}</p>
                                         <p>Longitude: ${lon}</p>
@@ -233,8 +247,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                             </div>
                                         </div>
                                         <div class="edit-delete-btn-container">
-                                            <button class="edit-btn" id="edit-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" data-city-population="${result[i].population}" onclick="editCity(this)">Edit</button>
-                                            <button class="delete-btn" id="delete-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="removeCity(this)">Delete</button>
+                                            <button class="delete-btn" id="delete-btn" data-city-index="${i}" data-city-id="${result[i].id}" onclick="removeCity(this)">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -489,10 +502,6 @@ function removeCity(objectInput) {
     //Store values from them data-attribute, inside of incoming object
     const cityIndex = objectInput.dataset.cityIndex;
     const cityId = objectInput.dataset.cityId;
-    const cityName = objectInput.dataset.cityName;
-
-
-    console.log(cityIndex);
 
     //If user wants to remove a single city from viewing a single city
     if (cityIndex === "singleCity") {
@@ -551,96 +560,62 @@ function removeCity(objectInput) {
 /*==================================*/
 
 
-function editCity(objectInput) {
 
-    //Store values from them data-attribute, inside of incoming object
-    const cityId = objectInput.dataset.cityId;
-    const cityName = objectInput.dataset.cityName;
+
+//Expand edit controls for city name
+function expandEditControlsForCityName(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
     const cityIndex = objectInput.dataset.cityIndex;
-    const cityPopulation = objectInput.dataset.cityPopulation;
 
-    //convert cityPopulation to number because of req from server
-    let cityPopulationNumber = cityPopulation * 1;
+    //Select element from the DOM
+    let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
 
-    console.log("You got the city POP: " + cityPopulation)
+    // Check the display property
+    const displayValue = window.getComputedStyle(editNameControlsDiv).getPropertyValue("display");
 
-    //Select elements from DOM
-    let editCityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
-    let editCityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
-
-    //Make input elements visible
-    editCityNameTbx.style.display = "inline-block";
-    editCityPopTbx.style.display = "inline-block";
-
-
-
-    /*======================*/
-    /*==== ENTER EVENT =====*/
-    /*======================*/
-
-    //Select elements from DOM
-    let h2HeaderForCity = document.querySelector(".cityNameH2" + cityIndex)
-
-    //Search for keydown event (of enter) when inside of editCityNameTbx
-    editCityNameTbx.addEventListener("keydown", function (e) {
-
-        //If Enter key (keycode 13) is pressed
-        if (e.keyCode === 13) {
-
-            //Make the input loose focus
-            editCityNameTbx.blur();
-
-            //Make the textboxe dissapear
-            editCityNameTbx.style.display = "None"
-
-            //Set H2 with the value from the editCityNameTbx
-            h2HeaderForCity.innerHTML = editCityNameTbx.value;
-
-            /*==== UPDATE CITIES SERVER WITH NEW CITY NAME ====*/
-
-            //Creat object to be sent in to server
-            let newObject = {
-                "id": cityId,
-                "name": editCityNameTbx.value,
-                "population": cityPopulationNumber
-            };
-
-            // Convert the object to a JSON string
-            let inputForBody = JSON.stringify(newObject);
-
-            console.log(inputForBody);
-
-            //Change name for chosen city
-            fetch('https://avancera.app/cities/' + cityId, {
-                body: inputForBody,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                method: 'PUT'
-            })
-                .then(respons => {
-                    //refresh dropdown menu
-                    callCitiesOnPageLoad();
-                })
-
-
-
-        }
-    })
-
-
-
-
-    console.log(objectInput + "THIS IS IT AGAIN");
-    console.log(objectInput.dataset);
-    console.log(cityId);
-    console.log(cityName);
-    console.log(cityIndex);
-
-
-    //Create someting else than POP and POST
-
-    //Refresh dropdown menu
-
+    if (displayValue === "none") {
+        //display all edit controls for editing city name
+        editNameControlsDiv.style.display = "inline-block";
+    }
+    else if (displayValue === "inline-block") {
+        //Hide all edit controls for editing city name
+        editNameControlsDiv.style.display = "none";
+    }
 
 };
+
+//Cancle adding a new city name
+function cancleAddingNewCityName(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+
+    //Select elements from DOM
+    let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
+    let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
+
+    cityNameTbx.value = "";
+    editNameControlsDiv.style.display = "none";
+
+}
+
+//Save new city name
+function saveNewCityName(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+    const cityName = objectInput.dataset.cityName;
+    const cityId = objectInput.dataset.cityId;
+    const cityPopulation = objectInput.dataset.cityPopulation;
+
+    console.log(cityIndex);
+    console.log(cityName);
+    console.log(cityId);
+    console.log(cityPopulation);
+
+
+
+
+
+}
