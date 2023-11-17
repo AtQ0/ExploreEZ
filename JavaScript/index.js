@@ -225,6 +225,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                     </div>
                                     <div class="edit-name-controls-container edit-name-controls-container${i}">
                                         <input class="city-name-tbx city-name-tbx${i}" type="text" placeholder="Write new city name">
+                                        <p class="city-name-error-paragraph city-name-error-paragraph${i}"></p>
                                         <div class="city-name-edit-btns-container city-name-edit-btns-container${i}">
                                             <button class="save-city-name-btn save-city-name-btn${i}" data-city-index="${i}" data-city-id="${result[i].id}" onclick="saveNewCityName(this)">Save</button>
                                             <button class="cancle-city-name-btn cancle-city-name-btn${i}" data-city-index="${i}" onclick="cancleAddingNewCityName(this)">Cancle</button>
@@ -575,6 +576,10 @@ function expandEditControlsForCityName(objectInput) {
 
     //Select element from the DOM
     let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
+    let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-name-error-paragraph" + cityIndex);
+
+
 
     //Check the display property
     const displayValue = window.getComputedStyle(editNameControlsDiv).getPropertyValue("display");
@@ -586,6 +591,11 @@ function expandEditControlsForCityName(objectInput) {
     else if (displayValue === "inline-block") {
         //Hide all edit controls for editing city name
         editNameControlsDiv.style.display = "none";
+
+        //Clear all values
+        cityNameTbx.classList.remove("error-border");
+        errorMessageParagraph.innerHTML = "";
+
     }
 
 };
@@ -599,8 +609,15 @@ function cancleAddingNewCityName(objectInput) {
     //Select elements from DOM
     let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
     let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-name-error-paragraph" + cityIndex);
 
+
+    //Clear input values
     cityNameTbx.value = "";
+    cityNameTbx.classList.remove("error-border");
+    errorMessageParagraph.innerHTML = "";
+
+    //Stop displaying the whole container for the controls
     editNameControlsDiv.style.display = "none";
 
 }
@@ -616,42 +633,62 @@ function saveNewCityName(objectInput) {
     let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
     let h2DivForCityName = document.querySelector(".cityNameH2" + cityIndex);
     let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-name-error-paragraph" + cityIndex);
 
-    //Set value from textbox to variable
-    let inputNewName = cityNameTbx.value;
 
-    //Create object that is to be sent to server
-    let newObject = {
-        "name": inputNewName
-    };
+    if (cityNameTbx.value === "") {
 
-    //Convert object to JSON
-    let inputForBody = JSON.stringify(newObject);
+        cityNameTbx.classList.add("error-border");
+        errorMessageParagraph.innerHTML = "*Please write a city name.";
 
-    //Change city
-    fetch('https://avancera.app/cities/' + cityId, {
-        body: inputForBody,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        //Set method to PATCH
-        method: 'PATCH'
-    })
-        .then(response => response.json())
-        .then(result => {
+    }
+    else {
 
-            //Populate new City Name into the H2 element
-            h2DivForCityName.innerHTML = inputNewName;
+        cityNameTbx.classList.remove("error-border");
+        errorMessageParagraph.innerHTML = "";
 
-            //Clear city name input textbox
-            cityNameTbx.value = "";
 
-            //Stop displaying edit city name controlls
-            editNameControlsDiv.style.display = "none";
+        //Set value from textbox to variable
+        let inputNewName = cityNameTbx.value;
 
-            //update dropdown
-            callCitiesOnPageLoad();
+        //Create object that is to be sent to server
+        let newObject = {
+            "name": inputNewName
+        };
 
-        });
+        //Convert object to JSON
+        let inputForBody = JSON.stringify(newObject);
+
+        //Change city
+        fetch('https://avancera.app/cities/' + cityId, {
+            body: inputForBody,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            //Set method to PATCH
+            method: 'PATCH'
+        })
+            .then(response => response.json())
+            .then(result => {
+
+                //Populate new City Name into the H2 element
+                h2DivForCityName.innerHTML = inputNewName;
+
+                //Clear city name input textbox
+                cityNameTbx.value = "";
+
+                //Stop displaying edit city name controlls
+                editNameControlsDiv.style.display = "none";
+
+                //update dropdown
+                callCitiesOnPageLoad();
+
+            });
+
+
+    }
+
+
+
 
 }
