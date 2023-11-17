@@ -212,10 +212,11 @@ let showCitiesAndElements = (chosenCityIdInput) => {
 
                             //Append data in string used for creating dynamic divs
                             stringForCreatingDynamicDivsInApiContentDiv += `
-
                                 <div class="every-city-container every-city-container${i}">
-                                    <h2><a href="${cityPage}"  target="_blank">${result[i].name}</a></h2>
+                                    <h2 class="cityNameH2${i}"><a href="${cityPage}"  target="_blank">${result[i].name}</a></h2>
+                                    <input class="city-name-tbx city-name-tbx${i}" type="text" placeholder="Write new city name">
                                     <p>Population: ${result[i].population}</p>
+                                    <input class="city-pop-tbx city-pop-tbx${i}" type="text" placeholder="Write new population">
                                     <div>
                                         <p>Latitude: ${lat}</p>
                                         <p>Longitude: ${lon}</p>
@@ -231,8 +232,8 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                                 <p class="city-description">${cityExtract}</p>
                                             </div>
                                         </div>
-                                        <div class="change-delete-btn-container">
-                                            <button class="change-btn" id="change-btn">Change</button>
+                                        <div class="edit-delete-btn-container">
+                                            <button class="edit-btn" id="edit-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="editCity(this)">Edit</button>
                                             <button class="delete-btn" id="delete-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="removeCity(this)">Delete</button>
                                         </div>
                                     </div>
@@ -297,8 +298,8 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                             <p class="city-description">${cityExtract}</p>
                                         </div>
                                     </div>
-                                    <div class="change-delete-btn-container">
-                                        <button class="change-btn" id="change-btn">Change</button>
+                                    <div class="edit-delete-btn-container">
+                                        <button class="edit-btn" id="edit-btn">edit</button>
                                         <button class="delete-btn" id="delete-btn" data-city-index="singleCity" data-city-id="${result.id}" data-city-name="${result.name}" onclick="removeCity(this)">Delete</button>
                                     </div>
                                 </div>
@@ -546,16 +547,55 @@ function removeCity(objectInput) {
 
 
 /*==================================*/
-/*=========== CHANGE CITY ==========*/
+/*=========== Edit CITY ==========*/
 /*==================================*/
 
 
-function changeCity(objectInput) {
+function editCity(objectInput) {
 
     //Store values from them data-attribute, inside of incoming object
     const cityId = objectInput.dataset.cityId;
     const cityName = objectInput.dataset.cityName;
     const cityIndex = objectInput.dataset.cityIndex;
+
+    //Select elements from DOM
+    let editCityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
+    let editCityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
+
+    //Make input elements visible
+    editCityNameTbx.style.display = "inline-block";
+    editCityPopTbx.style.display = "inline-block";
+
+
+
+    /*======================*/
+    /*==== ENTER EVENT =====*/
+    /*======================*/
+
+    //Select elements from DOM
+    let h2HeaderForCity = document.querySelector(".cityNameH2" + cityIndex)
+
+    //Search for keydown event (of enter) when inside of input element
+    editCityNameTbx.addEventListener("keydown", function (e) {
+
+        //If Enter key (keycode 13) is pressed
+        if (e.keyCode === 13) {
+
+            //Make the input loose focus
+            editCityNameTbx.blur();
+
+            //Make the textboxe dissapear
+            editCityNameTbx.style.display = "None"
+
+            //Set H2 with the value from the editCityNameTbx
+            h2HeaderForCity.innerHTML = editCityNameTbx.value;
+
+
+        }
+    })
+
+
+
 
     console.log(objectInput + "THIS IS IT AGAIN");
     console.log(objectInput.dataset);
