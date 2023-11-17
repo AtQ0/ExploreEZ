@@ -232,12 +232,19 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                         </div>
                                     </div>
                                     <div class="city-pop-and-city-pop-expand-edit-container">
-                                    <p class="population-paragraph${i}">Population: ${result[i].population}</p>
-                                    <div class="expand-pop-edit-controls-btn-container">
-                                        <svg class="expand-edit-controls-for-pop-btn" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                        <p class="population-paragraph${i}">Population: ${result[i].population}</p>
+                                        <div class="expand-pop-edit-controls-btn-container">
+                                            <svg class="expand-edit-controls-for-pop-btn" data-city-index="${i}" onclick="expandEditControlsForCityPop(this)" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                        </div>
                                     </div>
+                                    <div class="edit-pop-controls-container edit-pop-controls-container${i}">
+                                        <input class="city-pop-tbx city-pop-tbx${i}" type="text" placeholder="Write new population">
+                                        <p class="city-pop-error-paragraph city-pop-error-paragraph${i}"></p>
+                                        <div class="city-pop-edit-btns-container city-pop-edit-btns-container${i}">
+                                            <button class="save-city-pop-btn save-city-pop-btn${i}" data-city-index="${i}" data-city-id="${result[i].id}" onclick="saveNewCityPop(this)">Save</button>
+                                            <button class="cancle-city-pop-btn cancle-city-pop-btn${i}" data-city-index="${i}" onclick="cancleAddingNewCityPop(this)">Cancle</button>
+                                        </div>
                                     </div>
-
                                     <div>
                                         <p>Latitude: ${lat}</p>
                                         <p>Longitude: ${lon}</p>
@@ -561,12 +568,13 @@ function removeCity(objectInput) {
 }
 
 
-/*==================================*/
-/*=========== Edit CITY ==========*/
-/*==================================*/
+/*=======================================*/
+/*=========== Edit CITY =================*/
+/*=======================================*/
 
 
 
+/*===== EXPANDING EDIT CONTROLS ======*/
 
 //Expand edit controls for city name
 function expandEditControlsForCityName(objectInput) {
@@ -600,6 +608,42 @@ function expandEditControlsForCityName(objectInput) {
 
 };
 
+
+function expandEditControlsForCityPop(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+
+
+    console.log(cityIndex);
+
+    //Select element from the DOM
+    let editPopControlsDiv = document.querySelector(".edit-pop-controls-container" + cityIndex);
+    let cityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-pop-error-paragraph" + cityIndex);
+
+    //Check the display property
+    const displayValue = window.getComputedStyle(editPopControlsDiv).getPropertyValue("display");
+
+    if (displayValue === "none") {
+        //display all edit controls for editing city name
+        editPopControlsDiv.style.display = "inline-block";
+    }
+    else if (displayValue === "inline-block") {
+        //Hide all edit controls for editing city name
+        editPopControlsDiv.style.display = "none";
+
+        //Clear all values
+        cityPopTbx.classList.remove("error-border");
+        errorMessageParagraph.innerHTML = "";
+
+    }
+
+}
+
+
+/*===== CANCLE ADDING INFO ======*/
+
 //Cancle adding a new city name
 function cancleAddingNewCityName(objectInput) {
 
@@ -622,6 +666,33 @@ function cancleAddingNewCityName(objectInput) {
 
 }
 
+
+
+//Cancle adding a new city name
+function cancleAddingNewCityPop(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+
+    //Select elements from DOM
+    let cityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
+    let editPopControlsDiv = document.querySelector(".edit-pop-controls-container" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-pop-error-paragraph" + cityIndex);
+
+    //Clear input values
+    cityPopTbx.value = "";
+    cityPopTbx.classList.remove("error-border");
+    errorMessageParagraph.innerHTML = "";
+
+    //Stop displaying the whole container for the controls
+    editPopControlsDiv.style.display = "none";
+}
+
+
+
+
+/*===== SAVING NEW CITY INFO ======*/
+
 //Save new city name
 function saveNewCityName(objectInput) {
 
@@ -635,13 +706,14 @@ function saveNewCityName(objectInput) {
     let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
     let errorMessageParagraph = document.querySelector(".city-name-error-paragraph" + cityIndex);
 
-
+    //Manage error when input textbox is empty
     if (cityNameTbx.value === "") {
 
         cityNameTbx.classList.add("error-border");
         errorMessageParagraph.innerHTML = "*Please write a city name.";
 
     }
+    //If input value to cityNameTbx is not empty
     else {
 
         cityNameTbx.classList.remove("error-border");
@@ -684,11 +756,79 @@ function saveNewCityName(objectInput) {
                 callCitiesOnPageLoad();
 
             });
+    }
+}
 
+
+
+
+//Save new city population
+function saveNewCityPop(objectInput) {
+
+    //Store values from the data-attribute, inside of incoming object
+    const cityIndex = objectInput.dataset.cityIndex;
+    const cityId = objectInput.dataset.cityId;
+
+    //Select elements from DOM
+    let cityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
+    let paragraphDivForCityPop = document.querySelector(".population-paragraph" + cityIndex);
+    let editPopControlsDiv = document.querySelector(".edit-pop-controls-container" + cityIndex);
+    let errorMessageParagraph = document.querySelector(".city-pop-error-paragraph" + cityIndex);
+
+
+    //Convert incoming population to number, due to req from server
+    let convertedPopulationToNumber = cityPopTbx.value * 1;
+
+    //Manage error when input textbox is empty
+    if (cityPopTbx.value === "") {
+
+        cityPopTbx.classList.add("error-border");
+        errorMessageParagraph.innerHTML = "*Please write population.";
 
     }
+    //If input value to cityPopTbx is not empty
+    else {
 
+        cityPopTbx.classList.remove("error-border");
+        errorMessageParagraph.innerHTML = "";
 
+        //Set value from textbox to variable
+        let inputNewName = convertedPopulationToNumber;
 
+        //Create object that is to be sent to server
+        let newObject = {
+            "population": inputNewName
+        };
+
+        //Convert object to JSON
+        let inputForBody = JSON.stringify(newObject);
+
+        //Change population
+        fetch('https://avancera.app/cities/' + cityId, {
+            body: inputForBody,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            //Set method to PATCH
+            method: 'PATCH'
+        })
+            .then(response => response.json())
+            .then(result => {
+
+                //Populate new City Name into the H2 element
+                paragraphDivForCityPop.innerHTML = "Population: " + inputNewName;
+
+                //Clear city name input textbox
+                cityPopTbx.value = "";
+
+                //Stop displaying edit city name controlls
+                editPopControlsDiv.style.display = "none";
+
+                //update dropdown
+                callCitiesOnPageLoad();
+
+            });
+
+    }
 
 }

@@ -545,7 +545,6 @@ main {
     border-top-right-radius: 3vw;
     border-bottom-right-radius: 3vw;
     border-bottom-left-radius: 3vw;
-    margin-top: 2px;
     padding: 3px;
 }
 
@@ -558,8 +557,7 @@ main {
 }
 
 .city-name-edit-btns-container {
-    margin-top: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: fit-content;
 
 }
@@ -605,6 +603,64 @@ main {
 .expand-edit-controls-for-pop-btn {
     cursor: pointer;
 }
+
+.edit-pop-controls-container {
+    width: fit-content;
+    display: none;
+}
+
+.city-pop-tbx {
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    padding: 3px;
+    margin-top: 3px;
+}
+
+.city-pop-error-paragraph {
+    min-height: 18px;
+    min-width: 160px;
+    max-width: fit-content;
+    font-size: 13px;
+    margin-top: 1px;
+}
+
+.city-pop-edit-btns-container {
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.save-city-pop-btn {
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    cursor: pointer;
+    color: #3A3320;
+}
+
+.cancle-city-pop-btn {
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 3vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #3A3320;
+}
+
+
+
+
+
+
 
 
 
