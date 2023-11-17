@@ -233,7 +233,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                             </div>
                                         </div>
                                         <div class="edit-delete-btn-container">
-                                            <button class="edit-btn" id="edit-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="editCity(this)">Edit</button>
+                                            <button class="edit-btn" id="edit-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" data-city-population="${result[i].population}" onclick="editCity(this)">Edit</button>
                                             <button class="delete-btn" id="delete-btn" data-city-index="${i}" data-city-id="${result[i].id}" data-city-name="${result[i].name}" onclick="removeCity(this)">Delete</button>
                                         </div>
                                     </div>
@@ -557,6 +557,12 @@ function editCity(objectInput) {
     const cityId = objectInput.dataset.cityId;
     const cityName = objectInput.dataset.cityName;
     const cityIndex = objectInput.dataset.cityIndex;
+    const cityPopulation = objectInput.dataset.cityPopulation;
+
+    //convert cityPopulation to number because of req from server
+    let cityPopulationNumber = cityPopulation * 1;
+
+    console.log("You got the city POP: " + cityPopulation)
 
     //Select elements from DOM
     let editCityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
@@ -575,7 +581,7 @@ function editCity(objectInput) {
     //Select elements from DOM
     let h2HeaderForCity = document.querySelector(".cityNameH2" + cityIndex)
 
-    //Search for keydown event (of enter) when inside of input element
+    //Search for keydown event (of enter) when inside of editCityNameTbx
     editCityNameTbx.addEventListener("keydown", function (e) {
 
         //If Enter key (keycode 13) is pressed
@@ -589,6 +595,34 @@ function editCity(objectInput) {
 
             //Set H2 with the value from the editCityNameTbx
             h2HeaderForCity.innerHTML = editCityNameTbx.value;
+
+            /*==== UPDATE CITIES SERVER WITH NEW CITY NAME ====*/
+
+            //Creat object to be sent in to server
+            let newObject = {
+                "id": cityId,
+                "name": editCityNameTbx.value,
+                "population": cityPopulationNumber
+            };
+
+            // Convert the object to a JSON string
+            let inputForBody = JSON.stringify(newObject);
+
+            console.log(inputForBody);
+
+            //Change name for chosen city
+            fetch('https://avancera.app/cities/' + cityId, {
+                body: inputForBody,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'PUT'
+            })
+                .then(respons => {
+                    //refresh dropdown menu
+                    callCitiesOnPageLoad();
+                })
+
 
 
         }
