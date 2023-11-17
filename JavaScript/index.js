@@ -571,7 +571,7 @@ function expandEditControlsForCityName(objectInput) {
     //Select element from the DOM
     let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
 
-    // Check the display property
+    //Check the display property
     const displayValue = window.getComputedStyle(editNameControlsDiv).getPropertyValue("display");
 
     if (displayValue === "none") {
@@ -609,13 +609,48 @@ function saveNewCityName(objectInput) {
     const cityId = objectInput.dataset.cityId;
     const cityPopulation = objectInput.dataset.cityPopulation;
 
-    console.log(cityIndex);
-    console.log(cityName);
-    console.log(cityId);
-    console.log(cityPopulation);
 
+    //Select elements from DOM
+    let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
+    let h2DivForCityName = document.querySelector(".cityNameH2" + cityIndex);
+    let editNameControlsDiv = document.querySelector(".edit-name-controls-container" + cityIndex);
 
+    //Set value from textbox to variable
+    let inputNewName = cityNameTbx.value;
 
+    //Create object that is to be sent to server
+    let newObject = {
+        "name": inputNewName
+    };
 
+    //Convert object to JSON
+    let inputForBody = JSON.stringify(newObject);
+
+    //Change city
+    fetch('https://avancera.app/cities/' + cityId, {
+        body: inputForBody,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //Set method to PATCH
+        method: 'PATCH'
+    })
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+
+            //Populate new City Name into the H2 element
+            h2DivForCityName.innerHTML = inputNewName;
+
+            //Clear city name input textbox
+            cityNameTbx.value = "";
+
+            //Stop displaying edit city name controlls
+            editNameControlsDiv.style.display = "none";
+
+            //update dropdown
+            callCitiesOnPageLoad();
+
+        });
 
 }
