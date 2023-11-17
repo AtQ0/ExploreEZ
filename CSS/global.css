@@ -580,6 +580,21 @@ main {
 }
 
 
+.city-pop-and-city-pop-expand-edit-container {
+    display: flex;
+    width: fit-content;
+}
+
+.expand-pop-edit-controls-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.expand-edit-controls-for-pop-btn {
+    cursor: pointer;
+}
 
 
 
