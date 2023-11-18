@@ -1,0 +1,14 @@
+TravelEZ is a website that draws data from different travel-related API's.
+
+Primary used API's will be Cities API from Avancera.app andOpenTripMap API.
+
+In the future the developer might add several APIS from the list below.
+
+ 
+
+If you are looking for a free travel-related API, there are several options available from other providers, such as:
+
+Skyscanner API: provides access to flight, hotel, and car rental data.
+OpenTripMap API: provides access to point of interest data, including tourist attractions, museums, and landmarks.
+GeoDB Cities API: provides access to data on cities and regions around the world.
+Weather API: provides access to real-time and historical weather data.

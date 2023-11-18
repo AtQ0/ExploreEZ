@@ -32,43 +32,25 @@ magicBtn.addEventListener("click", function () {
 /*=====================================*/
 
 // // Select elements from the DOM
-// const firstThemeBtn = document.querySelector(".first-theme-container");
-// const secondThemeBtn = document.querySelector(".second-theme-container");
-// const backGround = document.querySelector(".top-or-left-intro-container");
-// const foreGround = document.querySelector(".top-or-left-intro-wrapper");
+const firstThemeBtn = document.querySelector(".first-theme-container");
+const secondThemeBtn = document.querySelector(".second-theme-container");
+const backGround = document.querySelector(".top-or-left-intro-container");
+const foreGround = document.querySelector(".top-or-left-intro-wrapper");
 
-// // Function to set background images and store in local storage
-// function setAndStoreBackgroundImages(backgroundUrl, foregroundUrl) {
-//     backGround.style.backgroundImage = `url(${backgroundUrl})`;
-//     foreGround.style.backgroundImage = `url(${foregroundUrl})`;
 
-//     // Store in local storage
-//     localStorage.setItem("backgroundImage", backgroundUrl);
-//     localStorage.setItem("foregroundImage", foregroundUrl);
-// }
+// Event listeners for theme buttons
+firstThemeBtn.addEventListener("click", function () {
+    backGround.style.backgroundImage = "url(./Media/Images/background-bushes2.jpg)";
+    foreGround.style.backgroundImage = "url(./Media/Images/foreground_amalfi2.jpg)";
+});
 
-// // Event listeners for theme buttons
-// firstThemeBtn.addEventListener("click", function () {
-//     setAndStoreBackgroundImages("../Media/Images/background-bushes2.jpg", "../Media/Images/foreground_amalfi2.jpg");
-// });
+secondThemeBtn.addEventListener("click", function () {
+    backGround.style.backgroundImage = "url(./Media/Images/background-scrapers2.jpg)";
+    foreGround.style.backgroundImage = "url(./Media/Images/foreground_city2.jpg)";
+});
 
-// secondThemeBtn.addEventListener("click", function () {
-//     setAndStoreBackgroundImages("../Media/Images/background-scrapers2.jpg", "../Media/Images/foreground_city2.jpg");
-// });
 
-// // Function to load background images from local storage on page load
-// function loadBackgroundImagesFromStorage() {
-//     const backgroundUrl = localStorage.getItem("backgroundImage");
-//     const foregroundUrl = localStorage.getItem("foregroundImage");
 
-//     if (backgroundUrl && foregroundUrl) {
-//         backGround.style.backgroundImage = `url(${backgroundUrl})`;
-//         foreGround.style.backgroundImage = `url(${foregroundUrl})`;
-//     }
-// }
-
-// // Call the function to load background images on page load
-// loadBackgroundImagesFromStorage();
 
 
 /*====================================*/
