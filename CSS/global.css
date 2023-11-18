@@ -297,7 +297,7 @@ nav {
 /*=== IMAGE & MENU CONTAINER DETAILED ===*/
 /*=======================================*/
 .top-or-left-intro-container {
-    background-image: url(../Media/Images/background-bushes2.jpg);
+    background-image: url(/Media//Images/background-bushes2.jpg);
     background-size: cover;
 }
 
