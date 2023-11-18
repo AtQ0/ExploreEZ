@@ -307,9 +307,39 @@ let showCitiesAndElements = (chosenCityIdInput) => {
 
                         //Put data in string used for creating a dynamic div
                         stringForCreatingDynamicDivsInApiContentDiv = `
-                            <div class="every-city-container every-city-container-singleCity">
-                                <h2><a href="${cityPage}"  target="_blank">${city.name}</a></h2>
-                                <p>Population: ${city.population}</p>
+                            <div class="every-city-container every-city-containerSingleCity">
+                                <div class="city-header-and-expand-edit-controls-for-name-btn-container">
+                                    <h2 class="cityNameH2SingleCity"><a href="${cityPage}" target="_blank">${result.name}</a></h2>
+                                    <div class="expand-edit-controls-for-name-btn-container">
+                                        <svg class="expand-edit-controls-for-city-name-btn" data-city-index="SingleCity" onclick="expandEditControlsForCityName(this)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="#3A3320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                                            <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="edit-name-controls-container edit-name-controls-containerSingleCity">
+                                    <input class="city-name-tbx city-name-tbxSingleCity" type="text" placeholder="Write new city name">
+                                    <p class="city-name-error-paragraph city-name-error-paragraphSingleCity"></p>
+                                    <div class="city-name-edit-btns-container city-name-edit-btns-containerSingleCity">
+                                        <button class="save-city-name-btn save-city-name-btnSingleCity" data-city-index="SingleCity" data-city-id="${result.id}" onclick="saveNewCityName(this)">Save</button>
+                                        <button class="cancle-city-name-btn cancle-city-name-btnSingleCity" data-city-index="SingleCity" onclick="cancleAddingNewCityName(this)">Cancle</button>
+                                    </div>
+                                </div>
+                                <div class="city-pop-and-city-pop-expand-edit-container">
+                                    <p class="population-paragraphSingleCity">Population: ${result.population}</p>
+                                    <div class="expand-pop-edit-controls-btn-container">
+                                        <svg class="expand-edit-controls-for-pop-btn" data-city-index="SingleCity" onclick="expandEditControlsForCityPop(this)" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                    </div>
+                                </div>
+                                <div class="edit-pop-controls-container edit-pop-controls-containerSingleCity">
+                                    <input class="city-pop-tbx city-pop-tbxSingleCity" type="text" placeholder="Write new population">
+                                    <p class="city-pop-error-paragraph city-pop-error-paragraphSingleCity"></p>
+                                    <div class="city-pop-edit-btns-container city-pop-edit-btns-containerSingleCity">
+                                        <button class="save-city-pop-btn save-city-pop-btnSingleCity" data-city-index="SingleCity" data-city-id="${result.id}" onclick="saveNewCityPop(this)">Save</button>
+                                        <button class="cancle-city-pop-btn cancle-city-pop-btnSingleCity" data-city-index="SingleCity" onclick="cancleAddingNewCityPop(this)">Cancle</button>
+                                    </div>
+                                </div>
                                 <div>
                                     <p>Latitude: ${lat}</p>
                                     <p>Longitude: ${lon}</p>
@@ -317,8 +347,8 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                         <div id="learn-more-wrapper">
                                             <p>Learn more</p>
                                             <div id="expand-btn-container">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/>
-                                            </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/>
+                                                </svg>
                                             </div>
                                         </div>
                                         <div>
@@ -326,7 +356,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                         </div>
                                     </div>
                                     <div class="edit-delete-btn-container">
-                                        <button class="delete-btn" id="delete-btn" data-city-index="singleCity" data-city-id="${result.id}" data-city-name="${result.name}" onclick="removeCity(this)">Delete</button>
+                                        <button class="delete-btn" id="delete-btn" data-city-index="SingleCity" data-city-id="${result.id}" onclick="removeCity(this)">Delete</button>
                                     </div>
                                 </div>
                             </div>
