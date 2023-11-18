@@ -136,7 +136,7 @@ let areNoCbxChecked = true;
 below500Cbx.addEventListener("click", function () {
     //If below500 if checked
     if (below500Cbx.checked) {
-        console.log("below500 is checked");
+
         //Uncheck above500
         above500Cbx.checked = false;
         areNoCbxChecked.checked = false;
@@ -150,7 +150,6 @@ below500Cbx.addEventListener("click", function () {
 above500Cbx.addEventListener("click", function () {
 
     if (above500Cbx.checked) {
-        console.log("above500 is checked")
         below500Cbx.checked = false;
         areNoCbxChecked = false;
     }
