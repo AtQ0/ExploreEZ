@@ -27,6 +27,35 @@ magicBtn.addEventListener("click", function () {
 
 })
 
+/*=====================================*/
+/*======== WEB STORAGE BUTTONS ========*/
+/*=====================================*/
+
+//Select elements from dom
+const firstThemeBtn = document.querySelector(".first-theme-container");
+const secondThemeBtn = document.querySelector(".second-theme-container");
+const backGround = document.querySelector(".top-or-left-intro-container");
+const foreGround = document.querySelector(".top-or-left-intro-wrapper");
+
+firstThemeBtn.addEventListener("click", function () {
+
+    backGround.style.backgroundImage = "url(../Media/Images/background-scrapers2.jpg)";
+
+    foreGround.style.backgroundImage = "url(../Media/Images/foreground_city2.jpg)";
+
+
+});
+
+secondThemeBtn.addEventListener("click", function () {
+
+    backGround.style.backgroundImage = "url(../Media/Images/background-bushes2.jpg)";
+
+    foreGround.style.backgroundImage = "url(../Media/Images/foreground_amalfi2.jpg)";
+
+
+});
+
+
 
 /*====================================*/
 /*===== API CONTENT TOP POSITION =====*/
