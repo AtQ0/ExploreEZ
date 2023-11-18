@@ -37,32 +37,31 @@ let blueThemeBtn = document.querySelector(".second-theme-container");
 let background = document.querySelector(".top-or-left-intro-container");
 let foreground = document.querySelector(".top-or-left-intro-wrapper");
 
-
 greenThemeBtn.addEventListener("click", function () {
     background.style.backgroundImage = "url(./Media/Images/background-bushes2.jpg)";
     foreground.style.backgroundImage = "url(./Media/Images/foreground_amalfi2.jpg)";
 
-    // Set two values in localStorage
-    localStorage.setItem('background', "url(./Media/Images/background-bushes2.jpg)");
-    localStorage.setItem('foreground', "url(./Media/Images/foreground_amalfi2.jpg)");
+    // Set two values in sessionStorage
+    sessionStorage.setItem('background', "url(./Media/Images/background-bushes2.jpg)");
+    sessionStorage.setItem('foreground', "url(./Media/Images/foreground_amalfi2.jpg)");
 });
 
 blueThemeBtn.addEventListener("click", function () {
     background.style.backgroundImage = "url(./Media/Images/background-scrapers2.jpg)";
     foreground.style.backgroundImage = "url(./Media/Images/foreground_city2.jpg)";
 
-    // Set two values in localStorage
-    localStorage.setItem('background', "url(./Media/Images/background-scrapers2.jpg)");
-    localStorage.setItem('foreground', "url(./Media/Images/foreground_city2.jpg)");
+    // Set two values in sessionStorage
+    sessionStorage.setItem('background', "url(./Media/Images/background-scrapers2.jpg)");
+    sessionStorage.setItem('foreground', "url(./Media/Images/foreground_city2.jpg)");
 
 })
 
-//Get localStorage values on pageReload and set latest images
+//Get sessionStorage values on pageReload and set latest images
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Retrieve values from localStorage
-    let storedValue1 = localStorage.getItem('background');
-    let storedValue2 = localStorage.getItem('foreground');
+    // Retrieve values from sessionStorage
+    let storedValue1 = sessionStorage.getItem('background');
+    let storedValue2 = sessionStorage.getItem('foreground');
 
     background.style.backgroundImage = storedValue1;
     foreground.style.backgroundImage = storedValue2;
