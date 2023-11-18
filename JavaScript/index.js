@@ -31,25 +31,41 @@ magicBtn.addEventListener("click", function () {
 /*======== WEB STORAGE BUTTONS ========*/
 /*=====================================*/
 
-//Select elements from the DOM
-const firstThemeBtn = document.querySelector(".first-theme-container");
-const secondThemeBtn = document.querySelector(".second-theme-container");
-const backGround = document.querySelector(".top-or-left-intro-container");
-const foreGround = document.querySelector(".top-or-left-intro-wrapper");
 
+let greenThemeBtn = document.querySelector(".first-theme-container");
+let blueThemeBtn = document.querySelector(".second-theme-container")
+let foreground = document.querySelector(".top-or-left-intro-wrapper");
+let background = document.querySelector(".top-or-left-intro-container");
 
-// Event listeners for theme buttons
-firstThemeBtn.addEventListener("click", function () {
-    backGround.style.backgroundImage = "url(./Media/Images/background-bushes2.jpg)";
-    foreGround.style.backgroundImage = "url(./Media/Images/foreground_amalfi2.jpg)";
+greenThemeBtn.addEventListener("click", function () {
+    background.style.backgroundImage = "url(../Media/Images/background-bushes2.jpg)";
+    foreground.style.backgroundImage = "url(../Media/Images/foreground_amalfi2.jpg)";
+
+    // Set two values in localStorage
+    localStorage.setItem('background1', "url(../Media/Images/background-bushes2.jpg)");
+    localStorage.setItem('foreground1', "url(../Media/Images/foreground_amalfi2.jpg)");
 });
 
-secondThemeBtn.addEventListener("click", function () {
-    backGround.style.backgroundImage = "url(./Media/Images/background-scrapers2.jpg)";
-    foreGround.style.backgroundImage = "url(./Media/Images/foreground_city2.jpg)";
-});
+blueThemeBtn.addEventListener("click", function () {
+    background.style.backgroundImage = "url(../Media/Images/background-scrapers2.jpg)";
+    foreground.style.backgroundImage = "url(../Media/Images/foreground_city2.jpg)";
 
+    // Set two values in localStorage
+    localStorage.setItem('background1', "url(../Media/Images/background-scrapers2.jpg)");
+    localStorage.setItem('foreground1', "url(../Media/Images/foreground_city2.jpg)");
 
+})
+
+//Get localStorage values on pageReload and set latest images
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Retrieve values from localStorage
+    let storedValue1 = localStorage.getItem('background1');
+    let storedValue2 = localStorage.getItem('foreground1');
+
+    background.style.backgroundImage = storedValue1;
+    foreground.style.backgroundImage = storedValue2;
+})
 
 
 
