@@ -479,24 +479,24 @@ addNewCityBtn.addEventListener('click', function () {
         inputForCityPopTbx.classList.remove('error-border');
 
         //Variable containing regex for checking if letters (swe & eng)
-        const regexForSWEandENGLetters = /^[a-zA-ZåäöÅÄÖ]+$/u;
+        const regexForSWEandENGLettersWithSpaces = /^[a-zA-ZåäöÅÄÖ\s]+$/u;
 
         let valueFromCityTbx = inputForCityNameTbx.value;
 
         //If city name input contains anything else but letters, and population is numbers
-        if (!valueFromCityTbx.match(regexForSWEandENGLetters) && isNaN(inputForCityPopTbx.value) === false) {
+        if (!valueFromCityTbx.match(regexForSWEandENGLettersWithSpaces) && isNaN(inputForCityPopTbx.value) === false) {
             inputErrorMessageDiv.innerText = "*City name can only contain letters";
             inputForCityNameTbx.classList.add("error-border");
             inputForCityPopTbx.classList.remove('error-border');
         }
         //If population input contains anything else but numbers, and city name is letters
-        else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForSWEandENGLetters)) {
+        else if (isNaN(inputForCityPopTbx.value) === true && valueFromCityTbx.match(regexForSWEandENGLettersWithSpaces)) {
             inputErrorMessageDiv.innerText = "*Population can only contain numbers";
             inputForCityNameTbx.classList.remove('error-border');
             inputForCityPopTbx.classList.add('error-border')
         }
         //If both city name, and population, inputs are wrong, e.g. city name contains numbers, and population contains letters
-        else if (!valueFromCityTbx.match(regexForSWEandENGLetters) && isNaN(inputForCityPopTbx.value) === true) {
+        else if (!valueFromCityTbx.match(regexForSWEandENGLettersWithSpaces) && isNaN(inputForCityPopTbx.value) === true) {
             inputErrorMessageDiv.innerHTML = "*City name can only contain letters.<br>*Population can only contain numbers.";
             inputForCityNameTbx.classList.add('error-border');
             inputForCityPopTbx.classList.add('error-border');

@@ -165,7 +165,7 @@ nav {
 
 .page-title-container {
     width: 100%;
-    height: 35%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,12 +177,11 @@ nav {
     height: fit-content;
     width: fit-content;
     z-index: 3;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    left: 4%;
+    left: 4vw;
 }
 
 .first-theme-container {
@@ -222,14 +221,11 @@ nav {
     height: fit-content;
     width: fit-content;
     z-index: 3;
-    margin-right: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 2%;
-
-
+    right: 4vw;
 }
 
 .about-container p {
