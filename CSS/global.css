@@ -121,8 +121,8 @@ main {
     /*Or set max-height to 65vh and see what happens*/
     max-height: 460px;
     width: 75%;
-    margin: 15vw;
-    margin-top: 20vw;
+    margin: 20vw;
+    margin-top: 15vw;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -139,7 +139,7 @@ main {
 
 .bottom-or-right-container {
     background-color: #E7B39C;
-    height: fit-content;
+    min-height: 65vh;
     width: 100%;
     z-index: 3;
 }
@@ -156,7 +156,7 @@ main {
 
 nav {
     width: 100%;
-    height: 20vw;
+    height: 15vw;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -164,21 +164,49 @@ nav {
 
 
 .page-title-container {
-    background-color: blue;
-    height: fit-content;
     width: 100%;
+    height: 35%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     position: absolute;
     top: 3vw;
 }
 
-.color-theme-container {
-    background-color: lightblue;
-    height: 30px;
-    width: 80px;
+.theme-container {
+    height: fit-content;
+    width: fit-content;
     z-index: 3;
+    margin-left: 2vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 2%;
+}
+
+.first-theme-container {
+    width: 2.2vw;
+    height: 2.2vw;
+    background-color: blue;
+    border-top-left-radius: 8vw;
+    border-top-right-radius: 8vw;
+    border-bottom-right-radius: 8vw;
+    border-bottom-left-radius: 8vw;
+    cursor: pointer;
+
+
+}
+
+.second-theme-container {
+    width: 2.2vw;
+    height: 2.2vw;
+    background-color: yellow;
+    border-top-left-radius: 8vw;
+    border-top-right-radius: 8vw;
+    border-bottom-right-radius: 8vw;
+    border-bottom-left-radius: 8vw;
+    cursor: pointer;
     margin-left: 2vw;
 }
 
@@ -186,34 +214,37 @@ nav {
     color: white;
     user-select: none;
     font-size: 5vw;
-    background-color: pink;
     height: fit-content;
     z-index: 3;
+    background-color: pink;
 }
 
 .about-container {
-    background-color: green;
-    height: 20px;
+    height: fit-content;
     width: fit-content;
     z-index: 3;
     margin-right: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    right: 2%;
 
 
 }
 
 .about-container p {
-    background-color: red;
     color: white;
+    font-family: TwCen-Medium;
+    font-weight: bolder;
+    font-size: 2.5vw;
 }
 
 
 
 .magic-btn-container {
     width: 100%;
-    height: 20vw;
+    height: 15vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -819,8 +850,6 @@ nav {
         grid-template-rows: 1fr;
     }
 
-
-
     .top-or-left-intro-wrapper {
         flex-grow: 1;
         margin: 5vw;
@@ -829,6 +858,11 @@ nav {
         /* margin-bottom: 7vw; */
         max-height: none;
     }
+
+    .page-title {
+        font-size: 30px;
+    }
+
 
     .forms-wrapper {
         top: 7vw;
