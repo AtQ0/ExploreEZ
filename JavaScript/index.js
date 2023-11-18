@@ -31,7 +31,7 @@ magicBtn.addEventListener("click", function () {
 /*======== WEB STORAGE BUTTONS ========*/
 /*=====================================*/
 
-// // Select elements from the DOM
+//Select elements from the DOM
 const firstThemeBtn = document.querySelector(".first-theme-container");
 const secondThemeBtn = document.querySelector(".second-theme-container");
 const backGround = document.querySelector(".top-or-left-intro-container");
