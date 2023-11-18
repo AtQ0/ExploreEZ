@@ -177,18 +177,18 @@ nav {
     height: fit-content;
     width: fit-content;
     z-index: 3;
-    margin-left: 2vw;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    left: 2%;
+    left: 4%;
 }
 
 .first-theme-container {
     width: 2.2vw;
     height: 2.2vw;
-    background-color: blue;
+    background-color: white;
     border-top-left-radius: 8vw;
     border-top-right-radius: 8vw;
     border-bottom-right-radius: 8vw;
@@ -201,7 +201,7 @@ nav {
 .second-theme-container {
     width: 2.2vw;
     height: 2.2vw;
-    background-color: yellow;
+    background-color: white;
     border-top-left-radius: 8vw;
     border-top-right-radius: 8vw;
     border-bottom-right-radius: 8vw;
@@ -216,7 +216,6 @@ nav {
     font-size: 5vw;
     height: fit-content;
     z-index: 3;
-    background-color: pink;
 }
 
 .about-container {
@@ -839,9 +838,9 @@ nav {
 
     nav {
         height: 7vw;
-
-        background-color: orange;
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     main {
@@ -859,10 +858,41 @@ nav {
         max-height: none;
     }
 
+    .theme-container {
+        margin-left: 0;
+        left: 2vw;
+    }
+
+    .first-theme-container {
+        width: 12px;
+        height: 12px;
+    }
+
+    .second-theme-container {
+        width: 12px;
+        height: 12px;
+        margin-left: 1vw;
+    }
+
+    .page-title-container {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        position: static;
+    }
+
     .page-title {
         font-size: 30px;
     }
 
+    .about-container {
+        right: 2vw;
+        margin-right: 0;
+    }
+
+    .about-container p {
+        font-size: 15px;
+    }
 
     .forms-wrapper {
         top: 7vw;
