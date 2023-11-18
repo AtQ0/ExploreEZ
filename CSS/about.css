@@ -5,15 +5,31 @@
     background-image: none;
 }
 
+
+
+.first-theme-container {
+    background-color: #3A3320;
+}
+
+.second-theme-container {
+    background-color: #3A3320;
+}
+
+.page-title {
+    color: #3A3320;
+
+}
+
+.about-container p {
+    color: #3A3320;
+}
+
+
+
 .top-or-left-intro-wrapper {
     background-image: none;
     display: flex;
     justify-content: center;
-}
-
-.page-header h1 {
-    color: #3A3320;
-    user-select: none;
 }
 
 
