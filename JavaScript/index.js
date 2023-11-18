@@ -104,6 +104,24 @@ let callCitiesOnPageLoad = () => {
 }
 
 
+//Additional dropdown event that regulate read-only for filter checkboxes
+dropDownMenuForSearching.addEventListener("change", function () {
+    let below500Cbx = document.getElementById("below500-cbx");
+    let above500Cbx = document.getElementById("above500-cbx");
+
+    // If user chooses a single city in the dropdown menu
+    if (dropDownMenuForSearching.value !== "") {
+        below500Cbx.checked = false;
+        above500Cbx.checked = false;
+        below500Cbx.disabled = true;
+        above500Cbx.disabled = true;
+    } else {
+        // If user chooses All cities in the dropdown menu
+        below500Cbx.disabled = false;
+        above500Cbx.disabled = false;
+    }
+});
+
 /*============================*/
 /*======== CHECKBOXES ========*/
 /*============================*/
@@ -172,6 +190,10 @@ viewResultsBtn.addEventListener("click", function () {
     //Store chosen value/city from dropdown, in a variable
     chosenCityID = document.getElementById("dropdown-menu-search").value;
 
+    //Set checkboxes as NOT disabled
+    below500Cbx.disabled = false;
+    above500Cbx.disabled = false;
+
     //Send chosen city to method that fetches data for that city
     showCitiesAndElements(chosenCityID);
 })
@@ -190,7 +212,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                 // Clear the existing content by setting stringForCreatingDynamicDivsInApiContentDiv to an empty string
                 stringForCreatingDynamicDivsInApiContentDiv = '';
 
-                // Initialize an array to store promises from getGeoCoordinatesFromCity
+                // Initialize an array to store promises from wikiMedia API
                 const promises = [];
 
                 //For every city (i) in the Cities API
@@ -276,6 +298,7 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                 // Wait for all promises to resolve before updating the DOM
                 Promise.all(promises).then(() => {
                     apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
+
                 });
 
             }
