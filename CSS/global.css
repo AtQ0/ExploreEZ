@@ -90,7 +90,6 @@ body {
 }
 
 main {
-    height: 100vh;
     width: 100%;
     background-color: #E7B39C;
 }
@@ -102,25 +101,20 @@ main {
 /*===================================*/
 
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-}
-
 .top-or-left-intro-container {
     background-color: #ABAFC7;
     width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     position: relative;
     z-index: 1;
     /*z-index set to 1, so that forms-menu-container (z-index = 2) can hover above*/
     font-size: 3.5vw;
 }
+
 
 .top-or-left-intro-wrapper {
     height: 85vw;
@@ -137,6 +131,12 @@ main {
     /*z-index set to 1, so that forms-menu-container (z-index = 2) can hover above*/
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
 .bottom-or-right-container {
     background-color: #E7B39C;
     height: fit-content;
@@ -146,7 +146,6 @@ main {
 
 .bottom-or-right-wrapper {
     height: fit-content;
-    min-height: 55vh;
     margin: 5vw;
     margin-top: 0vw;
     z-index: 3;
@@ -155,18 +154,62 @@ main {
 
 /*===== TOP OR LEFT INTRO DETAILED =====*/
 
-.page-header {
-    height: fit-content;
-    width: fit-content;
+nav {
+    width: 100%;
+    height: 20vw;
     position: absolute;
-    top: 2vw;
+    display: flex;
+    justify-content: center;
+}
+
+
+.page-title-container {
+    background-color: blue;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 3vw;
+}
+
+.color-theme-container {
+    background-color: lightblue;
+    height: 30px;
+    width: 80px;
+    z-index: 3;
+    margin-left: 2vw;
+}
+
+.page-title {
+    color: white;
+    user-select: none;
+    font-size: 5vw;
+    background-color: pink;
+    height: fit-content;
     z-index: 3;
 }
 
-.page-header h1 {
-    color: white;
-    user-select: none;
+.about-container {
+    background-color: green;
+    height: 20px;
+    width: fit-content;
+    z-index: 3;
+    margin-right: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
 }
+
+.about-container p {
+    background-color: red;
+    color: white;
+}
+
+
 
 .magic-btn-container {
     width: 100%;
@@ -671,7 +714,6 @@ main {
 #learn-more-wrapper {
     display: flex;
     width: fit-content;
-    cursor: pointer;
 }
 
 #expand-btn-container {
@@ -753,11 +795,6 @@ main {
 
 @media screen and (min-width: 769px) {
 
-    main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-    }
 
     .top-or-left-intro-container {
         grid-column: 1/2;
@@ -768,6 +805,21 @@ main {
         left: 0;
         font-size: 20px;
     }
+
+    nav {
+        height: 7vw;
+
+        background-color: orange;
+
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+
 
     .top-or-left-intro-wrapper {
         flex-grow: 1;

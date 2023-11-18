@@ -751,6 +751,7 @@ function saveNewCityName(objectInput) {
     //Store values from the data-attribute, inside of incoming object
     const cityIndex = objectInput.dataset.cityIndex;
     const cityId = objectInput.dataset.cityId;
+    console.log("THIS IS IT:" + cityId)
 
     //Select elements from DOM
     let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
@@ -806,6 +807,10 @@ function saveNewCityName(objectInput) {
 
                 //update dropdown
                 callCitiesOnPageLoad();
+
+                //Call showCitiesAndElements() to update results that are viewed
+                // showCitiesAndElements(chosenCityID);
+                //Or just make a fetch right here and populate lat, lon and description
 
             });
     }

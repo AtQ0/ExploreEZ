@@ -4,106 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelEZ</title>
+    <title>ExploreEZ</title>
     <link rel="stylesheet" href="./CSS/global.css">
 </head>
 
 <body>
-    <header>
+    <header class="top-or-left-intro-container">
+
         <nav>
+            <div class="page-title-container">
+
+
+                <div class="color-theme-container">
+
+                </div>
+                <h1 class="page-title"><a href="./index.html">ExploreEZ</a></h1>
+
+                <div class="about-container">
+                    <p><a href="./about.html">ABOUT ME</a></p>
+                </div>
+
+
+
+            </div>
         </nav>
+
+        <!--used for setting foregroundimage, see CSS-file-->
+        <div id="top-or-left-intro-wrapper" class="top-or-left-intro-wrapper">
+        </div>
+
+        <div class="magic-btn-container">
+            <div class="magic-btn-wrapper" id="magic-btn-wrapper">
+                <div class="magic-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white">
+                        <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="forms-menu-container" id="forms-menu-container">
+
+            <div class="forms-wrapper">
+                <div class="app-description">
+                    <p>
+                        Search for cities and explore information about them. Also, If your city is missing add a
+                        new
+                        city to the
+                        list and/or alter existing cities.
+                    </p>
+                </div>
+
+                <div class="search-city-container">
+                    <div class="dropdown-container-for-search">
+                        <label for="">Select City</label>
+                        <select name="dropdown-menu-search" id="dropdown-menu-search">
+
+
+
+                        </select>
+                    </div>
+                    <div class="filter-container-for-search">
+                        <label for="">Filter cities based on population</label>
+                        <div class="filter-container">
+
+                            <div class="filter-below">
+                                <p>Below 500k</p>
+                                <input id="below500-cbx" type="checkbox">
+                            </div>
+                            <div class="filter-above">
+                                <p>Above 500k</p>
+                                <input id="above500-cbx" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-container-for-search">
+                        <button id="view-results-btn">View</button>
+                    </div>
+                </div>
+
+                <div class="add-city-container">
+                    <div class="input_container">
+                        <label for="">Add City</label>
+                        <div class="city-name-input-tbx-container">
+                            <input id="input-for-city-tbx" type="text" placeholder="Write new city name">
+                        </div>
+                        <div class="population-input-tbx-container">
+                            <input id="input-for-pop-tbx" type="text" placeholder="Write city population">
+                        </div>
+                    </div>
+                    <div class="input-error-container">
+                        <p id="error-message">
+
+                        </p>
+                    </div>
+                    <div class="btn-container-for-adding">
+                        <button id="add-new-city-btn">Add</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
     </header>
 
     <main>
 
-        <section class="top-or-left-intro-container">
 
-            <div class="page-header">
-                <h1><a href="./index.html">TravelEZ</a></h1>
-            </div>
-
-            <!--used for setting foregroundimage, see CSS-file-->
-            <div id="top-or-left-intro-wrapper" class="top-or-left-intro-wrapper">
-            </div>
-
-            <div class="magic-btn-container">
-                <div class="magic-btn-wrapper" id="magic-btn-wrapper">
-                    <div class="magic-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white">
-                            <path
-                                d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="forms-menu-container" id="forms-menu-container">
-
-                <div class="forms-wrapper">
-                    <div class="app-description">
-                        <p>
-                            Search for cities and explore information about them. Also, If your city is missing add a
-                            new
-                            city to the
-                            list and/or alter existing cities.
-                        </p>
-                    </div>
-
-                    <div class="search-city-container">
-                        <div class="dropdown-container-for-search">
-                            <label for="">Select City</label>
-                            <select name="dropdown-menu-search" id="dropdown-menu-search">
-
-
-
-                            </select>
-                        </div>
-                        <div class="filter-container-for-search">
-                            <label for="">Filter cities based on population</label>
-                            <div class="filter-container">
-
-                                <div class="filter-below">
-                                    <p>Below 500k</p>
-                                    <input id="below500-cbx" type="checkbox">
-                                </div>
-                                <div class="filter-above">
-                                    <p>Above 500k</p>
-                                    <input id="above500-cbx" type="checkbox">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="btn-container-for-search">
-                            <button id="view-results-btn">View</button>
-                        </div>
-                    </div>
-
-                    <div class="add-city-container">
-                        <div class="input_container">
-                            <label for="">Add City</label>
-                            <div class="city-name-input-tbx-container">
-                                <input id="input-for-city-tbx" type="text" placeholder="Write new city name">
-                            </div>
-                            <div class="population-input-tbx-container">
-                                <input id="input-for-pop-tbx" type="text" placeholder="Write city population">
-                            </div>
-                        </div>
-                        <div class="input-error-container">
-                            <p id="error-message">
-
-                            </p>
-                        </div>
-                        <div class="btn-container-for-adding">
-                            <button id="add-new-city-btn">Add</button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
 
         <section class="bottom-or-right-container">
 
@@ -213,9 +222,7 @@
     </main>
 
     <footer>
-        <div class="about-me-container">
-            <p><a href="./about.html">ABOUT ME</a></p>
-        </div>
+
     </footer>
 
     <script src="./JavaScript/index.js"></script>
