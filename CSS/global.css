@@ -117,9 +117,9 @@ main {
 
 
 .top-or-left-intro-wrapper {
-    height: 85vw;
+    height: 98vw;
     /*Or set max-height to 65vh and see what happens*/
-    max-height: 460px;
+    max-height: 540px;
     width: 75%;
     margin: 20vw;
     margin-top: 15vw;
