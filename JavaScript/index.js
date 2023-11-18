@@ -33,26 +33,27 @@ magicBtn.addEventListener("click", function () {
 
 
 let greenThemeBtn = document.querySelector(".first-theme-container");
-let blueThemeBtn = document.querySelector(".second-theme-container")
-let foreground = document.querySelector(".top-or-left-intro-wrapper");
+let blueThemeBtn = document.querySelector(".second-theme-container");
 let background = document.querySelector(".top-or-left-intro-container");
+let foreground = document.querySelector(".top-or-left-intro-wrapper");
+
 
 greenThemeBtn.addEventListener("click", function () {
-    background.style.backgroundImage = "url(../Media/Images/background-bushes2.jpg)";
-    foreground.style.backgroundImage = "url(../Media/Images/foreground_amalfi2.jpg)";
+    background.style.backgroundImage = "url(./Media/Images/background-bushes2.jpg)";
+    foreground.style.backgroundImage = "url(./Media/Images/foreground_amalfi2.jpg)";
 
     // Set two values in localStorage
-    localStorage.setItem('background1', "url(../Media/Images/background-bushes2.jpg)");
-    localStorage.setItem('foreground1', "url(../Media/Images/foreground_amalfi2.jpg)");
+    localStorage.setItem('background', "url(./Media/Images/background-bushes2.jpg)");
+    localStorage.setItem('foreground', "url(./Media/Images/foreground_amalfi2.jpg)");
 });
 
 blueThemeBtn.addEventListener("click", function () {
-    background.style.backgroundImage = "url(../Media/Images/background-scrapers2.jpg)";
-    foreground.style.backgroundImage = "url(../Media/Images/foreground_city2.jpg)";
+    background.style.backgroundImage = "url(./Media/Images/background-scrapers2.jpg)";
+    foreground.style.backgroundImage = "url(./Media/Images/foreground_city2.jpg)";
 
     // Set two values in localStorage
-    localStorage.setItem('background1', "url(../Media/Images/background-scrapers2.jpg)");
-    localStorage.setItem('foreground1', "url(../Media/Images/foreground_city2.jpg)");
+    localStorage.setItem('background', "url(./Media/Images/background-scrapers2.jpg)");
+    localStorage.setItem('foreground', "url(./Media/Images/foreground_city2.jpg)");
 
 })
 
@@ -60,8 +61,8 @@ blueThemeBtn.addEventListener("click", function () {
 document.addEventListener("DOMContentLoaded", function () {
 
     // Retrieve values from localStorage
-    let storedValue1 = localStorage.getItem('background1');
-    let storedValue2 = localStorage.getItem('foreground1');
+    let storedValue1 = localStorage.getItem('background');
+    let storedValue2 = localStorage.getItem('foreground');
 
     background.style.backgroundImage = storedValue1;
     foreground.style.backgroundImage = storedValue2;
