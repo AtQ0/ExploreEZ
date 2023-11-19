@@ -255,6 +255,9 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                 // Initialize an array to store promises from wikiMedia API
                 const promises = [];
 
+                //Initliazie an array (storing objects) used for chartJS
+                const chartJsArray = [{}];
+
                 //For every city (i) in the Cities API
                 for (let i = 0; i < result.length; i++) {
 
@@ -329,15 +332,26 @@ let showCitiesAndElements = (chosenCityIdInput) => {
                                 </div>
                             `;
 
+                            //Populate chartJS array with objects, containing values
+                            chartJsArray[i] = {
+                                cityName: result[i].name,
+                                cityPop: result[i].population
+                            };
+
                         });
 
-                    //Store every promise inside of all promises arrayp
+                    //Store every promise inside of all promises array
                     promises.push(promiseForCitySummary);
                 }
 
                 // Wait for all promises to resolve before updating the DOM
                 Promise.all(promises).then(() => {
+
+                    //Updated html with dynamic divs first after all promises are done
                     apiContentDiv.innerHTML = stringForCreatingDynamicDivsInApiContentDiv;
+
+                    //Send chartJsArray to chartJs function to plot the values
+                    creatChart(chartJsArray);
 
                 });
 
@@ -942,6 +956,17 @@ function saveNewCityPop(objectInput) {
 <canvas id="myChart"></canvas>
 </div>
 */
+
+
+function creatChart(objectInput) {
+
+    let arrayForChart = objectInput;
+
+    console.log("YEEESSS: " + arrayForChart);
+    console.log(arrayForChart[0]);
+};
+
+
 
 
 //Script needed to initialize chart library
