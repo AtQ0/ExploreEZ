@@ -182,8 +182,8 @@ below500Cbx.addEventListener("click", function () {
         above500Cbx.checked = false;
         areNoCbxChecked.checked = false;
     }
+    //Both checkboxes are unchecked
     else if (!above500Cbx.checked && !below500Cbx.checked) {
-        console.log("both checkboxes are unchecked")
         areNoCbxChecked.checked = true;
     }
 });
@@ -195,7 +195,6 @@ above500Cbx.addEventListener("click", function () {
         areNoCbxChecked = false;
     }
     else if (!above500Cbx.checked && !below500Cbx.checked) {
-        console.log("both checkboxes are unchecked")
         areNoCbxChecked.checked = true;
     }
 });
@@ -358,6 +357,11 @@ let showCitiesAndElements = (chosenCityIdInput) => {
             }
             //If a specific city is chosen in the dropdown menu
             else {
+
+                //Delete dynamic chart-js header and cointainer from html
+                let chartContainer = document.querySelector(".chart-container");
+                chartContainer.innerHTML = "";
+
                 // Handle the case when a single city is selected
                 const city = result; // Single city object
 
@@ -629,9 +633,6 @@ function removeCity(objectInput) {
         //Select the dynamic element from DOM
         const dynamicDiv = document.querySelector(".every-city-container-singleCity");
 
-
-        console.log("this is your city id: " + cityId);
-
         //Remove city from CITIES server
         fetch('https://avancera.app/cities/' + cityId, {
             method: 'DELETE'
@@ -721,9 +722,6 @@ function expandEditControlsForCityPop(objectInput) {
     //Store values from the data-attribute, inside of incoming object
     const cityIndex = objectInput.dataset.cityIndex;
 
-
-    console.log(cityIndex);
-
     //Select element from the DOM
     let editPopControlsDiv = document.querySelector(".edit-pop-controls-container" + cityIndex);
     let cityPopTbx = document.querySelector(".city-pop-tbx" + cityIndex);
@@ -806,7 +804,6 @@ function saveNewCityName(objectInput) {
     //Store values from the data-attribute, inside of incoming object
     const cityIndex = objectInput.dataset.cityIndex;
     const cityId = objectInput.dataset.cityId;
-    console.log("THIS IS IT:" + cityId)
 
     //Select elements from DOM
     let cityNameTbx = document.querySelector(".city-name-tbx" + cityIndex);
@@ -949,45 +946,69 @@ function saveNewCityPop(objectInput) {
 /*======================================*/
 
 
-//Have a method here that is called from all cities fetch. the all cities fetch should send all promises array to this metod. This method should then, aslo, store the below initializing script for chartJs, and populate that script with the values from the promises array that is sent in. and then simply, still inside of this method set innerHtml, of chart-container (see html file) to contain the following:
-
-/*
-<div>
-<canvas id="myChart"></canvas>
-</div>
-*/
-
+//Initilizie chart globally to enable destroying it (needed for updating the chart) on every call of creatChart
+let myCityChartInstance;
 
 function creatChart(objectInput) {
 
-    let arrayForChart = objectInput;
+    let chartObjectArray = objectInput;
 
-    console.log("YEEESSS: " + arrayForChart);
-    console.log(arrayForChart[0]);
-};
+    // Destroy the existing chart if it exists, so that it refreshes
+    if (myCityChartInstance) {
+        myCityChartInstance.destroy();
+    }
+
+    //Create arrays to be used for labels and data keys in chartjs script code
+    let inputCityNameArray = [];
+    let inputCityPopArray = [];
+
+    //extract data from chartObjectArray and portion it out
+    for (let i = 0; i < chartObjectArray.length; i++) {
+
+        inputCityNameArray[i] = chartObjectArray[i].cityName;
+        inputCityPopArray[i] = chartObjectArray[i].cityPop;
+    };
+
+    console.log(inputCityNameArray);
+    console.log(inputCityPopArray);
 
 
 
+    //Create dynamic header and container for chart js
+    let stringForCreatingDynamiHeader = `
+        <h2>SUMMARY</h2>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    `;
 
-//Script needed to initialize chart library
+    //Add dynamic chart header and cointainer to html
+    let chartContainer = document.querySelector(".chart-container");
+    chartContainer.innerHTML = stringForCreatingDynamiHeader;
 
-const ctx = document.getElementById('myChart');
+    //ChartJs-specific script, used for manipulation of the chart shown in html
+    const ctx = document.getElementById('myChart');
 
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+    myCityChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: inputCityNameArray,
+            datasets: [{
+                label: '# of inhabitants',
+                data: inputCityPopArray,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
+
+
+
+
+};
