@@ -858,8 +858,6 @@ function saveNewCityName(objectInput) {
 }
 
 
-
-
 //Save new city population
 function saveNewCityPop(objectInput) {
 
@@ -930,3 +928,41 @@ function saveNewCityPop(objectInput) {
     }
 
 }
+
+
+/*======================================*/
+/*============== CHART JS ==============*/
+/*======================================*/
+
+
+//Have a method here that is called from all cities fetch. the all cities fetch should send all promises array to this metod. This method should then, aslo, store the below initializing script for chartJs, and populate that script with the values from the promises array that is sent in. and then simply, still inside of this method set innerHtml, of chart-container (see html file) to contain the following:
+
+/*
+<div>
+<canvas id="myChart"></canvas>
+</div>
+*/
+
+
+//Script needed to initialize chart library
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
