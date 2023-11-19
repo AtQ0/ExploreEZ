@@ -1,0 +1,10 @@
+ExploreEZ is a website that provides the user of information about cities.
+
+The user can add search for cities and read info about them. The user can also add new cities, as well as
+alter and delete existing.
+
+The information on the website is gathered from different API's.
+
+The primary API´s that are used is the Cities API from Avancera.app and WikiMedia API, as well as the GitHub API.
+
+In the future the developer might add additional API´s

@@ -17,7 +17,15 @@ homeBtn.addEventListener("click", () => {
 /*=====================================*/
 
 // Select elements from the DOM
-const firstThemeBtn = document.querySelector(".first-theme-container");
-const secondThemeBtn = document.querySelector(".second-theme-container");
-const backGround = document.querySelector(".top-or-left-intro-container");
-const foreGround = document.querySelector(".top-or-left-intro-wrapper");
+const blueBrownThemeBtn = document.querySelector(".first-theme-container");
+const martiniqueSeaPinkThemeBtn = document.querySelector(".second-theme-container");
+
+blueBrownThemeBtn.addEventListener("click", function () {
+
+    alert("yaaay")
+});
+
+martiniqueSeaPinkThemeBtn.addEventListener("click", function () {
+
+    alert("yaay")
+});
