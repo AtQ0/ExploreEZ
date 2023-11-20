@@ -41,7 +41,7 @@ greenThemeBtn.addEventListener("click", function () {
     background.style.backgroundImage = "url(./Media/Images/background-bushes2.jpg)";
     foreground.style.backgroundImage = "url(./Media/Images/foreground_amalfi2.jpg)";
 
-    // Set two values in sessionStorage
+    //Set two values in sessionStorage
     sessionStorage.setItem('background', "url(./Media/Images/background-bushes2.jpg)");
     sessionStorage.setItem('foreground', "url(./Media/Images/foreground_amalfi2.jpg)");
 });
@@ -50,7 +50,7 @@ blueThemeBtn.addEventListener("click", function () {
     background.style.backgroundImage = "url(./Media/Images/background-scrapers2.jpg)";
     foreground.style.backgroundImage = "url(./Media/Images/foreground_city2.jpg)";
 
-    // Set two values in sessionStorage
+    //Set two values in sessionStorage
     sessionStorage.setItem('background', "url(./Media/Images/background-scrapers2.jpg)");
     sessionStorage.setItem('foreground', "url(./Media/Images/foreground_city2.jpg)");
 

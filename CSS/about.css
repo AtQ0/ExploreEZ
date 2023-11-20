@@ -1,11 +1,10 @@
 /*=======================================*/
 /*=== IMAGE & MENU CONTAINER DETAILED ===*/
 /*=======================================*/
+
 .top-or-left-intro-container {
     background-image: none;
 }
-
-
 
 .first-theme-container {
     background-color: #3A3320;
@@ -23,8 +22,6 @@
 .about-container p {
     color: #3A3320;
 }
-
-
 
 .top-or-left-intro-wrapper {
     background-image: none;
@@ -58,5 +55,6 @@
         width: 28vw;
         height: 26vw;
     }
+
 
 }
