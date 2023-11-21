@@ -106,3 +106,38 @@ document.addEventListener("DOMContentLoaded", function () {
     body.style.background = desertSandOrSeaPink;
 
 });
+
+
+/*====================================*/
+/*===== API CONTENT TOP POSITION =====*/
+/*====================================*/
+
+
+
+//RESIZE EVENT CALLS A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
+window.onresize = function () {
+    updateTopOfDiv();
+}
+
+function updateTopOfDiv() {
+    const container = document.querySelector(".punchline-container");
+    const apiContentDiv = document.getElementById("api-content");
+
+    //Call BoundingClientRect function for container and store it in variable rect
+    const rect = container.getBoundingClientRect();
+
+    //Get distance from top of viewport to bottom of rect
+    let topPosY = rect.bottom;
+
+    //If above 769vw, ensure apiContentDiv has a top which is punchlines bottom
+    if (document.documentElement.clientWidth >= 769) {
+        // apiContentDiv.style.marginTop = `${topPosY}px`;
+        apiContentDiv.style.paddingTop = `${topPosY}px`;
+    }
+    //If beneath 769vw let apiContentDiv have its top as 0
+    else {
+        // apiContentDiv.style.marginTop = `0px`;
+        apiContentDiv.style.paddingTop = `0px`;
+    }
+
+}
