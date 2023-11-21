@@ -145,7 +145,7 @@ let callCitiesOnPageLoad = () => {
 }
 
 
-//Additional dropdown event that regulate read-only for filter checkboxes
+//Additional dropdown event that regulates read-only (disabled) for filter checkboxes
 dropDownMenuForSearching.addEventListener("change", function () {
     let below500Cbx = document.getElementById("below500-cbx");
     let above500Cbx = document.getElementById("above500-cbx");
