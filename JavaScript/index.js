@@ -744,8 +744,7 @@ function expandEditControlsForCityPop(objectInput) {
 
     }
 
-}
-
+};
 
 /*===== CANCLE ADDING INFO ======*/
 
