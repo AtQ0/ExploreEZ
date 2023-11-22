@@ -921,41 +921,54 @@ function saveNewCityPop(objectInput) {
         errorMessageParagraph.innerHTML = "";
 
         //Set value from textbox to variable
-        let inputNewName = convertedPopulationToNumber;
+        let inputNewPop = convertedPopulationToNumber;
 
-        //Create object that is to be sent to server
-        let newObject = {
-            "population": inputNewName
-        };
+        if (isNaN(inputNewPop)) {
 
-        //Convert object to JSON
-        let inputForBody = JSON.stringify(newObject);
+            cityPopTbx.classList.add('error-border');
+            errorMessageParagraph.innerHTML = '*Population can only contain numbers.';
+        }
+        else {
 
-        //Change population
-        fetch('https://avancera.app/cities/' + cityId, {
-            body: inputForBody,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            //Set method to PATCH
-            method: 'PATCH'
-        })
-            .then(response => response.json())
-            .then(result => {
+            //Clear error message and red border
+            cityPopTbx.classList.remove('error-border');
+            errorMessageParagraph.innerHTML = "";
 
-                //Populate new City Name into the H2 element
-                paragraphDivForCityPop.innerHTML = "Population: " + inputNewName;
+            //Create object that is to be sent to server
+            let newObject = {
+                "population": inputNewPop
+            };
 
-                //Clear city name input textbox
-                cityPopTbx.value = "";
+            //Convert object to JSON
+            let inputForBody = JSON.stringify(newObject);
 
-                //Stop displaying edit city name controlls
-                editPopControlsDiv.style.display = "none";
+            //Change population
+            fetch('https://avancera.app/cities/' + cityId, {
+                body: inputForBody,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                //Set method to PATCH
+                method: 'PATCH'
+            })
+                .then(response => response.json())
+                .then(result => {
 
-                //update dropdown
-                callCitiesOnPageLoad();
+                    //Populate new City Name into the H2 element
+                    paragraphDivForCityPop.innerHTML = "Population: " + inputNewPop;
 
-            });
+                    //Clear city name input textbox
+                    cityPopTbx.value = "";
+
+                    //Stop displaying edit city name controlls
+                    editPopControlsDiv.style.display = "none";
+
+                    //update dropdown
+                    callCitiesOnPageLoad();
+
+                });
+
+        }
 
     }
 
