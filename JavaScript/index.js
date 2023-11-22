@@ -824,47 +824,68 @@ function saveNewCityName(objectInput) {
         cityNameTbx.classList.remove("error-border");
         errorMessageParagraph.innerHTML = "";
 
+        //Variable containing regex for checking if letters (swe & eng)
+        const regexForSWEandENGLettersWithSpaces = /^[a-zA-ZåäöÅÄÖ\s]+$/u;
 
         //Set value from textbox to variable
         let inputNewName = cityNameTbx.value;
 
-        //Create object that is to be sent to server
-        let newObject = {
-            "name": inputNewName
-        };
+        //If input value is not letters (e.g it is a number)
+        if (!inputNewName.match(regexForSWEandENGLettersWithSpaces) || isNaN(inputNewName) === false) {
 
-        //Convert object to JSON
-        let inputForBody = JSON.stringify(newObject);
+            //Generate error message with red circle
+            cityNameTbx.classList.add('error-border');
+            errorMessageParagraph.innerHTML = '*City name can only contain letters.';
 
-        //Change city
-        fetch('https://avancera.app/cities/' + cityId, {
-            body: inputForBody,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            //Set method to PATCH
-            method: 'PATCH'
-        })
-            .then(response => response.json())
-            .then(result => {
+        }
+        //If input value is a legit name with letters and space
+        else {
 
-                //Populate new City Name into the H2 element
-                h2DivForCityName.innerHTML = inputNewName;
+            //Clear error message and red border
+            errorMessageParagraph.innerHTML = '';
+            cityNameTbx.classList.remove('error-border');
 
-                //Clear city name input textbox
-                cityNameTbx.value = "";
+            //Create object that is to be sent to server
+            let newObject = {
+                "name": inputNewName
+            };
 
-                //Stop displaying edit city name controlls
-                editNameControlsDiv.style.display = "none";
+            //Convert object to JSON
+            let inputForBody = JSON.stringify(newObject);
 
-                //update dropdown
-                callCitiesOnPageLoad();
+            //Change city
+            fetch('https://avancera.app/cities/' + cityId, {
+                body: inputForBody,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                //Set method to PATCH
+                method: 'PATCH'
+            })
+                .then(response => response.json())
+                .then(result => {
 
-                //Call showCitiesAndElements() to update results that are viewed
-                // showCitiesAndElements(chosenCityID);
-                //Or just make a fetch right here and populate lat, lon and description
+                    //Populate new City Name into the H2 element
+                    h2DivForCityName.innerHTML = inputNewName;
 
-            });
+                    //Clear city name input textbox
+                    cityNameTbx.value = "";
+
+                    //Stop displaying edit city name controlls
+                    editNameControlsDiv.style.display = "none";
+
+                    //update dropdown
+                    callCitiesOnPageLoad();
+
+                    //Call showCitiesAndElements() to update results that are viewed
+                    // showCitiesAndElements(chosenCityID);
+                    //Or just make a fetch right here and populate lat, lon and description
+
+                });
+
+        }
+
+
     }
 }
 
