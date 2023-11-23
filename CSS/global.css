@@ -928,12 +928,16 @@ nav {
 
     .magic-btn-container {
         width: 100%;
-        height: 20vw;
+        height: 7vw;
+        min-height: 58px;
         display: flex;
         justify-content: center;
         align-items: center;
         /* position: absolute;
         bottom: 0; */
+        /* background-color: orange; */
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
     }
 
     .magic-btn {
