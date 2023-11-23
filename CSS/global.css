@@ -839,9 +839,10 @@ nav {
     }
 
     main {
-        display: grid;
+        display: flex;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
+        background-color: pink;
     }
 
     .top-or-left-intro-wrapper {
@@ -950,18 +951,40 @@ nav {
     /*==== BOTTOM RIGHT ====*/
 
     .bottom-or-right-container {
-        grid-column: 2/3;
+        width: 50%;
+        align-self: flex-end;
     }
 
     .bottom-or-right-wrapper {
+        width: 100%;
         margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .punchline-container {
         background-color: #E7B39C;
         position: fixed;
-        width: 41%;
+        width: 40%;
         padding-top: 7vw;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .api-content {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .chart-container {
+        background-color: pink;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #myChart {
+        background-color: orange;
+
     }
 
 
