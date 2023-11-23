@@ -936,8 +936,10 @@ nav {
         /* position: absolute;
         bottom: 0; */
         /* background-color: orange; */
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
+
+        /*CHANGE THESE TO AFTER OWN CHOICE*/
+        padding-top: 1.7vw;
+        padding-bottom: 1.7vw;
     }
 
     .magic-btn {

@@ -113,6 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
 /*====================================*/
 
 
+//ON PAGE LOAD CALL A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
+window.addEventListener("DOMContentLoaded", function () {
+    updateTopOfDiv();
+});
 
 //RESIZE EVENT CALLS A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
 window.onresize = function () {

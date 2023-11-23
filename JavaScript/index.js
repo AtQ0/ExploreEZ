@@ -498,6 +498,19 @@ function getCitySummary(cityNameInput) {
 
 }
 
+//ON PAGE LOAD CALL A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
+window.addEventListener("DOMContentLoaded", function () {
+
+    //Store chosen value/city from dropdown, in a variable
+    let chosenCityIdOnPageLoad = document.getElementById("dropdown-menu-search").value;
+
+    //Update height for Api-content already on page load
+    updateTopOfDiv();
+
+    //Populate api-content with citites from server, on page load
+    showCitiesAndElements(chosenCityIdOnPageLoad);
+});
+
 
 /*===============================*/
 /*=========== ADD CITY ==========*/
