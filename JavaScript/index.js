@@ -1037,11 +1037,12 @@ function creatChart(objectInput) {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            //Set to true to enable dynamic resizing
+            responsive: true,
+            // Set to false to allow the chart to adjust to the container size
+            maintainAspectRatio: false
+
         }
     });
-
-
-
-
 };
