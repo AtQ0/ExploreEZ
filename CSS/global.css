@@ -971,20 +971,20 @@ nav {
     .punchline-container {
         background-color: #E7B39C;
         position: fixed;
-        width: 40%;
+        width: 37.5%;
         padding-top: 7vw;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 6.25%;
+        padding-right: 6.25%;
     }
 
     .api-content {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
     }
 
     .chart-container {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
     }
 
     #myChart {

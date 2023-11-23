@@ -115,7 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //ON PAGE LOAD CALL A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT
 window.addEventListener("DOMContentLoaded", function () {
+
+    //Update height for Api-content already on page load
     updateTopOfDiv();
+
+    //Scroll page to top on every btn click
+    window.scrollTo(0, 0);
 });
 
 //RESIZE EVENT CALLS A METHOD WHICH UPDATES HEIGHT FOR API-CONTENT

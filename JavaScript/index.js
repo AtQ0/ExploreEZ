@@ -507,6 +507,9 @@ window.addEventListener("DOMContentLoaded", function () {
     //Update height for Api-content already on page load
     updateTopOfDiv();
 
+    //Scroll page to top on every btn click
+    window.scrollTo(0, 0);
+
     //Populate api-content with citites from server, on page load
     showCitiesAndElements(chosenCityIdOnPageLoad);
 });
