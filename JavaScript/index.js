@@ -7,6 +7,7 @@
 //SELECT ELEMENTS FROM DOM
 const magicBtn = document.getElementById("magic-btn-wrapper");
 const formsMenu = document.getElementById("forms-menu-container");
+const themeContainerBtns = document.querySelectorAll(".theme-btns");
 
 //Boolean to regulate if forms-menu is visible or not
 let isFormsMenuVisible = false;
@@ -18,11 +19,27 @@ magicBtn.addEventListener("click", function () {
         formsMenu.classList.remove("class-for-sliding-forms-menu-container-down");
         formsMenu.classList.add("class-for-sliding-forms-menu-container-up");
         isFormsMenuVisible = true;
+
+        //ForEach used to list through queryAll node list
+        themeContainerBtns.forEach(function (btn) {
+            //Disable the link and user pointer
+            btn.style.cursor = "default";
+            btn.style.pointerEvents = "none"
+        });
+
     }
     else {
         formsMenu.classList.remove("class-for-sliding-forms-menu-container-up");
         formsMenu.classList.add("class-for-sliding-forms-menu-container-down");
         isFormsMenuVisible = false;
+
+        //ForEach used to list through queryAll node list
+        themeContainerBtns.forEach(function (btn) {
+            //Enable the link and user pointer
+            btn.style.cursor = "pointer";
+            btn.style.pointerEvents = "auto";
+        });
+
     }
 
 })
