@@ -29,6 +29,8 @@ const punchlineContainer = document.querySelector(".punchline-container");
 const punchline = document.getElementById("punchline-svg");
 const content = document.querySelector(".bottom-or-right-container");
 const body = document.querySelector("body");
+const leftLinkLine = document.querySelector(".left-line");
+const rightLinkLine = document.querySelector(".right-line");
 
 
 blueBrownThemeBtn.addEventListener("click", function () {
@@ -47,6 +49,10 @@ blueBrownThemeBtn.addEventListener("click", function () {
     punchlineContainer.style.background = "#E7B39C";
     body.style.color = "#3A3320";
     body.style.background = "#E7B39C";
+    leftLinkLine.style.background = "#3A3320";
+    rightLinkLine.style.background = "#3A3320";
+
+
 
     //Set the three color values in sessionStorage
     sessionStorage.setItem('blueOrMartinique', "#ABAFC7");
@@ -72,6 +78,9 @@ martiniqueSeaPinkThemeBtn.addEventListener("click", function () {
     punchlineContainer.style.background = "#EE9391";
     body.style.color = "#2E3049";
     body.style.background = "#EE9391";
+    leftLinkLine.style.background = "#EE9391";
+    rightLinkLine.style.background = "#EE9391";
+
 
     //Set "two" values in sessionStorage
     sessionStorage.setItem('blueOrMartinique', "#2E3049");
@@ -104,6 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
     punchlineContainer.style.background = desertSandOrSeaPink;
     body.style.color = brownOrMartinique;
     body.style.background = desertSandOrSeaPink;
+    leftLinkLine.style.background = brownOrSeakPink;
+    rightLinkLine.style.background = brownOrSeakPink;
 
 });
 

@@ -23,6 +23,15 @@
     color: #3A3320;
 }
 
+.left-line {
+    background-color: #3A3320;
+}
+
+
+.right-line {
+    background-color: #3A3320;
+}
+
 .top-or-left-intro-wrapper {
     background-image: none;
     display: flex;

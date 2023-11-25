@@ -222,10 +222,12 @@ nav {
     width: fit-content;
     z-index: 3;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     right: 4vw;
+    overflow: hidden;
 }
 
 .about-container p {
@@ -235,7 +237,32 @@ nav {
     font-size: 2.5vw;
 }
 
+.moving-line-container {
+    height: 0.25vw;
+    width: 300%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    transition: transform 0.5s;
+}
 
+.left-line {
+    height: 100%;
+    width: 33.33%;
+    background-color: white;
+}
+
+
+.right-line {
+    height: 100%;
+    width: 33.33%;
+    background-color: white;
+}
+
+/*ANIMATION for line*/
+.about-container:hover .moving-line-container {
+    transform: translateX(66.66%);
+}
 
 .magic-btn-container {
     width: 100%;
@@ -888,6 +915,10 @@ nav {
 
     .about-container p {
         font-size: 15px;
+    }
+
+    .moving-line-container {
+        height: 1.5px;
     }
 
     .forms-wrapper {
