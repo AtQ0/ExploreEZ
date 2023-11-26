@@ -89,7 +89,7 @@
 
 .api-content a {
     text-decoration: underline solid Currentcolor;
-    transition: text-decoration 0.5s;
+    transition: text-decoration 0.35s;
 }
 
 .api-content a:hover {

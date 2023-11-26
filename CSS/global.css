@@ -647,6 +647,16 @@ nav {
     width: fit-content;
 }
 
+.city-header-and-expand-edit-controls-for-name-btn-container h2 {
+    text-decoration: underline solid Currentcolor;
+    transition: text-decoration 0.35s;
+}
+
+.city-header-and-expand-edit-controls-for-name-btn-container h2:hover {
+    text-decoration: underline solid transparent;
+}
+
+
 .expand-edit-controls-for-name-btn-container {
     display: flex;
     justify-content: center;
