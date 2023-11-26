@@ -46,7 +46,7 @@
     border-bottom-right-radius: 300px;
     border-bottom-left-radius: 300px;
     overflow: hidden;
-    padding: 5px;
+    padding: 6px;
     background-color: rgba(58, 51, 32, 0.7);
     position: relative;
     display: flex;
@@ -141,7 +141,7 @@ span::after {
         border-bottom-right-radius: 500px;
         border-bottom-left-radius: 500px;
         overflow: hidden;
-
+        padding: 8px;
         max-height: 500px;
         max-width: 500px;
     }
