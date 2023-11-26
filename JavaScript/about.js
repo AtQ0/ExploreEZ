@@ -17,10 +17,10 @@ homeBtn.addEventListener("click", () => {
 /*=====================================*/
 
 // Select elements from the DOM
-const blueBrownThemeBtn = document.querySelector(".first-theme-container");
-const martiniqueSeaPinkThemeBtn = document.querySelector(".second-theme-container");
+const blueBrownThemeBtn = document.querySelector(".first-theme");
+const martiniqueSeaPinkThemeBtn = document.querySelector(".second-theme");
 const background = document.querySelector(".top-or-left-intro-container");
-const gitLogo = document.querySelector(".git-logo-svg");
+const imageContainer = document.querySelector(".image-container");
 const pageTitle = document.querySelector(".page-title");
 const aboutBtn = document.querySelector(".about-container p");
 const magicBtnContainer = document.querySelector(".magic-btn");
@@ -37,7 +37,7 @@ blueBrownThemeBtn.addEventListener("click", function () {
 
     //Change all page colors to blueBrown theme
     background.style.background = "#ABAFC7";
-    gitLogo.style.fill = "#3A3320";
+    imageContainer.style.background = "rgba(58, 51, 32, 0.7)";
     blueBrownThemeBtn.style.background = "#3A3320";
     martiniqueSeaPinkThemeBtn.style.background = "#3A3320";
     pageTitle.style.color = "#3A3320";
@@ -57,6 +57,7 @@ blueBrownThemeBtn.addEventListener("click", function () {
     //Set the three color values in sessionStorage
     sessionStorage.setItem('blueOrMartinique', "#ABAFC7");
     sessionStorage.setItem('brownOrSeaPink', "#3A3320");
+    sessionStorage.setItem('lightBrownOrSeaPink', "rgba(58, 51, 32, 0.7)")
     sessionStorage.setItem('brownOrMartinique', "#3A3320");
     sessionStorage.setItem('desertSandOrSeaPink', "#E7B39C");
 
@@ -66,7 +67,7 @@ martiniqueSeaPinkThemeBtn.addEventListener("click", function () {
 
     //Change all page colors to martiniqueSeaPink theme
     background.style.background = "#2E3049";
-    gitLogo.style.fill = "#EE9391";
+    imageContainer.style.background = "#EE9391";
     blueBrownThemeBtn.style.background = "#EE9391";
     martiniqueSeaPinkThemeBtn.style.background = "#EE9391";
     pageTitle.style.color = "#EE9391";
@@ -85,6 +86,7 @@ martiniqueSeaPinkThemeBtn.addEventListener("click", function () {
     //Set "two" values in sessionStorage
     sessionStorage.setItem('blueOrMartinique', "#2E3049");
     sessionStorage.setItem('brownOrSeaPink', "#EE9391");
+    sessionStorage.setItem('lightBrownOrSeaPink', "#EE9391")
     sessionStorage.setItem('brownOrMartinique', "#2E3049");
     sessionStorage.setItem('desertSandOrSeaPink', "#EE9391");
 
@@ -96,12 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Retrieve values from sessionStorage
     let blueOrMartinique = sessionStorage.getItem('blueOrMartinique');
     let brownOrSeakPink = sessionStorage.getItem('brownOrSeaPink');
+    let lightBrownOrSeaPink = sessionStorage.getItem('lightBrownOrSeaPink');
     let brownOrMartinique = sessionStorage.getItem('brownOrMartinique');
     let desertSandOrSeaPink = sessionStorage.getItem('desertSandOrSeaPink');
 
     //Change page theme (colors) according to latest sessionStorage values
     background.style.background = blueOrMartinique;
-    gitLogo.style.fill = brownOrSeakPink;
+    imageContainer.style.background = lightBrownOrSeaPink;
     blueBrownThemeBtn.style.background = brownOrSeakPink;
     martiniqueSeaPinkThemeBtn.style.background = brownOrSeakPink;
     pageTitle.style.color = brownOrSeakPink;

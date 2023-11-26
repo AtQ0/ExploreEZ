@@ -6,11 +6,11 @@
     background-image: none;
 }
 
-.first-theme-container {
+.first-theme {
     background-color: #3A3320;
 }
 
-.second-theme-container {
+.second-theme {
     background-color: #3A3320;
 }
 
@@ -38,10 +38,54 @@
     justify-content: center;
 }
 
-
+/*
 .top-or-left-intro-wrapper svg {
     width: 58vw;
     height: 56vw;
+} */
+
+
+.image-container {
+    height: 70vw;
+    width: 70vw;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: rgba(58, 51, 32, 0.7);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 147, 145, 0.1);
+    /* Choose your color and adjust the alpha for transparency */
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 
@@ -57,12 +101,72 @@
     height: 70%;
 }
 
+.api-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.pOne {
+    text-align: left;
+    padding-bottom: 2vw;
+}
+
+.api-content p {
+    margin-bottom: 2vw;
+    text-align: justify;
+}
+
+span::after {
+    content: "\a";
+    white-space: pre;
+}
+
+
 
 @media screen and (min-width: 769px) {
 
     .top-or-left-intro-wrapper svg {
         width: 28vw;
         height: 26vw;
+    }
+
+    .image-container {
+        height: 40vw;
+        width: 40vw;
+        border-top-left-radius: 500px;
+        border-top-right-radius: 500px;
+        border-bottom-right-radius: 500px;
+        border-bottom-left-radius: 500px;
+        overflow: hidden;
+
+        max-height: 500px;
+        max-width: 500px;
+    }
+
+    .pOne {
+        margin-top: 0vw;
+        text-align: left;
+        padding-bottom: 0.5vw;
+    }
+
+    .api-content p {
+        margin-bottom: 1vw;
+    }
+
+
+}
+
+
+@media screen and (min-width: 1440px) {
+
+    .top-or-left-intro-wrapper svg {
+        width: 28vw;
+        height: 26vw;
+    }
+
+    .image-container {
+        max-height: 700px;
+        max-width: 700px;
     }
 
 

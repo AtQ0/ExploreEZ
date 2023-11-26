@@ -49,8 +49,8 @@ magicBtn.addEventListener("click", function () {
 /*=====================================*/
 
 
-let greenThemeBtn = document.querySelector(".first-theme-container");
-let blueThemeBtn = document.querySelector(".second-theme-container");
+let greenThemeBtn = document.querySelector(".first-theme");
+let blueThemeBtn = document.querySelector(".second-theme");
 let background = document.querySelector(".top-or-left-intro-container");
 let foreground = document.querySelector(".top-or-left-intro-wrapper");
 
