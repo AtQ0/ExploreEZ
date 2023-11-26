@@ -181,6 +181,10 @@ dropDownMenuForSearching.addEventListener("change", function () {
         // If user chooses All cities in the dropdown menu
         below500Cbx.disabled = false;
         above500Cbx.disabled = false;
+
+        //TURN OF CHECBOXES UNTIL ITS SET UP TO WORK FOR THE FETCH
+        document.getElementById("below500-cbx").disabled = true;
+        document.getElementById("above500-cbx").disabled = true;
     }
 });
 
@@ -253,6 +257,10 @@ viewResultsBtn.addEventListener("click", function () {
     //Set checkboxes as NOT disabled
     below500Cbx.disabled = false;
     above500Cbx.disabled = false;
+
+    //TURN OF CHECBOXES UNTIL ITS SET UP TO WORK FOR THE FETCH
+    document.getElementById("below500-cbx").disabled = true;
+    document.getElementById("above500-cbx").disabled = true;
 
     //Send chosen city to method that fetches data for that city
     showCitiesAndElements(chosenCityID);
