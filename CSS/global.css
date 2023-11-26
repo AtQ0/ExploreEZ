@@ -656,6 +656,11 @@ nav {
 
 .expand-edit-controls-for-city-name-btn {
     cursor: pointer;
+    transition: transform 0.25s;
+}
+
+.expand-edit-controls-for-city-name-btn:hover {
+    transform: scale(1.2);
 }
 
 .edit-name-controls-container {
@@ -725,6 +730,11 @@ nav {
 
 .expand-edit-controls-for-pop-btn {
     cursor: pointer;
+    transition: transform 0.25s;
+}
+
+.expand-edit-controls-for-pop-btn:hover {
+    transform: scale(1.2);
 }
 
 .edit-pop-controls-container {
@@ -778,14 +788,6 @@ nav {
     cursor: pointer;
     color: #3A3320;
 }
-
-
-
-
-
-
-
-
 
 #learn-more-container {
     height: fit-content;
