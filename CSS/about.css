@@ -134,8 +134,8 @@ span::after {
     }
 
     .image-container {
-        height: 40vw;
-        width: 40vw;
+        height: 35vw;
+        width: 35vw;
         border-top-left-radius: 500px;
         border-top-right-radius: 500px;
         border-bottom-right-radius: 500px;
