@@ -138,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("below500-cbx").checked = false;
     document.getElementById("above500-cbx").checked = false;
 
+    //TURN OF CHECBOXES UNTIL ITS SET UP TO WORK FOR THE FETCH
+    document.getElementById("below500-cbx").disabled = true;
+    document.getElementById("above500-cbx").disabled = true;
+
     //Call funtions that calls all citites
     callCitiesOnPageLoad();
 });

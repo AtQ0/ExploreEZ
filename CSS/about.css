@@ -104,6 +104,17 @@ span::after {
 }
 
 
+@media screen and (min-width: 450px) {
+
+    .pOne {
+        padding-bottom: 10px;
+    }
+
+    .api-content p {
+        margin-bottom: 9px;
+    }
+}
+
 
 @media screen and (min-width: 769px) {
 
