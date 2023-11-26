@@ -87,6 +87,16 @@
     flex-direction: column;
 }
 
+.api-content a {
+    text-decoration: underline solid Currentcolor;
+    transition: text-decoration 0.5s;
+}
+
+.api-content a:hover {
+    text-decoration: underline solid transparent;
+}
+
+
 .pOne {
     margin-top: 10px;
     text-align: left;

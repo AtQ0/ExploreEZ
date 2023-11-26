@@ -700,6 +700,11 @@ nav {
     border-bottom-left-radius: 3vw;
     cursor: pointer;
     color: #3A3320;
+    transition: background-color 0.25s;
+}
+
+.save-city-name-btn:hover {
+    background-color: #df9b7d;
 }
 
 .cancle-city-name-btn {
@@ -713,8 +718,12 @@ nav {
     margin-left: 5px;
     cursor: pointer;
     color: #3A3320;
+    transition: background-color 0.25s;
 }
 
+.cancle-city-name-btn:hover {
+    background-color: #df9b7d;
+}
 
 .city-pop-and-city-pop-expand-edit-container {
     display: flex;
@@ -774,6 +783,11 @@ nav {
     border-bottom-left-radius: 3vw;
     cursor: pointer;
     color: #3A3320;
+    transition: background-color 0.25s;
+}
+
+.save-city-pop-btn:hover {
+    background-color: #df9b7d;
 }
 
 .cancle-city-pop-btn {
@@ -787,6 +801,11 @@ nav {
     margin-left: 5px;
     cursor: pointer;
     color: #3A3320;
+    transition: background-color 0.25s;
+}
+
+.cancle-city-pop-btn:hover {
+    background-color: #df9b7d;
 }
 
 #learn-more-container {
@@ -840,6 +859,11 @@ nav {
     cursor: pointer;
     color: #3A3320;
     width: 100px;
+    transition: background-color 0.25s;
+}
+
+.delete-btn:hover {
+    background-color: #df9b7d;
 }
 
 /*==============*/
