@@ -229,12 +229,11 @@ nav {
 }
 
 .theme-btns {
-    transition: height 0.25s, width 0.25s;
+    transition: transform 0.25s;
 }
 
 .theme-btns:hover {
-    height: 3vw;
-    width: 3vw;
+    transform: scale(1.5);
 
 }
 
@@ -916,13 +915,6 @@ nav {
         height: 3vw;
         max-height: 18px;
         max-width: 50px;
-    }
-
-
-    .theme-btns:hover {
-        height: 16px;
-        width: 16px;
-
     }
 
     .first-theme {
