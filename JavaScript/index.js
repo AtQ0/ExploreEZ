@@ -652,7 +652,10 @@ function addNewCityToCitiesServer(cityName, cityPopulation) {
         .then(result => {
 
             //Refresh dropdown menu
-            callCitiesOnPageLoad()
+            callCitiesOnPageLoad();
+
+            //Refresh api-content with all cities
+            showCitiesAndElements("");
 
         })
 
