@@ -15,6 +15,7 @@ let isFormsMenuVisible = false;
 //Add new class (for animation) to forms-menu, on click-event
 magicBtn.addEventListener("click", function () {
 
+    //When forms menu is not visible
     if (isFormsMenuVisible === false) {
         formsMenu.classList.remove("class-for-sliding-forms-menu-container-down");
         formsMenu.classList.add("class-for-sliding-forms-menu-container-up");
@@ -28,6 +29,7 @@ magicBtn.addEventListener("click", function () {
         });
 
     }
+    //When forms menu is visible
     else {
         formsMenu.classList.remove("class-for-sliding-forms-menu-container-up");
         formsMenu.classList.add("class-for-sliding-forms-menu-container-down");
@@ -40,6 +42,13 @@ magicBtn.addEventListener("click", function () {
             btn.style.pointerEvents = "auto";
         });
 
+
+        //Take away all error messages when forms menu dissapears
+        inputErrorMessageDiv.innerHTML = "";
+        inputForCityNameTbx.value = "";
+        inputForCityNameTbx.classList.remove("error-border");
+        inputForCityPopTbx.value = "";
+        inputForCityPopTbx.classList.remove("error-border");
     }
 
 })
@@ -663,6 +672,43 @@ function addNewCityToCitiesServer(cityName, cityPopulation) {
 };
 
 
+/*==== FUNCTIONALITY FOR ENTER KEY IN REGARDS TO ADDING NEW CITY =====*/
+
+const cityNameInputTbx = document.getElementById("input-for-city-tbx");
+const cityPopInputTbx = document.getElementById("input-for-pop-tbx");
+const addANewCityBtn = document.getElementById("add-new-city-btn");
+
+cityNameInputTbx.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        cityPopInputTbx.focus();
+    }
+
+});
+
+cityPopInputTbx.addEventListener("keydown", function (e) {
+
+    if (e.key === "Enter") {
+
+
+        if (cityNameInputTbx.value === "") {
+            inputForCityNameTbx.classList.add("error-border");
+            inputErrorMessageDiv.innerHTML = "*Please write a city name";
+            cityNameInputTbx.focus();
+
+        }
+        else {
+            addANewCityBtn.focus();
+            showCitiesAndElements("");
+        }
+
+
+
+
+    }
+
+});
+
+
 
 /*==================================*/
 /*=========== REMOVE CITY ==========*/
@@ -1049,10 +1095,6 @@ function creatChart(objectInput) {
         inputCityNameArray[i] = chartObjectArray[i].cityName;
         inputCityPopArray[i] = chartObjectArray[i].cityPop;
     };
-
-    console.log(inputCityNameArray);
-    console.log(inputCityPopArray);
-
 
 
     //Create dynamic header and container for chart js
