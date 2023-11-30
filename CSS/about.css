@@ -101,6 +101,7 @@
     margin-top: 10px;
     text-align: left;
     padding-bottom: 2vw;
+    margin-top: 20px;
 }
 
 .api-content p {
@@ -147,7 +148,7 @@ span::after {
     }
 
     .pOne {
-        margin-top: 0vw;
+        margin-top: 25px;
         text-align: left;
         padding-bottom: 0.5vw;
     }
