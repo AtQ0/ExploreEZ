@@ -21,6 +21,10 @@ magicBtn.addEventListener("click", function () {
         formsMenu.classList.add("class-for-sliding-forms-menu-container-up");
         isFormsMenuVisible = true;
 
+        //Rotate magic btn, poiting downwards
+        magicBtn.style.transition = "transform 0.3s ease";
+        magicBtn.style.transform = "rotate(180deg)";
+
         //ForEach used to list through queryAll node list
         themeContainerBtns.forEach(function (btn) {
             //Disable the link and user pointer
@@ -34,6 +38,10 @@ magicBtn.addEventListener("click", function () {
         formsMenu.classList.remove("class-for-sliding-forms-menu-container-up");
         formsMenu.classList.add("class-for-sliding-forms-menu-container-down");
         isFormsMenuVisible = false;
+
+        //Rotate back magic btn, poiting upwards
+        magicBtn.style.transition = "transform 0.3s ease";
+        magicBtn.style.transform = "rotate(0deg)";
 
         //ForEach used to list through queryAll node list
         themeContainerBtns.forEach(function (btn) {
@@ -689,7 +697,6 @@ cityPopInputTbx.addEventListener("keydown", function (e) {
 
     if (e.key === "Enter") {
 
-
         if (cityNameInputTbx.value === "") {
             inputForCityNameTbx.classList.add("error-border");
             inputErrorMessageDiv.innerHTML = "*Please write a city name";
@@ -700,9 +707,6 @@ cityPopInputTbx.addEventListener("keydown", function (e) {
             addANewCityBtn.focus();
             showCitiesAndElements("");
         }
-
-
-
 
     }
 
@@ -739,9 +743,6 @@ function removeCity(objectInput) {
             //Refresh dropdown menu
             callCitiesOnPageLoad();
         })
-
-
-
     }
     //If user wants to remove a single city from viewing all citites
     else {

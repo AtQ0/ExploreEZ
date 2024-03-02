@@ -329,6 +329,7 @@ nav {
     border-bottom-right-radius: 5vw;
     border-bottom-left-radius: 5vw;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .magic-btn svg {
@@ -372,11 +373,12 @@ nav {
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -100%;
     z-index: 2;
-    transition: height 0.75s;
+    transition: bottom 0.75s;
     /*Transition used for slide effect of forms menu*/
     color: white;
 }
@@ -384,11 +386,11 @@ nav {
 /*=== ANIMATION OF FORMS MENU ===*/
 
 .class-for-sliding-forms-menu-container-up {
-    height: 100%;
+    bottom: 0;
 }
 
 .class-for-sliding-forms-menu-container-down {
-    height: 0%;
+    bottom: -100%;
 }
 
 
