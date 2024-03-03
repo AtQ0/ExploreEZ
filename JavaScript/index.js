@@ -713,7 +713,6 @@ cityPopInputTbx.addEventListener("keydown", function (e) {
 });
 
 
-
 /*==================================*/
 /*=========== REMOVE CITY ==========*/
 /*==================================*/
@@ -867,7 +866,7 @@ function cancleAddingNewCityName(objectInput) {
 
 
 
-//Cancle adding a new city name
+//Cancle adding a new population
 function cancleAddingNewCityPop(objectInput) {
 
     //Store values from the data-attribute, inside of incoming object
