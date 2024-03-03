@@ -971,7 +971,8 @@ function saveNewCityName(objectInput) {
                     callCitiesOnPageLoad();
 
                     //Call showCitiesAndElements() to update results that are viewed
-                    // showCitiesAndElements(chosenCityID);
+                    showCitiesAndElements(chosenCityID);
+
                     //Or just make a fetch right here and populate lat, lon and description
 
                 });
