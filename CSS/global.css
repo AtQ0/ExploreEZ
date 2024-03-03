@@ -416,6 +416,7 @@ nav {
     margin-top: 8vw;
     margin-bottom: 4vw;
     width: 75%;
+    max-width: 600px;
 }
 
 
